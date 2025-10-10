@@ -4,46 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad34b009-9586-4d62-98f5-bd1f151a38a9" name="更改" comment="基础登录">
-      <change afterPath="$PROJECT_DIR$/.idea/ApifoxUploaderProjectSetting.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/teamup-pojo/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/teamup-sever/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/irum/teamup/admin/ShortLinkAdminApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/admin/ShortLinkAdminApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/irum/teamup/admin/common/constant/RedisCacheConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/admin/common/constant/RedisCacheConstant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/irum/teamup/admin/common/convention/errorcode/BaseErrorCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/admin/common/convention/errorcode/BaseErrorCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/irum/teamup/admin/common/convention/errorcode/IErrorCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/admin/common/convention/errorcode/IErrorCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/irum/teamup/admin/common/convention/exception/AbstractException.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/admin/common/convention/exception/AbstractException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/irum/teamup/admin/common/convention/exception/ClientException.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/admin/common/convention/exception/ClientException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/irum/teamup/admin/common/convention/exception/RemoteException.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/admin/common/convention/exception/RemoteException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/irum/teamup/admin/common/convention/exception/ServiceException.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/admin/common/convention/exception/ServiceException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/irum/teamup/admin/common/convention/result/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/admin/common/convention/result/Result.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/irum/teamup/admin/common/convention/result/Results.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/admin/common/convention/result/Results.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/irum/teamup/admin/common/enums/UserErrorCodeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/admin/common/enums/UserErrorCodeEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/irum/teamup/admin/common/serialize/PhoneDesensitizationSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/admin/common/serialize/PhoneDesensitizationSerializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/irum/teamup/admin/common/web/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/admin/common/web/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/irum/teamup/admin/config/MyMetaObjectHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/config/MyMetaObjectHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/irum/teamup/admin/config/RBloomFilterConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/config/RBloomFilterConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/irum/teamup/admin/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/irum/teamup/admin/dao/entity/UserDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/po/UserDO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/irum/teamup/admin/dao/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/irum/teamup/admin/dto/req/UserLoginReqDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/dto/req/UserLoginReqDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/irum/teamup/admin/dto/req/UserRegisterReqDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/dto/req/UserRegisterReqDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/irum/teamup/admin/dto/req/UserUpdateReqDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/dto/req/UserUpdateReqDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/irum/teamup/admin/dto/resp/UserActualRespDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/dto/resp/UserActualRespDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/irum/teamup/admin/dto/resp/UserLoginResqDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/dto/resp/UserLoginResqDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/irum/teamup/admin/dto/resp/UserRespDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/dto/resp/UserRespDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/irum/teamup/admin/service/Impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/irum/teamup/admin/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/java/com/irum/teamup/admin/toolkit/BeanUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/admin/toolkit/BeanUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/db/t_user.sql" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/resources/db/t_user.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/main/resources/shardingsphere-config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/resources/shardingsphere-config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/test/java/com/irum/teamup/admin/test/UserTableShardingTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/test/java/com/irum/teamup/admin/test/UserTableShardingTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-    </list>
+    <list default="true" id="ad34b009-9586-4d62-98f5-bd1f151a38a9" name="更改" comment="调整目录结构" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -229,7 +190,7 @@
       <workItem from="1760003823337" duration="4996000" />
       <workItem from="1760069898438" duration="1581000" />
       <workItem from="1760084733470" duration="1411000" />
-      <workItem from="1760090464614" duration="597000" />
+      <workItem from="1760090464614" duration="1008000" />
     </task>
     <task id="LOCAL-00001" summary="基础登录">
       <option name="closed" value="true" />
@@ -247,7 +208,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760070164152</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="调整目录结构">
+      <option name="closed" value="true" />
+      <created>1760094323462</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1760094323462</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -266,6 +235,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="基础登录" />
-    <option name="LAST_COMMIT_MESSAGE" value="基础登录" />
+    <MESSAGE value="调整目录结构" />
+    <option name="LAST_COMMIT_MESSAGE" value="调整目录结构" />
   </component>
 </project>

@@ -1,6 +1,7 @@
 package com.irum.teamup.vo;
 
 
+import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ApiModel("用户登录返回参数")
 public class UserLoginVO {
     /**
      * 登录token

@@ -20,6 +20,8 @@ package com.irum.teamup.po;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.util.Date;
@@ -30,53 +32,63 @@ import java.util.Date;
  */
 @Data
 @TableName("t_user.sql")
+@ApiModel(description = "用户持久层实体")
 public class UserDO {
 
     /**
      * id
      */
+    @ApiModelProperty(value = "id")
     private Long id;
 
     /**
      * 用户名
      */
+    @ApiModelProperty(value = "用户名")
     private String username;
 
     /**
      * 密码
      */
+    @ApiModelProperty(value = "密码")
     private String password;
 
     /**
      * 真实姓名
      */
+    @ApiModelProperty(value = "真实姓名")
     private String realName;
 
     /**
      * 手机号
      */
+    @ApiModelProperty(value = "手机号")
     private String phone;
 
     /**
      * 邮箱
      */
+    @ApiModelProperty(value = "邮箱")
     private String mail;
 
     /**
      * 创建时间戳
      */
+    @ApiModelProperty(value = "创建时间戳")
     @TableField(fill = FieldFill.INSERT)
     private Date createTime;
 
     /**
      * 修改时间戳
      */
+    @ApiModelProperty(value = "修改时间戳")
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date updateTime;
 
     /**
      * 删除标记
      */
+    @ApiModelProperty(value = "删除标记")
     @TableField(fill = FieldFill.INSERT)
     private Integer delFlag;
 
