@@ -3,9 +3,10 @@ package com.irum.teamup;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
-@MapperScan("com.irum.teamup.admin.dao.mapper")
+@EnableTransactionManagement
 public class ShortLinkAdminApplication {
     public static void main(String[] args) {
         SpringApplication.run(ShortLinkAdminApplication.class, args);
