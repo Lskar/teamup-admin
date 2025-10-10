@@ -10,7 +10,9 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>admin</module>
+        <module>teamup-common</module>
+        <module>teamup-pojo</module>
+        <module>teamup-sever</module>
     </modules>
 
     <properties>
