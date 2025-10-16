@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad34b009-9586-4d62-98f5-bd1f151a38a9" name="更改" comment="合并">
-      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/AdminController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/po/PlatformOverview.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/StatisticsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ProjectController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +27,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="85563c2efde1dd6faf9a2eb4257c629ad4331e52" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -81,7 +84,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.ShortLinkAdminApplication (1).executor": "Run",
     "Spring Boot.ShortLinkAdminApplication.executor": "Run",
-    "git-widget-placeholder": "5cf7c8ad",
+    "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Lenovo/Desktop/myJavaCollection/teamup",
     "node.js.detected.package.eslint": "true",

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/team-up/v1/project")
+
 public class ProjectController {
 
     private final ProjectService projectService;
