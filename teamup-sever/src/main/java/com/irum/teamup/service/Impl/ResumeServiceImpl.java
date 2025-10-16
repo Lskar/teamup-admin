@@ -1,6 +1,7 @@
 package com.irum.teamup.service.Impl;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.irum.teamup.dto.PageQueryDTO;
 import com.irum.teamup.po.ResumeDO;
 import com.irum.teamup.service.ResumeService;
 import com.irum.teamup.vo.ResumeVO;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ResumeServiceImpl implements ResumeService {
     @Override
-    public Page<ResumeVO> pageQuery(Integer currentPage, Integer pageSize, String status, Long applicantId, Long projectId) {
+    public Page<ResumeVO> pageQuery(PageQueryDTO pageQueryDTO) {
         return null;
     }
 

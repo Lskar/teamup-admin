@@ -3,6 +3,7 @@ package com.irum.teamup.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.irum.teamup.convention.result.Result;
 import com.irum.teamup.convention.result.Results;
+import com.irum.teamup.dto.PageQueryDTO;
 import com.irum.teamup.enums.ResumeErrorCodeEnum;
 import com.irum.teamup.po.ResumeDO;
 import com.irum.teamup.service.ResumeService;
@@ -27,14 +28,9 @@ public class ResumeController {
      */
     @GetMapping("/page")
     @ApiOperation(value = "分页查询简历投递列表", notes = "分页查询简历投递列表")
-    public Result<Page<ResumeVO>> pageQuery(
-            @RequestParam(defaultValue = "1") Integer currentPage,
-            @RequestParam(defaultValue = "10") Integer pageSize,
-            @RequestParam(required = false) String status,
-            @RequestParam(required = false) Long applicantId,
-            @RequestParam(required = false) Long projectId) {
+    public Result<Page<ResumeVO>> pageQuery(PageQueryDTO pageQueryDTO) {
 
-        Page<ResumeVO> result = resumeService.pageQuery(currentPage, pageSize, status, applicantId, projectId);
+        Page<ResumeVO> result = resumeService.pageQuery(pageQueryDTO);
         return Results.success(result);
     }
 

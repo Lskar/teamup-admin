@@ -4,6 +4,7 @@ package com.irum.teamup.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.irum.teamup.convention.result.Result;
 import com.irum.teamup.convention.result.Results;
+import com.irum.teamup.dto.PageQueryDTO;
 import com.irum.teamup.enums.ProjectErrorCodeEnum;
 import com.irum.teamup.po.ProjectDO;
 import com.irum.teamup.service.ProjectService;
@@ -29,14 +30,9 @@ public class ProjectController {
      */
     @GetMapping("/page")
     @ApiOperation(value = "分页查询项目列表", notes = "分页查询项目列表")
-    public Result<Page<ProjectVO>> pageQuery(
-            @RequestParam(defaultValue = "1") Integer currentPage,
-            @RequestParam(defaultValue = "10") Integer pageSize,
-            @RequestParam(required = false) String status,
-            @RequestParam(required = false) String college,
-            @RequestParam(required = false) String projectType) {
+    public Result<Page<ProjectVO>> pageQuery(PageQueryDTO pageQueryDTO) {
 
-        Page<ProjectVO> result = projectService.pageQuery(currentPage, pageSize, status, college, projectType);
+        Page<ProjectVO> result = projectService.pageQuery(pageQueryDTO);
         return Results.success(result);
     }
 

@@ -1,6 +1,7 @@
 package com.irum.teamup.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.irum.teamup.dto.PageQueryDTO;
 import com.irum.teamup.po.ResumeDO;
 import com.irum.teamup.vo.ResumeVO;
 
@@ -11,15 +12,9 @@ public interface ResumeService {
     
     /**
      * 分页查询简历投递列表
-     *
-     * @param currentPage 当前页码
-     * @param pageSize 每页大小
-     * @param status 简历状态
-     * @param applicantId 申请人ID
-     * @param projectId 项目ID
      * @return 简历分页结果
      */
-    Page<ResumeVO> pageQuery(Integer currentPage, Integer pageSize, String status, Long applicantId, Long projectId);
+    Page<ResumeVO> pageQuery(PageQueryDTO pageQueryDTO);
     
     /**
      * 根据ID获取简历详情

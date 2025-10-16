@@ -1,6 +1,7 @@
 package com.irum.teamup.service.Impl;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.irum.teamup.dto.PageQueryDTO;
 import com.irum.teamup.po.ProjectDO;
 import com.irum.teamup.service.ProjectService;
 import com.irum.teamup.vo.ProjectVO;
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class ProjectServiceImpl implements ProjectService {
 
     @Override
-    public Page<ProjectVO> pageQuery(Integer currentPage, Integer pageSize, String status, String college, String projectType) {
+    public Page<ProjectVO> pageQuery(PageQueryDTO pageQueryDTO) {
         return null;
     }
 

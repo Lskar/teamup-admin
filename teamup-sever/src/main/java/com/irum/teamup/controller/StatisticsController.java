@@ -20,7 +20,6 @@ public class StatisticsController {
     // 获取平台运营数据概览
     @GetMapping("/overview")
     public ResponseEntity<PlatformOverview> getPlatformOverview() {
-
         return null;
     }
 
