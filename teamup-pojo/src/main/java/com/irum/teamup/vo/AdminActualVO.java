@@ -10,7 +10,7 @@ import lombok.Data;
  **/
 @Data
 @ApiModel("用户实际返回信息")
-public class UserActualVO {
+public class AdminActualVO {
 
     /**
      * id

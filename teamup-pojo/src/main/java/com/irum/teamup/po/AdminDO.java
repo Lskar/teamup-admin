@@ -33,7 +33,7 @@ import java.util.Date;
 @Data
 @TableName("admin")
 @ApiModel(description = "用户持久层实体")
-public class UserDO {
+public class AdminDO {
 
     /**
      * id

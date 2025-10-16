@@ -8,15 +8,15 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.irum.teamup.convention.exception.ClientException;
-import com.irum.teamup.enums.UserErrorCodeEnum;
-import com.irum.teamup.mapper.UserMapper;
-import com.irum.teamup.po.UserDO;
-import com.irum.teamup.dto.UserLoginDTO;
-import com.irum.teamup.dto.UserRegisterDTO;
-import com.irum.teamup.dto.UserUpdateDTO;
-import com.irum.teamup.vo.UserLoginVO;
-import com.irum.teamup.vo.UserVO;
-import com.irum.teamup.service.UserService;
+import com.irum.teamup.enums.AdminErrorCodeEnum;
+import com.irum.teamup.mapper.AdminMapper;
+import com.irum.teamup.po.AdminDO;
+import com.irum.teamup.dto.AdminLoginDTO;
+import com.irum.teamup.dto.AdminRegisterDTO;
+import com.irum.teamup.dto.AdminUpdateDTO;
+import com.irum.teamup.vo.AdminLoginVO;
+import com.irum.teamup.vo.AdminVO;
+import com.irum.teamup.service.AdminService;
 import lombok.RequiredArgsConstructor;
 import org.redisson.api.RBloomFilter;
 import org.redisson.api.RLock;
@@ -28,7 +28,7 @@ import org.springframework.stereotype.Service;
 import java.util.concurrent.TimeUnit;
 
 import static com.irum.teamup.constant.RedisCacheConstant.LOCK_USER_REGISTER_KEY;
-import static com.irum.teamup.enums.UserErrorCodeEnum.USER_NAME_EXIST;
+import static com.irum.teamup.enums.AdminErrorCodeEnum.USER_NAME_EXIST;
 
 /**
  * @author irum
@@ -36,7 +36,7 @@ import static com.irum.teamup.enums.UserErrorCodeEnum.USER_NAME_EXIST;
  **/
 @Service
 @RequiredArgsConstructor
-public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements UserService {
+public class AdminServiceImpl extends ServiceImpl<AdminMapper, AdminDO> implements AdminService {
 
     private final RBloomFilter<String> userRegisterCachePenetrationBloomFilter;
 
@@ -45,15 +45,15 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
     private final StringRedisTemplate stringRedisTemplate;
 
     @Override
-    public UserVO getUserByUsername(String username) {
-         LambdaQueryWrapper<UserDO> queryWrapper= Wrappers.lambdaQuery(UserDO.class)
-                .eq(UserDO::getUsername, username);
-        UserDO userDO = baseMapper.selectOne(queryWrapper);
-        if(userDO==null){
-            throw new ClientException(UserErrorCodeEnum.USER_NULL);
+    public AdminVO getUserByUsername(String username) {
+         LambdaQueryWrapper<AdminDO> queryWrapper= Wrappers.lambdaQuery(AdminDO.class)
+                .eq(AdminDO::getUsername, username);
+        AdminDO adminDO = baseMapper.selectOne(queryWrapper);
+        if(adminDO ==null){
+            throw new ClientException(AdminErrorCodeEnum.USER_NULL);
         }
-        UserVO result = new UserVO();
-        BeanUtils.copyProperties(userDO, result);
+        AdminVO result = new AdminVO();
+        BeanUtils.copyProperties(adminDO, result);
         return result;
     }
 
@@ -63,16 +63,16 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
     }
 
     @Override
-    public void Register(UserRegisterDTO requestParam) {
+    public void Register(AdminRegisterDTO requestParam) {
         if(!hasUsername(requestParam.getUsername())){
             throw new ClientException(USER_NAME_EXIST);
         }
         RLock lock = redissonClient.getLock(LOCK_USER_REGISTER_KEY+requestParam.getUsername());
         try {
             if(lock.tryLock()){
-                int inserted = baseMapper.insert(BeanUtil.toBean(requestParam, UserDO.class));
+                int inserted = baseMapper.insert(BeanUtil.toBean(requestParam, AdminDO.class));
                 if(inserted<=0){
-                    throw new ClientException(UserErrorCodeEnum.USER_SAVE_ERROR);
+                    throw new ClientException(AdminErrorCodeEnum.USER_SAVE_ERROR);
                 }
                 userRegisterCachePenetrationBloomFilter.add(requestParam.getUsername());
                 return;
@@ -85,22 +85,22 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
     }
 
     @Override
-    public void update(UserUpdateDTO requestParam) {
+    public void update(AdminUpdateDTO requestParam) {
         // TODO 验证当前用户为登录用户
-        LambdaQueryWrapper<UserDO> queryWrapper= Wrappers.lambdaQuery(UserDO.class)
-                .eq(UserDO::getUsername, requestParam.getUsername());
-        baseMapper.update(BeanUtil.toBean(requestParam, UserDO.class), queryWrapper);
+        LambdaQueryWrapper<AdminDO> queryWrapper= Wrappers.lambdaQuery(AdminDO.class)
+                .eq(AdminDO::getUsername, requestParam.getUsername());
+        baseMapper.update(BeanUtil.toBean(requestParam, AdminDO.class), queryWrapper);
     }
 
     @Override
-    public UserLoginVO login(UserLoginDTO requestParam) {
-        LambdaQueryWrapper<UserDO> queryWrapper= Wrappers.lambdaQuery(UserDO.class)
-                .eq(UserDO::getUsername, requestParam.getUsername())
-                .eq(UserDO::getPassword, requestParam.getPassword())
-                .eq(UserDO::getDelFlag, 0);
-        UserDO userDO = baseMapper.selectOne(queryWrapper);
-        if(userDO==null){
-            throw new ClientException(UserErrorCodeEnum.USER_NULL);
+    public AdminLoginVO login(AdminLoginDTO requestParam) {
+        LambdaQueryWrapper<AdminDO> queryWrapper= Wrappers.lambdaQuery(AdminDO.class)
+                .eq(AdminDO::getUsername, requestParam.getUsername())
+                .eq(AdminDO::getPassword, requestParam.getPassword())
+                .eq(AdminDO::getDelFlag, 0);
+        AdminDO adminDO = baseMapper.selectOne(queryWrapper);
+        if(adminDO ==null){
+            throw new ClientException(AdminErrorCodeEnum.USER_NULL);
         }
         Boolean isLogin = stringRedisTemplate.hasKey("login_"+requestParam.getUsername());
         if(isLogin){
@@ -108,9 +108,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
         }
 
         String uuid = UUID.randomUUID().toString();
-        stringRedisTemplate.opsForHash().put("login_"+requestParam.getUsername(),uuid,JSON.toJSONString(userDO));
+        stringRedisTemplate.opsForHash().put("login_"+requestParam.getUsername(),uuid,JSON.toJSONString(adminDO));
         stringRedisTemplate.expire("login_"+requestParam.getUsername(), 30L, TimeUnit.MINUTES);
-        return new UserLoginVO(uuid);
+        return new AdminLoginVO(uuid);
     }
 
     @Override

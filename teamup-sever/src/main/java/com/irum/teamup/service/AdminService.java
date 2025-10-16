@@ -1,18 +1,18 @@
 package com.irum.teamup.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.irum.teamup.po.UserDO;
-import com.irum.teamup.dto.UserLoginDTO;
-import com.irum.teamup.dto.UserRegisterDTO;
-import com.irum.teamup.dto.UserUpdateDTO;
-import com.irum.teamup.vo.UserLoginVO;
-import com.irum.teamup.vo.UserVO;
+import com.irum.teamup.po.AdminDO;
+import com.irum.teamup.dto.AdminLoginDTO;
+import com.irum.teamup.dto.AdminRegisterDTO;
+import com.irum.teamup.dto.AdminUpdateDTO;
+import com.irum.teamup.vo.AdminLoginVO;
+import com.irum.teamup.vo.AdminVO;
 
 /**
  * @author irum
  * @date 2021/09/05
  */
-public interface UserService extends IService<UserDO> {
+public interface AdminService extends IService<AdminDO> {
 
     /**
      * 根据用户名查询用户信息
@@ -20,7 +20,7 @@ public interface UserService extends IService<UserDO> {
      * @param username 用户名
      * @return 用户信息
      */
-    UserVO getUserByUsername(String username);
+    AdminVO getUserByUsername(String username);
 
     /**
      * 判断用户名是否存在
@@ -35,14 +35,14 @@ public interface UserService extends IService<UserDO> {
      *
      * @param requestParam 注册信息
      */
-    void Register(UserRegisterDTO requestParam);
+    void Register(AdminRegisterDTO requestParam);
 
     /**
      * 更新用户信息
      *
      * @param requestParam 更新信息
      */
-    void update(UserUpdateDTO requestParam);
+    void update(AdminUpdateDTO requestParam);
 
     /**
      * 登录
@@ -50,7 +50,7 @@ public interface UserService extends IService<UserDO> {
      * @param requestParam 登录信息
      * @return 登录信息
      */
-    UserLoginVO login(UserLoginDTO requestParam);
+    AdminLoginVO login(AdminLoginDTO requestParam);
 
     /**
      * 验证登录

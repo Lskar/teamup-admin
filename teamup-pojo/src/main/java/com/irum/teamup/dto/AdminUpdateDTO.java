@@ -1,14 +1,13 @@
 package com.irum.teamup.dto;
 
 
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 @Data
-@ApiModel("用户注册参数")
-public class UserRegisterDTO {
+@ApiModel("用户更新参数")
+public class AdminUpdateDTO {
     /**
      * 用户名
      */

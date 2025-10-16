@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @ApiModel("用户登录返回参数")
-public class UserLoginVO {
+public class AdminLoginVO {
     /**
      * 登录token
      */

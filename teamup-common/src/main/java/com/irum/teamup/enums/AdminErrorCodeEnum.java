@@ -2,7 +2,7 @@ package com.irum.teamup.enums;
 
 import com.irum.teamup.convention.errorcode.IErrorCode;
 
-public enum UserErrorCodeEnum implements IErrorCode {
+public enum AdminErrorCodeEnum implements IErrorCode {
 
     USER_NULL("B000200", "用户不存在"),
     USER_NAME_EXIST("B000201", "用户名已存在"),
@@ -14,7 +14,7 @@ public enum UserErrorCodeEnum implements IErrorCode {
 
     private final String message;
 
-    UserErrorCodeEnum(String code, String message) {
+    AdminErrorCodeEnum(String code, String message) {
         this.code = code;
         this.message = message;
     }

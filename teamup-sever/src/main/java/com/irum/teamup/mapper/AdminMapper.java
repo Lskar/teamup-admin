@@ -1,7 +1,7 @@
 package com.irum.teamup.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.irum.teamup.po.UserDO;
+import com.irum.teamup.po.AdminDO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -9,5 +9,5 @@ import org.apache.ibatis.annotations.Mapper;
  * @date 2021/8/23
  **/
 @Mapper
-public interface UserMapper extends BaseMapper<UserDO> {
+public interface AdminMapper extends BaseMapper<AdminDO> {
 }

@@ -6,8 +6,8 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 @Data
-@ApiModel("用户更新参数")
-public class UserUpdateDTO {
+@ApiModel("用户注册参数")
+public class AdminRegisterDTO {
     /**
      * 用户名
      */

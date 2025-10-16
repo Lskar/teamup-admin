@@ -5,8 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad34b009-9586-4d62-98f5-bd1f151a38a9" name="更改" comment="添加注解，生成接口文档">
-      <change afterPath="$PROJECT_DIR$/teamup-common/src/main/resources/db/project.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/teamup-common/src/main/resources/db/resume_delivery.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/teamup-common/src/main/resources/db/resume.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/teamup-common/src/main/resources/db/user.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/enums/UserErrorCodeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/enums/AdminErrorCodeEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/resources/db/t_user.sql" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/resources/db/admin.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/dto/UserLoginDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/dto/AdminLoginDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/dto/UserRegisterDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/dto/AdminRegisterDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/dto/UserUpdateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/dto/AdminUpdateDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/po/UserDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/po/AdminDO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/vo/UserActualVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/vo/AdminActualVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/vo/UserLoginVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/vo/AdminLoginVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/vo/UserVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/vo/AdminVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/mapper/AdminMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/AdminServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/AdminService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

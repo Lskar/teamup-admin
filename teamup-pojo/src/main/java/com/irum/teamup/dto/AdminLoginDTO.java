@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @ApiModel("用户登录参数")
-public class UserLoginDTO {
+public class AdminLoginDTO {
 
     /**
      * 用户名

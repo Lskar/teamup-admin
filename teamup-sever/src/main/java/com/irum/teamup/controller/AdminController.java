@@ -3,14 +3,14 @@ package com.irum.teamup.controller;
 import cn.hutool.core.bean.BeanUtil;
 import com.irum.teamup.convention.result.Result;
 import com.irum.teamup.convention.result.Results;
-import com.irum.teamup.enums.UserErrorCodeEnum;
-import com.irum.teamup.dto.UserLoginDTO;
-import com.irum.teamup.dto.UserRegisterDTO;
-import com.irum.teamup.dto.UserUpdateDTO;
-import com.irum.teamup.vo.UserActualVO;
-import com.irum.teamup.vo.UserLoginVO;
-import com.irum.teamup.vo.UserVO;
-import com.irum.teamup.service.UserService;
+import com.irum.teamup.enums.AdminErrorCodeEnum;
+import com.irum.teamup.dto.AdminLoginDTO;
+import com.irum.teamup.dto.AdminRegisterDTO;
+import com.irum.teamup.dto.AdminUpdateDTO;
+import com.irum.teamup.vo.AdminActualVO;
+import com.irum.teamup.vo.AdminLoginVO;
+import com.irum.teamup.vo.AdminVO;
+import com.irum.teamup.service.AdminService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -22,9 +22,9 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequiredArgsConstructor
-public class UserController {
+public class AdminController {
 
-    private final UserService userService;
+    private final AdminService adminService;
 
     /**
      * 根据用户名查询用户信息
@@ -32,10 +32,10 @@ public class UserController {
     @GetMapping("/api/team-up/v1/user/{username}")
     @ApiOperation(value = "根据用户名查询用户信息", notes = "根据用户名查询用户信息",httpMethod = "GET")
     @ApiImplicitParam(name = "username", value = "用户名", required = true, dataType = "String", paramType = "path")
-    public Result<UserVO> getUserByUsername(@PathVariable("username") String username, HttpMethod httpMethod){
-        UserVO result = userService.getUserByUsername(username);
+    public Result<AdminVO> getUserByUsername(@PathVariable("username") String username, HttpMethod httpMethod){
+        AdminVO result = adminService.getUserByUsername(username);
         if(result == null){
-            return new Result<UserVO>().setCode(UserErrorCodeEnum.USER_NULL.code()).setMessage(UserErrorCodeEnum.USER_NULL.message());
+            return new Result<AdminVO>().setCode(AdminErrorCodeEnum.USER_NULL.code()).setMessage(AdminErrorCodeEnum.USER_NULL.message());
         }else {
             return Results.success(result);
         }
@@ -47,8 +47,8 @@ public class UserController {
     @ApiOperation(value = "根据用户名查询用户无脱敏信息", notes = "根据用户名查询用户无脱敏信息",httpMethod = "GET")
     @ApiImplicitParam(name = "username", value = "用户名", required = true, dataType = "String", paramType = "path")
     @GetMapping("/api/team-up/v1/actual/user/{username}")
-    public Result<UserActualVO> getActualUserByUsername(@PathVariable("username") String username){
-        return Results.success(BeanUtil.toBean(userService.getUserByUsername(username), UserActualVO.class));
+    public Result<AdminActualVO> getActualUserByUsername(@PathVariable("username") String username){
+        return Results.success(BeanUtil.toBean(adminService.getUserByUsername(username), AdminActualVO.class));
     }
 
     /**
@@ -58,7 +58,7 @@ public class UserController {
     @ApiImplicitParam(name = "username", value = "用户名", required = true, dataType = "String", paramType = "query")
     @GetMapping("/api/team-up/v1/user/has-username")
     public Result<Boolean> hasUsername(@RequestParam("username") String username){
-        return Results.success(userService.hasUsername(username));
+        return Results.success(adminService.hasUsername(username));
     }
 
     /**
@@ -67,8 +67,8 @@ public class UserController {
     @ApiOperation(value = "注册用户", notes = "注册用户",httpMethod = "POST")
     @ApiImplicitParam(name = "requestParam", value = "用户注册参数", required = true, dataType = "UserRegisterDTO", paramType = "body")
     @PostMapping("/api/team-up/v1/user")
-    public Result<Void> register(@RequestBody UserRegisterDTO requestParam){
-        userService.Register(requestParam);
+    public Result<Void> register(@RequestBody AdminRegisterDTO requestParam){
+        adminService.Register(requestParam);
         return Results.success();
     }
 
@@ -78,8 +78,8 @@ public class UserController {
     @PutMapping("/api/team-up/v1/user")
     @ApiOperation(value = "修改用户信息", notes = "修改用户信息",httpMethod = "PUT")
     @ApiImplicitParam(name = "requestParam", value = "用户修改参数", required = true, dataType = "UserUpdateDTO", paramType = "body")
-    public Result<Void> update(@RequestBody UserUpdateDTO requestParam){
-        userService.update(requestParam);
+    public Result<Void> update(@RequestBody AdminUpdateDTO requestParam){
+        adminService.update(requestParam);
         return Results.success();
     }
 
@@ -89,8 +89,8 @@ public class UserController {
     @ApiOperation(value = "登录", notes = "登录",httpMethod = "POST")
     @ApiImplicitParam(name = "requestParam", value = "用户登录参数", required = true, dataType = "UserLoginDTO", paramType = "body")
     @PostMapping("/api/team-up/v1/user/login")
-    public Result<UserLoginVO> login(@RequestBody UserLoginDTO requestParam){
-        return Results.success(userService.login(requestParam));
+    public Result<AdminLoginVO> login(@RequestBody AdminLoginDTO requestParam){
+        return Results.success(adminService.login(requestParam));
     }
 
     /**
@@ -100,6 +100,6 @@ public class UserController {
     @ApiImplicitParam(name = "username", value = "用户名", required = true, dataType = "String", paramType = "query")
     @GetMapping("/api/team-up/v1/user/check-login")
     public Result<Boolean> checklogin(@RequestParam("username") String username,@RequestParam("token") String token){
-        return Results.success(userService.checklogin( username,token));
+        return Results.success(adminService.checklogin( username,token));
     }
 }
