@@ -1,6 +1,7 @@
-package com.irum.teamup.po;
+package com.irum.teamup.vo.project;
 
-public class ProjectCategoryStats {
+
+public class ProjectCategoryStatsVO {
     private String category;
     private Long count;
     private Double percentage;

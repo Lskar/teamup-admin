@@ -3,14 +3,15 @@ package com.irum.teamup.controller;
 import cn.hutool.core.bean.BeanUtil;
 import com.irum.teamup.convention.result.Result;
 import com.irum.teamup.convention.result.Results;
-import com.irum.teamup.dto.AdminLoginDTO;
-import com.irum.teamup.dto.AdminRegisterDTO;
-import com.irum.teamup.dto.AdminUpdateDTO;
+import com.irum.teamup.dto.admin.AdminLoginDTO;
+import com.irum.teamup.dto.admin.AdminRegisterDTO;
+import com.irum.teamup.dto.admin.AdminUpdateDTO;
 import com.irum.teamup.enums.AdminErrorCodeEnum;
 import com.irum.teamup.service.AdminService;
-import com.irum.teamup.vo.AdminActualVO;
-import com.irum.teamup.vo.AdminLoginVO;
-import com.irum.teamup.vo.AdminVO;
+import com.irum.teamup.vo.admin.AdminActualVO;
+import com.irum.teamup.vo.admin.AdminLoginVO;
+import com.irum.teamup.vo.admin.AdminVO;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.models.HttpMethod;
@@ -19,10 +20,11 @@ import org.springframework.web.bind.annotation.*;
 
 
 /**
- * 用户管理控制层
+ * 管理员控制层
  */
 @RestController
 @RequiredArgsConstructor
+@Api(tags = "管理员接口")
 public class AdminController {
 
     private final AdminService adminService;

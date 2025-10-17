@@ -2,11 +2,11 @@ package com.irum.teamup.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.irum.teamup.po.AdminDO;
-import com.irum.teamup.dto.AdminLoginDTO;
-import com.irum.teamup.dto.AdminRegisterDTO;
-import com.irum.teamup.dto.AdminUpdateDTO;
-import com.irum.teamup.vo.AdminLoginVO;
-import com.irum.teamup.vo.AdminVO;
+import com.irum.teamup.dto.admin.AdminLoginDTO;
+import com.irum.teamup.dto.admin.AdminRegisterDTO;
+import com.irum.teamup.dto.admin.AdminUpdateDTO;
+import com.irum.teamup.vo.admin.AdminLoginVO;
+import com.irum.teamup.vo.admin.AdminVO;
 
 /**
  * @author irum

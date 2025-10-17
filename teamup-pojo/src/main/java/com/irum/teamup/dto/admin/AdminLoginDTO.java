@@ -1,4 +1,4 @@
-package com.irum.teamup.dto;
+package com.irum.teamup.dto.admin;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

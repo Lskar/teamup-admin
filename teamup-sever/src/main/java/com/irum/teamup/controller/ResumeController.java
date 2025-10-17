@@ -3,11 +3,11 @@ package com.irum.teamup.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.irum.teamup.convention.result.Result;
 import com.irum.teamup.convention.result.Results;
-import com.irum.teamup.dto.PageQueryDTO;
 import com.irum.teamup.enums.ResumeErrorCodeEnum;
 import com.irum.teamup.po.ResumeDO;
 import com.irum.teamup.service.ResumeService;
 import com.irum.teamup.vo.ResumeVO;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/team-up/v1/resume")
+@Api(tags = "简历投递管理")
 public class ResumeController {
 
     private final ResumeService resumeService;

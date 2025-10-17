@@ -1,6 +1,7 @@
 package com.irum.teamup.po;
 
 import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import java.util.Date;
 
@@ -9,6 +10,7 @@ import java.util.Date;
  */
 @Data
 @TableName("project")
+@ApiModel(description = "项目信息DO")
 public class ProjectDO {
 
     /**

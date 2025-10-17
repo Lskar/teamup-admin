@@ -1,4 +1,4 @@
-package com.irum.teamup.vo;
+package com.irum.teamup.vo.admin;
 
 
 import io.swagger.annotations.ApiModel;

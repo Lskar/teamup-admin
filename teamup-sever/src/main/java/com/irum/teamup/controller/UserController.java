@@ -1,23 +1,31 @@
 package com.irum.teamup.controller;
 
-import com.irum.teamup.convention.result.PageResult;
 import com.irum.teamup.convention.result.Result;
-import com.irum.teamup.dto.PageQueryDTO;
-import com.irum.teamup.po.UserDO;
-import com.irum.teamup.dto.UserUpdateDTO;
+import com.irum.teamup.vo.user.UserVO;
+import com.irum.teamup.vo.user.UserDetailVO;
+import com.irum.teamup.dto.user.UserUpdateDTO;
+import com.irum.teamup.page.Page;
+import com.irum.teamup.query.UserPageQuery;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/admin/users")
+@Api(tags = "用户管理")
 public class UserController {
 
     /**
      * 获取用户列表
-     * @param pageQueryDTO 分页参数
+     * @param userPageQuery 分页参数
      * @return 用户列表
      */
+    @ApiOperation(value = "获取用户列表", notes = "获取用户列表")
+    @ApiImplicitParam(name = "pageQueryDTO", value = "分页参数", required = true, dataType = "PageQueryDTO", paramType = "body")
     @GetMapping
-    public Result<PageResult<UserDO>> getUserList(PageQueryDTO pageQueryDTO){
+    public Result<Page<UserVO>> getUserList(@RequestParam UserPageQuery userPageQuery){
         return null;
     }
 
@@ -26,8 +34,10 @@ public class UserController {
      * @param id 用户id
      * @return 用户信息
      */
+    @ApiOperation(value = "获取用户详细信息", notes = "获取用户详细信息")
+    @ApiImplicitParam(name = "id", value = "用户id", required = true, dataType = "Long", paramType = "path")
     @GetMapping("/{id}")
-    public Result<UserDO> getUserDetail(@PathVariable Long id){
+    public Result<UserDetailVO> getUserDetail(@PathVariable Long id){
         return null;
     }
 
@@ -36,7 +46,12 @@ public class UserController {
      * @param id 用户id
      *
      */
-    @GetMapping("/{id}/status")
+    @ApiOperation(value = "启用禁用用户", notes = "启用禁用用户")
+    @ApiImplicitParams( {
+            @ApiImplicitParam(name = "id", value = "用户id", required = true, dataType = "Long", paramType = "path"),
+            @ApiImplicitParam(name = "status", value = "用户状态", required = true, dataType = "Integer", paramType = "query")
+    })
+    @PutMapping("/{id}/status")
     public Result<Void> updateUserStatus(@PathVariable Long id, @RequestParam Integer status){
         return null;
     }
@@ -45,6 +60,8 @@ public class UserController {
      * 删除用户
      * @param id 用户id
      */
+    @ApiOperation(value = "删除用户", notes = "删除用户")
+    @ApiImplicitParam(name = "id", value = "用户id", required = true, dataType = "Long", paramType = "path")
     @DeleteMapping("/{id}")
     public Result<Void> deleteUser(@PathVariable Long id){
         return null;
@@ -54,6 +71,8 @@ public class UserController {
      * 修改用户信息
      * @param userUpdateDTO 用户信息
      */
+    @ApiOperation(value = "修改用户信息", notes = "修改用户信息")
+    @ApiImplicitParam(name = "userUpdateDTO", value = "用户信息", required = true, dataType = "UserUpdateDTO", paramType = "body")
     @PutMapping
     public Result<Void> updateUser(@RequestBody UserUpdateDTO userUpdateDTO){
         return null;

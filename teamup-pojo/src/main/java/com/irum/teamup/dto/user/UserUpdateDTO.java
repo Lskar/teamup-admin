@@ -1,4 +1,4 @@
-package com.irum.teamup.dto;
+package com.irum.teamup.dto.user;
 
 import lombok.Data;
 

@@ -1,9 +1,8 @@
 package com.irum.teamup.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.irum.teamup.dto.PageQueryDTO;
 import com.irum.teamup.po.ProjectDO;
-import com.irum.teamup.vo.ProjectVO;
+import com.irum.teamup.vo.project.ProjectVO;
 
 public interface ProjectService {
     

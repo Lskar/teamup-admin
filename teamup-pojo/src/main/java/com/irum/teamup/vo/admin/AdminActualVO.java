@@ -1,7 +1,5 @@
-package com.irum.teamup.vo;
+package com.irum.teamup.vo.admin;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.irum.teamup.serialize.PhoneDesensitizationSerializer;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -11,13 +9,13 @@ import lombok.Data;
  * @date 2022/1/23
  **/
 @Data
-@ApiModel(value = "用户返回信息")
-public class AdminVO {
+@ApiModel("用户实际返回信息")
+public class AdminActualVO {
 
     /**
      * id
      */
-    @ApiModelProperty(value = "用户id")
+    @ApiModelProperty(value = "用户id", required = true)
     private Long id;
 
     /**
@@ -37,7 +35,6 @@ public class AdminVO {
      * 手机号
      */
     @ApiModelProperty(value = "手机号")
-    @JsonSerialize(using = PhoneDesensitizationSerializer.class)
     private String phone;
 
     /**

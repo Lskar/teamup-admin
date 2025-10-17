@@ -1,4 +1,4 @@
-package com.irum.teamup.vo;
+package com.irum.teamup.vo.project;
 
 import lombok.Data;
 import java.util.Date;

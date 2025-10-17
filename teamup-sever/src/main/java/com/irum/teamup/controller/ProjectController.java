@@ -4,12 +4,13 @@ package com.irum.teamup.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.irum.teamup.convention.result.Result;
 import com.irum.teamup.convention.result.Results;
-import com.irum.teamup.dto.PageQueryDTO;
 import com.irum.teamup.enums.ProjectErrorCodeEnum;
 import com.irum.teamup.po.ProjectDO;
 import com.irum.teamup.service.ProjectService;
-import com.irum.teamup.vo.ProjectVO;
+import com.irum.teamup.vo.project.ProjectVO;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -20,21 +21,23 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/team-up/v1/project")
-
+@Api(tags = "项目管理接口")
 public class ProjectController {
 
+
     private final ProjectService projectService;
+
 
     /**
      * 分页查询项目列表
      */
     @GetMapping("/page")
     @ApiOperation(value = "分页查询项目列表", notes = "分页查询项目列表")
+    @ApiImplicitParam(name = "pageQueryDTO", value = "分页查询参数", required = true, dataType = "PageQueryDTO", paramType = "body")
     public Result<Page<ProjectVO>> pageQuery(PageQueryDTO pageQueryDTO) {
-
-        Page<ProjectVO> result = projectService.pageQuery(pageQueryDTO);
-        return Results.success(result);
+        return null;
     }
+
 
     /**
      * 根据ID获取项目详情
@@ -52,17 +55,22 @@ public class ProjectController {
         return Results.success(result);
     }
 
+
     /**
      * 更新项目信息
      */
     @PutMapping("/{id}")
     @ApiOperation(value = "更新项目信息", notes = "更新项目信息")
-    @ApiImplicitParam(name = "id", value = "项目ID", required = true, dataType = "Long", paramType = "path")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "项目ID", required = true, dataType = "Long", paramType = "path"),
+            @ApiImplicitParam(name = "projectDO", value = "项目信息", required = true, dataType = "ProjectDO", paramType = "body")
+    })
     public Result<Void> updateProject(@PathVariable("id") Long id, @RequestBody ProjectDO projectDO) {
         projectDO.setId(id);
         projectService.updateProject(projectDO);
         return Results.success();
     }
+
 
     /**
      * 删除项目
@@ -75,11 +83,16 @@ public class ProjectController {
         return Results.success();
     }
 
+
     /**
      * 修改项目状态
      */
     @PutMapping("/{id}/status")
     @ApiOperation(value = "修改项目状态", notes = "修改项目状态")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "项目ID", required = true, dataType = "Long", paramType = "path"),
+            @ApiImplicitParam(name = "status", value = "项目状态", required = true, dataType = "String", paramType = "query")
+    })
     public Result<Void> updateStatus(@PathVariable("id") Long id, @RequestParam("status") String status) {
         projectService.updateStatus(id, status);
         return Results.success();

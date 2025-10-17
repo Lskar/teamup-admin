@@ -1,7 +1,6 @@
 package com.irum.teamup.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.irum.teamup.dto.PageQueryDTO;
 import com.irum.teamup.po.ResumeDO;
 import com.irum.teamup.vo.ResumeVO;
 
