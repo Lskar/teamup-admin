@@ -4,8 +4,8 @@ package com.irum.teamup.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.irum.teamup.convention.result.Result;
 import com.irum.teamup.convention.result.Results;
+import com.irum.teamup.dto.project.ProjectUpdateDTO;
 import com.irum.teamup.enums.ProjectErrorCodeEnum;
-import com.irum.teamup.po.ProjectDO;
 import com.irum.teamup.query.ProjectPageQuery;
 import com.irum.teamup.service.ProjectService;
 import com.irum.teamup.vo.project.ProjectVO;
@@ -60,13 +60,10 @@ public class ProjectController {
     /**
      * 更新项目信息
      */
-    @PutMapping("/{id}")
+    @PutMapping
     @ApiOperation(value = "更新项目信息", notes = "更新项目信息")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "项目ID", required = true, dataType = "Long", paramType = "path"),
-            @ApiImplicitParam(name = "projectDO", value = "项目信息", required = true, dataType = "ProjectDO", paramType = "body")
-    })
-    public Result<Void> updateProject(@PathVariable("id") Long id, @RequestBody ProjectDO projectDO) {
+    @ApiImplicitParam(name = "projectUpdateDTO", value = "项目更新参数", required = true, dataType = "ProjectUpdateDTO", paramType = "body")
+    public Result<Void> updateProject(@RequestBody ProjectUpdateDTO projectUpdateDTO) {
         return null;
     }
 

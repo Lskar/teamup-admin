@@ -11,7 +11,7 @@ import lombok.Data;
  * @date 2022/1/23
  **/
 @Data
-@ApiModel(value = "用户返回信息")
+@ApiModel(value = "管理员信息VO")
 public class AdminVO {
 
     /**

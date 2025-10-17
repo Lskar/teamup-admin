@@ -6,7 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 @Data
-@ApiModel(description = "平台运营数据概览")
+@ApiModel(description = "平台运营数据概览VO")
 public class PlatformOverviewVO {
 
 

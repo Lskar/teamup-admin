@@ -3,9 +3,11 @@ package com.irum.teamup.page;
 import com.irum.teamup.utils.BeanUtils;
 import com.irum.teamup.utils.CollUtils;
 import com.irum.teamup.utils.Convert;
+import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -13,9 +15,16 @@ import java.util.stream.Collectors;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ApiModel(description = "分页结果")
 public class Page<T> {
+
+
     protected Long total;
+
+
     protected Long pages;
+
+
     protected List<T> list;
 
     public static <T> Page<T> empty(Long total, Long pages) {

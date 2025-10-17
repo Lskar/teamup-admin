@@ -3,7 +3,7 @@ package com.irum.teamup.vo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "学院项目统计")
+@ApiModel(description = "学院项目统计VO")
 public class CollegeProjectStatsVO {
 
 

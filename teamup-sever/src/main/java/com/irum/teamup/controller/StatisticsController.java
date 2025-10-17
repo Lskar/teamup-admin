@@ -2,7 +2,7 @@ package com.irum.teamup.controller;
 
 import com.irum.teamup.vo.CollegeProjectStatsVO;
 import com.irum.teamup.vo.PlatformOverviewVO;
-import com.irum.teamup.vo.project.ProjectCategoryStatsVO;
+import com.irum.teamup.vo.ProjectCategoryStatsVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.ResponseEntity;
