@@ -6,6 +6,7 @@ import com.irum.teamup.convention.result.Result;
 import com.irum.teamup.convention.result.Results;
 import com.irum.teamup.enums.ProjectErrorCodeEnum;
 import com.irum.teamup.po.ProjectDO;
+import com.irum.teamup.query.ProjectPageQuery;
 import com.irum.teamup.service.ProjectService;
 import com.irum.teamup.vo.project.ProjectVO;
 import io.swagger.annotations.Api;
@@ -34,7 +35,7 @@ public class ProjectController {
     @GetMapping("/page")
     @ApiOperation(value = "分页查询项目列表", notes = "分页查询项目列表")
     @ApiImplicitParam(name = "pageQueryDTO", value = "分页查询参数", required = true, dataType = "PageQueryDTO", paramType = "body")
-    public Result<Page<ProjectVO>> pageQuery(PageQueryDTO pageQueryDTO) {
+    public Result<Page<ProjectVO>> pageQuery(@RequestParam ProjectPageQuery projectPageQuery) {
         return null;
     }
 
@@ -66,9 +67,7 @@ public class ProjectController {
             @ApiImplicitParam(name = "projectDO", value = "项目信息", required = true, dataType = "ProjectDO", paramType = "body")
     })
     public Result<Void> updateProject(@PathVariable("id") Long id, @RequestBody ProjectDO projectDO) {
-        projectDO.setId(id);
-        projectService.updateProject(projectDO);
-        return Results.success();
+        return null;
     }
 
 
