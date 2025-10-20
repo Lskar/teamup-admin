@@ -2,6 +2,7 @@ package com.irum.teamup.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.irum.teamup.po.ResumeDO;
+import com.irum.teamup.query.ResumePageQuery;
 import com.irum.teamup.vo.ResumeVO;
 
 /**
@@ -13,7 +14,7 @@ public interface ResumeService {
      * 分页查询简历投递列表
      * @return 简历分页结果
      */
-    Page<ResumeVO> pageQuery(PageQueryDTO pageQueryDTO);
+    Page<ResumeVO> pageQuery(ResumePageQuery resumepageQuery);
     
     /**
      * 根据ID获取简历详情

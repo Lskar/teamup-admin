@@ -5,6 +5,7 @@ import com.irum.teamup.convention.result.Result;
 import com.irum.teamup.convention.result.Results;
 import com.irum.teamup.enums.ResumeErrorCodeEnum;
 import com.irum.teamup.po.ResumeDO;
+import com.irum.teamup.query.ResumePageQuery;
 import com.irum.teamup.service.ResumeService;
 import com.irum.teamup.vo.ResumeVO;
 import io.swagger.annotations.Api;
@@ -29,10 +30,10 @@ public class ResumeController {
      */
     @GetMapping("/page")
     @ApiOperation(value = "分页查询简历投递列表", notes = "分页查询简历投递列表")
-    public Result<Page<ResumeVO>> pageQuery(PageQueryDTO pageQueryDTO) {
+    public Result<Page<ResumeVO>> pageQuery(ResumePageQuery resumePageQuery) {
 
-        Page<ResumeVO> result = resumeService.pageQuery(pageQueryDTO);
-        return Results.success(result);
+
+        return null;
     }
 
     /**

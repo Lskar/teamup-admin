@@ -2,6 +2,7 @@ package com.irum.teamup.service.Impl;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.irum.teamup.po.ProjectDO;
+import com.irum.teamup.query.ProjectPageQuery;
 import com.irum.teamup.service.ProjectService;
 import com.irum.teamup.vo.project.ProjectVO;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class ProjectServiceImpl implements ProjectService {
 
     @Override
-    public Page<ProjectVO> pageQuery(PageQueryDTO pageQueryDTO) {
+    public Page<ProjectVO> pageQuery(ProjectPageQuery projectPageQuery) {
         return null;
     }
 

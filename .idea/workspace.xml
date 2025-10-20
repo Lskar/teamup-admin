@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad34b009-9586-4d62-98f5-bd1f151a38a9" name="更改" comment="分页接口设计，具体实现类，" />
+    <list default="true" id="ad34b009-9586-4d62-98f5-bd1f151a38a9" name="更改" comment="分页接口设计，具体实现类，">
+      <change afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/query/ResumePageQuery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ResumeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ResumeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ProjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ProjectServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ResumeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ResumeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/ProjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/ProjectService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/ResumeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/ResumeService.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,24 +45,16 @@
     &quot;assignee&quot;: &quot;Irum-gif&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Lskar/teamup-admin.git&quot;,
-    &quot;accountId&quot;: &quot;fcb2f0f3-b88d-406a-b442-42b30afa5297&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Lskar/teamup-admin.git",
+    "accountId": "6366012e-a9d9-4626-af43-2d3d70b7faad"
   }
-}</component>
+}]]></component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
 }</component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="localRepository" value="D:\repository" />
-        <option name="userSettingsFile" value="D:\conf\JDK17\settings.xml" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -93,7 +94,7 @@
     "project.structure.last.edited": "项目",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "editor.preferences.import",
+    "settings.editor.selected.configurable": "MavenSettings",
     "vue.rearranger.settings.migration": "true",
     "应用程序.UserTableShardingTest.executor": "Run",
     "应用程序.com.irum.teamup.test.UserTableShardingTest.executor": "Run"
@@ -172,9 +173,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.ShortLinkAdminApplication" />
         <item itemvalue="应用程序.UserTableShardingTest" />
         <item itemvalue="应用程序.com.irum.teamup.test.UserTableShardingTest" />
-        <item itemvalue="Spring Boot.ShortLinkAdminApplication" />
         <item itemvalue="Spring Boot.ShortLinkAdminApplication" />
         <item itemvalue="应用程序.com.irum.teamup.test.UserTableShardingTest" />
       </list>
@@ -183,8 +184,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.21565.193" />
-        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-IU-243.21565.193" />
+        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.24978.46" />
+        <option value="bundled-js-predefined-d6986cc7102b-76f8388c3a79-JavaScript-IU-243.24978.46" />
       </set>
     </attachedChunks>
   </component>
@@ -214,6 +215,7 @@
       <workItem from="1760097286042" duration="2091000" />
       <workItem from="1760588258200" duration="343000" />
       <workItem from="1760683313623" duration="9492000" />
+      <workItem from="1760945083785" duration="607000" />
     </task>
     <task id="LOCAL-00001" summary="基础登录">
       <option name="closed" value="true" />
