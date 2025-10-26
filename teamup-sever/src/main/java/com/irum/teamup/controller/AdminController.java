@@ -33,7 +33,7 @@ public class AdminController {
      * 根据用户名查询用户信息
      */
     @GetMapping("/api/team-up/v1/user/{username}")
-    @ApiOperation(value = "根据用户名查询用户信息", notes = "根据用户名查询用户信息",httpMethod = "GET")
+    @ApiOperation(value = "根据用户名查询用户信息", notes = "",httpMethod = "GET")
     @ApiImplicitParam(name = "username", value = "用户名", required = true, dataType = "String", paramType = "path")
     public Result<AdminVO> getUserByUsername(@PathVariable("username") String username, HttpMethod httpMethod){
         AdminVO result = adminService.getUserByUsername(username);
@@ -48,7 +48,7 @@ public class AdminController {
     /**
      * 根据用户名查询用户无脱敏信息
      */
-    @ApiOperation(value = "根据用户名查询用户无脱敏信息", notes = "根据用户名查询用户无脱敏信息",httpMethod = "GET")
+    @ApiOperation(value = "根据用户名查询用户无脱敏信息", notes = "",httpMethod = "GET")
     @ApiImplicitParam(name = "username", value = "用户名", required = true, dataType = "String", paramType = "path")
     @GetMapping("/api/team-up/v1/actual/user/{username}")
     public Result<AdminActualVO> getActualUserByUsername(@PathVariable("username") String username){
@@ -58,7 +58,7 @@ public class AdminController {
     /**
      * 判断用户名是否存在
      */
-    @ApiOperation(value = "判断用户名是否存在", notes = "判断用户名是否存在",httpMethod = "GET")
+    @ApiOperation(value = "判断用户名是否存在", notes = "",httpMethod = "GET")
     @ApiImplicitParam(name = "username", value = "用户名", required = true, dataType = "String", paramType = "query")
     @GetMapping("/api/team-up/v1/user/has-username")
     public Result<Boolean> hasUsername(@RequestParam("username") String username){
@@ -68,7 +68,7 @@ public class AdminController {
     /**
      * 注册用户
      */
-    @ApiOperation(value = "注册用户", notes = "注册用户",httpMethod = "POST")
+    @ApiOperation(value = "注册用户", notes = "",httpMethod = "POST")
     @ApiImplicitParam(name = "requestParam", value = "用户注册参数", required = true, dataType = "UserRegisterDTO", paramType = "body")
     @PostMapping("/api/team-up/v1/user")
     public Result<Void> register(@RequestBody AdminRegisterDTO requestParam){
@@ -80,7 +80,7 @@ public class AdminController {
      * 修改用户信息
      */
     @PutMapping("/api/team-up/v1/user")
-    @ApiOperation(value = "修改用户信息", notes = "修改用户信息",httpMethod = "PUT")
+    @ApiOperation(value = "修改用户信息", notes = "",httpMethod = "PUT")
     @ApiImplicitParam(name = "requestParam", value = "用户修改参数", required = true, dataType = "UserUpdateDTO", paramType = "body")
     public Result<Void> update(@RequestBody AdminUpdateDTO requestParam){
         adminService.update(requestParam);
@@ -90,7 +90,7 @@ public class AdminController {
     /**
      * 登录
      */
-    @ApiOperation(value = "登录", notes = "登录",httpMethod = "POST")
+    @ApiOperation(value = "登录", notes = "",httpMethod = "POST")
     @ApiImplicitParam(name = "requestParam", value = "用户登录参数", required = true, dataType = "UserLoginDTO", paramType = "body")
     @PostMapping("/api/team-up/v1/user/login")
     public Result<AdminLoginVO> login(@RequestBody AdminLoginDTO requestParam){
@@ -100,7 +100,7 @@ public class AdminController {
     /**
      * 检测登录状态
      */
-    @ApiOperation(value = "检测登录状态", notes = "检测登录状态",httpMethod = "GET")
+    @ApiOperation(value = "检测登录状态", notes = "",httpMethod = "GET")
     @ApiImplicitParam(name = "username", value = "用户名", required = true, dataType = "String", paramType = "query")
     @GetMapping("/api/team-up/v1/user/check-login")
     public Result<Boolean> checklogin(@RequestParam("username") String username,@RequestParam("token") String token){

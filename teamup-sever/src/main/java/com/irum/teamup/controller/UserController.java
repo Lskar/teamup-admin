@@ -22,7 +22,7 @@ public class UserController {
      * @param userPageQuery 分页参数
      * @return 用户列表
      */
-    @ApiOperation(value = "获取用户列表", notes = "获取用户列表")
+    @ApiOperation(value = "获取用户列表", notes = "")
     @ApiImplicitParam(name = "pageQueryDTO", value = "分页参数", required = true, dataType = "PageQueryDTO", paramType = "body")
     @GetMapping
     public Result<Page<UserVO>> getUserList(@RequestParam UserPageQuery userPageQuery){
@@ -34,7 +34,7 @@ public class UserController {
      * @param id 用户id
      * @return 用户信息
      */
-    @ApiOperation(value = "获取用户详细信息", notes = "获取用户详细信息")
+    @ApiOperation(value = "获取用户详细信息", notes = "")
     @ApiImplicitParam(name = "id", value = "用户id", required = true, dataType = "Long", paramType = "path")
     @GetMapping("/{id}")
     public Result<UserDetailVO> getUserDetail(@PathVariable Long id){
@@ -46,7 +46,7 @@ public class UserController {
      * @param id 用户id
      *
      */
-    @ApiOperation(value = "启用禁用用户", notes = "启用禁用用户")
+    @ApiOperation(value = "启用禁用用户", notes = "")
     @ApiImplicitParams( {
             @ApiImplicitParam(name = "id", value = "用户id", required = true, dataType = "Long", paramType = "path"),
             @ApiImplicitParam(name = "status", value = "用户状态", required = true, dataType = "Integer", paramType = "query")
@@ -60,7 +60,7 @@ public class UserController {
      * 删除用户
      * @param id 用户id
      */
-    @ApiOperation(value = "删除用户", notes = "删除用户")
+    @ApiOperation(value = "删除用户", notes = "")
     @ApiImplicitParam(name = "id", value = "用户id", required = true, dataType = "Long", paramType = "path")
     @DeleteMapping("/{id}")
     public Result<Void> deleteUser(@PathVariable Long id){
@@ -71,7 +71,7 @@ public class UserController {
      * 修改用户信息
      * @param userUpdateDTO 用户信息
      */
-    @ApiOperation(value = "修改用户信息", notes = "修改用户信息")
+    @ApiOperation(value = "修改用户信息", notes = "")
     @ApiImplicitParam(name = "userUpdateDTO", value = "用户信息", required = true, dataType = "UserUpdateDTO", paramType = "body")
     @PutMapping
     public Result<Void> updateUser(@RequestBody UserUpdateDTO userUpdateDTO){

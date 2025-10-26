@@ -5,14 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad34b009-9586-4d62-98f5-bd1f151a38a9" name="更改" comment="分页接口设计，具体实现类，">
-      <change afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/query/ResumePageQuery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/config/AuthProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/config/JwtProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/config/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/convention/exception/UnauthorizedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/utils/JwtTool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/utils/UserContext.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/teamup-common/src/main/resources/jwt.jks" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/filter/TokenFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/teamup-sever/src/test/java/com/irum/teamup/JwtTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/convention/errorcode/BaseErrorCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/convention/errorcode/BaseErrorCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/handler/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/handler/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/po/AdminDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/po/AdminDO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/vo/admin/AdminLoginVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/vo/admin/AdminLoginVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/ShortLinkAdminApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/ShortLinkAdminApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/config/MyMetaObjectHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/config/MyMetaObjectHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/config/RBloomFilterConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/config/RBloomFilterConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ProjectController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ResumeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ResumeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ProjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ProjectServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ResumeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ResumeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/ProjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/ProjectService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/ResumeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/ResumeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/StatisticsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/StatisticsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/AdminServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/AdminServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +46,7 @@
       <list>
         <option value="package-info" />
         <option value="Interface" />
+        <option value="Exception" />
         <option value="Class" />
       </list>
     </option>
@@ -45,12 +65,12 @@
     &quot;assignee&quot;: &quot;Irum-gif&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Lskar/teamup-admin.git",
-    "accountId": "6366012e-a9d9-4626-af43-2d3d70b7faad"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Lskar/teamup-admin.git&quot;,
+    &quot;accountId&quot;: &quot;33cb82da-2cba-41e5-9eeb-8cbb9672aaec&quot;
   }
-}]]></component>
+}</component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -66,6 +86,9 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JUnit.JwtTest.createJwtTest.executor": "Run",
+    "JUnit.JwtTest.executor": "Run",
+    "JUnit.JwtTest.parseJwtTest.executor": "Run",
     "Maven.shortlink-all [package].executor": "Run",
     "Maven.teamup-admin [clean].executor": "Run",
     "Maven.teamup-admin [compile].executor": "Run",
@@ -94,7 +117,7 @@
     "project.structure.last.edited": "项目",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "MavenSettings",
+    "settings.editor.selected.configurable": "editor.preferences.import",
     "vue.rearranger.settings.migration": "true",
     "应用程序.UserTableShardingTest.executor": "Run",
     "应用程序.com.irum.teamup.test.UserTableShardingTest.executor": "Run"
@@ -114,8 +137,15 @@
       <recent name="D:\Java\shortlink\project\src\main\resources" />
       <recent name="D:\Java\shortlink\gateway\src\main\resources" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Lenovo\Desktop\myJavaCollection\teamup\teamup-common\src\main\resources" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.irum.teamup" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.irum.teamup.utils" />
+      <recent name="com.irum.teamup.filter" />
       <recent name="com.irum.shortlink.admin.dto.req" />
       <recent name="com.irum.shortlink.admin.dto.resp" />
     </key>
@@ -134,15 +164,53 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="com.irum.teamup.test.UserTableShardingTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.irum.teamup.test.UserTableShardingTest" />
-      <module name="teamup-common" />
+    <configuration name="JwtTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="teamup-sever" />
+      <shortenClasspath name="ARGS_FILE" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.irum.teamup.test.*" />
+          <option name="PATTERN" value="com.irum.teamup.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.irum.teamup" />
+      <option name="MAIN_CLASS_NAME" value="com.irum.teamup.JwtTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JwtTest.createJwtTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="teamup-sever" />
+      <shortenClasspath name="ARGS_FILE" />
+      <option name="PACKAGE_NAME" value="com.irum.teamup" />
+      <option name="MAIN_CLASS_NAME" value="com.irum.teamup.JwtTest" />
+      <option name="METHOD_NAME" value="createJwtTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JwtTest.parseJwtTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="teamup-sever" />
+      <shortenClasspath name="ARGS_FILE" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.irum.teamup.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.irum.teamup" />
+      <option name="MAIN_CLASS_NAME" value="com.irum.teamup.JwtTest" />
+      <option name="METHOD_NAME" value="parseJwtTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <shortenClasspath name="ARGS_FILE" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -160,6 +228,7 @@
     </configuration>
     <configuration name="ShortLinkAdminApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="teamup-sever" />
+      <option name="SHORTEN_COMMAND_LINE" value="ARGS_FILE" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.irum.teamup.ShortLinkAdminApplication" />
       <extension name="coverage">
         <pattern>
@@ -171,21 +240,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="SHORTEN_COMMAND_LINE" value="ARGS_FILE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.ShortLinkAdminApplication" />
+        <item itemvalue="JUnit.JwtTest.parseJwtTest" />
+        <item itemvalue="JUnit.JwtTest.createJwtTest" />
+        <item itemvalue="JUnit.JwtTest" />
         <item itemvalue="应用程序.UserTableShardingTest" />
-        <item itemvalue="应用程序.com.irum.teamup.test.UserTableShardingTest" />
-        <item itemvalue="Spring Boot.ShortLinkAdminApplication" />
-        <item itemvalue="应用程序.com.irum.teamup.test.UserTableShardingTest" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.24978.46" />
-        <option value="bundled-js-predefined-d6986cc7102b-76f8388c3a79-JavaScript-IU-243.24978.46" />
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.21565.193" />
+        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-IU-243.21565.193" />
       </set>
     </attachedChunks>
   </component>
@@ -216,6 +291,10 @@
       <workItem from="1760588258200" duration="343000" />
       <workItem from="1760683313623" duration="9492000" />
       <workItem from="1760945083785" duration="607000" />
+      <workItem from="1760947945040" duration="187000" />
+      <workItem from="1760948144963" duration="602000" />
+      <workItem from="1761367158224" duration="7000" />
+      <workItem from="1761449436839" duration="14181000" />
     </task>
     <task id="LOCAL-00001" summary="基础登录">
       <option name="closed" value="true" />

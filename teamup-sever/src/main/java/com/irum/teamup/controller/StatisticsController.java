@@ -27,12 +27,14 @@ public class StatisticsController {
 
     // 获取项目分类统计
     @GetMapping("/project-category")
+    @ApiOperation("获取项目分类统计")
     public ResponseEntity<List<ProjectCategoryStatsVO>> getProjectCategoryStats(){
         return null;
     }
 
     // 获取学院项目统计
     @GetMapping("/college-stats")
+    @ApiOperation("获取学院项目统计")
     public ResponseEntity<List<CollegeProjectStatsVO>> getCollegeProjectStats() {
         return null;
     }

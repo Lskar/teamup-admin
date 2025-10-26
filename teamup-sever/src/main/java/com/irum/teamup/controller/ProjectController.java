@@ -14,6 +14,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/team-up/v1/project")
+@Slf4j
 @Api(tags = "项目管理接口")
 public class ProjectController {
 
@@ -33,7 +35,7 @@ public class ProjectController {
      * 分页查询项目列表
      */
     @GetMapping("/page")
-    @ApiOperation(value = "分页查询项目列表", notes = "分页查询项目列表")
+    @ApiOperation(value = "分页查询项目列表", notes = "")
     @ApiImplicitParam(name = "pageQueryDTO", value = "分页查询参数", required = true, dataType = "PageQueryDTO", paramType = "body")
     public Result<Page<ProjectVO>> pageQuery(@RequestParam ProjectPageQuery projectPageQuery) {
         return null;
@@ -44,7 +46,7 @@ public class ProjectController {
      * 根据ID获取项目详情
      */
     @GetMapping("/{id}")
-    @ApiOperation(value = "根据ID获取项目详情", notes = "根据ID获取项目详情")
+    @ApiOperation(value = "根据ID获取项目详情", notes = "")
     @ApiImplicitParam(name = "id", value = "项目ID", required = true, dataType = "Long", paramType = "path")
     public Result<ProjectVO> getProjectById(@PathVariable("id") Long id) {
         ProjectVO result = projectService.getProjectById(id);
@@ -61,7 +63,7 @@ public class ProjectController {
      * 更新项目信息
      */
     @PutMapping
-    @ApiOperation(value = "更新项目信息", notes = "更新项目信息")
+    @ApiOperation(value = "更新项目信息", notes = "")
     @ApiImplicitParam(name = "projectUpdateDTO", value = "项目更新参数", required = true, dataType = "ProjectUpdateDTO", paramType = "body")
     public Result<Void> updateProject(@RequestBody ProjectUpdateDTO projectUpdateDTO) {
         return null;
@@ -72,10 +74,12 @@ public class ProjectController {
      * 删除项目
      */
     @DeleteMapping("/{id}")
-    @ApiOperation(value = "删除项目", notes = "删除项目")
+    @ApiOperation(value = "删除项目", notes = "")
     @ApiImplicitParam(name = "id", value = "项目ID", required = true, dataType = "Long", paramType = "path")
     public Result<Void> deleteProject(@PathVariable("id") Long id) {
-        projectService.deleteProject(id);
+//        projectService.deleteProject(id);
+
+        log.info("删除项目: {}", id);
         return Results.success();
     }
 
@@ -84,7 +88,7 @@ public class ProjectController {
      * 修改项目状态
      */
     @PutMapping("/{id}/status")
-    @ApiOperation(value = "修改项目状态", notes = "修改项目状态")
+    @ApiOperation(value = "修改项目状态", notes = "")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "项目ID", required = true, dataType = "Long", paramType = "path"),
             @ApiImplicitParam(name = "status", value = "项目状态", required = true, dataType = "String", paramType = "query")

@@ -28,11 +28,10 @@ import java.util.Date;
 
 /**
  * 用户持久层实体
- * 公众号：马丁玩编程，回复：加群，添加马哥微信（备注：link）获取项目资料
  */
 @Data
 @TableName("admin")
-@ApiModel(description = "用户持久层实体")
+@ApiModel(description = "管理员持久层实体")
 public class AdminDO {
 
     /**

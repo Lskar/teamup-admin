@@ -28,7 +28,9 @@ public enum BaseErrorCode implements IErrorCode {
     SERVICE_TIMEOUT_ERROR("B000100", "系统执行超时"),
 
     // ========== 一级宏观错误码 调用第三方服务出错 ==========
-    REMOTE_ERROR("C000001", "调用第三方服务出错");
+    REMOTE_ERROR("C000001", "调用第三方服务出错"),
+
+    UNAUTHORIZED_ERROR("D000001", "未授权");
 
     private final String code;
 

@@ -4,18 +4,17 @@ import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.StrUtil;
 import com.irum.teamup.convention.errorcode.BaseErrorCode;
 import com.irum.teamup.convention.exception.AbstractException;
+import com.irum.teamup.convention.result.Result;
 import com.irum.teamup.convention.result.Results;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.util.StringUtils;
-import com.irum.teamup.convention.result.Result;
 
 import java.util.Optional;
 
@@ -24,7 +23,7 @@ import java.util.Optional;
  *
  * @author Lenovo
  */
-@Component
+
 @Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {

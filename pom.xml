@@ -34,6 +34,7 @@
         <spotless-maven-plugin.version>2.22.1</spotless-maven-plugin.version>
         <swagger.version>2.9.2</swagger.version>
         <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
+        <spring-security-oauth2.version>2.5.2.RELEASE</spring-security-oauth2.version>
     </properties>
 
     <dependencies>
@@ -127,6 +128,18 @@
                 <artifactId>jakarta.validation-api</artifactId>
                 <version>${jakarta.validation-api.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.security.oauth</groupId>
+                <artifactId>spring-security-oauth2</artifactId>
+                <version>${spring-security-oauth2.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 </project>

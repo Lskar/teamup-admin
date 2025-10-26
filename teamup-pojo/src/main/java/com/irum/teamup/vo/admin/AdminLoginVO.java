@@ -12,6 +12,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @ApiModel("用户登录返回参数")
 public class AdminLoginVO {
+
+
+    private Long userId;
+
+
+    private String username;
+
+
     /**
      * 登录token
      */
