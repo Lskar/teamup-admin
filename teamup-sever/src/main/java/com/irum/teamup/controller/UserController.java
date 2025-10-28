@@ -1,21 +1,29 @@
 package com.irum.teamup.controller;
 
 import com.irum.teamup.convention.result.Result;
-import com.irum.teamup.vo.user.UserVO;
-import com.irum.teamup.vo.user.UserDetailVO;
+import com.irum.teamup.convention.result.Results;
 import com.irum.teamup.dto.user.UserUpdateDTO;
-import com.irum.teamup.page.Page;
+import com.irum.teamup.page.PageDTO;
 import com.irum.teamup.query.UserPageQuery;
+import com.irum.teamup.service.UserService;
+import com.irum.teamup.vo.user.UserDetailVO;
+import com.irum.teamup.vo.user.UserVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/admin/users")
 @Api(tags = "用户管理")
+@AllArgsConstructor
 public class UserController {
+
+
+    private final UserService userService;
+
 
     /**
      * 获取用户列表
@@ -25,8 +33,9 @@ public class UserController {
     @ApiOperation(value = "获取用户列表", notes = "")
     @ApiImplicitParam(name = "pageQueryDTO", value = "分页参数", required = true, dataType = "PageQueryDTO", paramType = "body")
     @GetMapping
-    public Result<Page<UserVO>> getUserList(@RequestParam UserPageQuery userPageQuery){
-        return null;
+    public Result<PageDTO<UserVO>> getUserList(UserPageQuery userPageQuery){
+
+        return Results.success(userService.getUserList(userPageQuery));
     }
 
     /**

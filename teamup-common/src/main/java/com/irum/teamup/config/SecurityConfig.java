@@ -26,6 +26,7 @@ public class SecurityConfig {
                 properties.getPassword().toCharArray());
     }
 
+    //关闭安全过滤器
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
