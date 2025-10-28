@@ -8,7 +8,6 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * 项目信息DO
@@ -113,7 +112,7 @@ public class ProjectDO {
      */
 
     @ApiModelProperty(value = "创建时间")
-    private Date createdTime;
+    private Date createTime;
 
     /**
      * 更新时间，默认当前时间，更新时自动刷新
@@ -122,10 +121,4 @@ public class ProjectDO {
     @ApiModelProperty(value = "更新时间")
     private Date updatedTime;
 
-    /**
-     * 项目成员信息
-     */
-
-    @ApiModelProperty(value = "项目成员信息")
-    List<UserDO> userList;
 }
