@@ -17,6 +17,7 @@ import com.irum.teamup.service.AdminService;
 import com.irum.teamup.utils.JwtTool;
 import com.irum.teamup.vo.admin.AdminLoginVO;
 import com.irum.teamup.vo.admin.AdminVO;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,92 +30,41 @@ import org.springframework.stereotype.Service;
  **/
 @Service
 @Slf4j
+@AllArgsConstructor
 public class AdminServiceImpl extends ServiceImpl<AdminMapper, AdminDO> implements AdminService {
 
 //    private final RBloomFilter<String> userRegisterCachePenetrationBloomFilter;
 
-    @Autowired
-    private RedissonClient redissonClient;
-
-    @Autowired
-    private  StringRedisTemplate stringRedisTemplate;
-
-    @Autowired
-    private  JwtTool jwtTool;
-
-    @Autowired
-    private  JwtProperties jwtProperties;
+//    @Autowired
+//    private RedissonClient redissonClient;
+//
+//    @Autowired
+//    private  StringRedisTemplate stringRedisTemplate;
 
 
-    @Override
-    public AdminVO getUserByUsername(String username) {
-//         LambdaQueryWrapper<AdminDO> queryWrapper= Wrappers.lambdaQuery(AdminDO.class)
-//                .eq(AdminDO::getUsername, username);
-//        AdminDO adminDO = baseMapper.selectOne(queryWrapper);
-//        if(adminDO ==null){
-//            throw new ClientException(AdminErrorCodeEnum.USER_NULL);
-//        }
-//        AdminVO result = new AdminVO();
-//        BeanUtils.copyProperties(adminDO, result);
-//        return result;
-        return null;
-    }
+    private final JwtTool jwtTool;
 
-    @Override
-    public Boolean hasUsername(String username) {
-//        return !userRegisterCachePenetrationBloomFilter.contains(username);
-        return null;
-    }
+
+    private final JwtProperties jwtProperties;
+
 
     @Override
     public void Register(AdminRegisterDTO requestParam) {
-//        if(!hasUsername(requestParam.getUsername())){
-//            throw new ClientException(USER_NAME_EXIST);
-//        }
-//        RLock lock = redissonClient.getLock(LOCK_USER_REGISTER_KEY+requestParam.getUsername());
-//        try {
-//            if(lock.tryLock()){
-//                int inserted = baseMapper.insert(BeanUtil.toBean(requestParam, AdminDO.class));
-//                if(inserted<=0){
-//                    throw new ClientException(AdminErrorCodeEnum.USER_SAVE_ERROR);
-//                }
-//                userRegisterCachePenetrationBloomFilter.add(requestParam.getUsername());
-//                return;
-//            }
-//            throw new ClientException(USER_NAME_EXIST);
-//        }finally {
-//            lock.unlock();
-//        }
+
+        int insert = baseMapper.insert(BeanUtil.toBean(requestParam, AdminDO.class));
 
     }
 
     @Override
-    public void update(AdminUpdateDTO requestParam) {
-        // TODO 验证当前用户为登录用户
-        LambdaQueryWrapper<AdminDO> queryWrapper= Wrappers.lambdaQuery(AdminDO.class)
+    public void updateByUsername(AdminUpdateDTO requestParam) {
+
+        LambdaQueryWrapper<AdminDO> queryWrapper = Wrappers.lambdaQuery(AdminDO.class)
                 .eq(AdminDO::getUsername, requestParam.getUsername());
         baseMapper.update(BeanUtil.toBean(requestParam, AdminDO.class), queryWrapper);
     }
 
     @Override
     public AdminLoginVO login(AdminLoginDTO requestParam) {
-//        LambdaQueryWrapper<AdminDO> queryWrapper= Wrappers.lambdaQuery(AdminDO.class)
-//                .eq(AdminDO::getUsername, requestParam.getUsername())
-//                .eq(AdminDO::getPassword, requestParam.getPassword())
-//                .eq(AdminDO::getDelFlag, 0);
-//        AdminDO adminDO = baseMapper.selectOne(queryWrapper);
-//        if(adminDO ==null){
-//            throw new ClientException(AdminErrorCodeEnum.USER_NULL);
-//        }
-//        Boolean isLogin = stringRedisTemplate.hasKey("login_"+requestParam.getUsername());
-//        if(isLogin){
-//            throw new ClientException("用户已登录");
-//        }
-//
-//        String uuid = UUID.randomUUID().toString();
-//        stringRedisTemplate.opsForHash().put("login_"+requestParam.getUsername(),uuid,JSON.toJSONString(adminDO));
-//        stringRedisTemplate.expire("login_"+requestParam.getUsername(), 30L, TimeUnit.MINUTES);
-//        return new AdminLoginVO(uuid);
 
         String username = requestParam.getUsername();
         String password = requestParam.getPassword();
@@ -124,13 +74,11 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, AdminDO> implemen
 
         log.debug("adminDO:{}", adminDO);
 
-        if(!adminDO.getPassword().equals(password)){
+        if (!adminDO.getPassword().equals(password)) {
             throw new ClientException(AdminErrorCodeEnum.USER_SAVE_ERROR);
         }
 
         String token = jwtTool.createToken(adminDO.getId(), jwtProperties.getTokenTTL());
-
-
 
         AdminLoginVO adminLoginVO = new AdminLoginVO();
         adminLoginVO.setToken(token);
@@ -140,9 +88,5 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, AdminDO> implemen
         return adminLoginVO;
     }
 
-    @Override
-    public Boolean checklogin(String username,String token) {
-//        return stringRedisTemplate.opsForHash().get("login_"+username, token)!=null;
-        return null;
-    }
+
 }

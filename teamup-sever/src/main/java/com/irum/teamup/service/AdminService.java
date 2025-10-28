@@ -14,21 +14,6 @@ import com.irum.teamup.vo.admin.AdminVO;
  */
 public interface AdminService extends IService<AdminDO> {
 
-    /**
-     * 根据用户名查询用户信息
-     *
-     * @param username 用户名
-     * @return 用户信息
-     */
-    AdminVO getUserByUsername(String username);
-
-    /**
-     * 判断用户名是否存在
-     *
-     * @param username 用户名
-     * @return true:存在 false:不存在
-     */
-    Boolean hasUsername(String username);
 
     /**
      * 注册用户
@@ -42,7 +27,7 @@ public interface AdminService extends IService<AdminDO> {
      *
      * @param requestParam 更新信息
      */
-    void update(AdminUpdateDTO requestParam);
+    void updateByUsername(AdminUpdateDTO requestParam);
 
     /**
      * 登录
@@ -52,10 +37,5 @@ public interface AdminService extends IService<AdminDO> {
      */
     AdminLoginVO login(AdminLoginDTO requestParam);
 
-    /**
-     * 验证登录
-     * @param token 登录token
-     * @return true:登录成功 false:登录失败
-     */
-    Boolean checklogin(String username,String  token);
+
 }

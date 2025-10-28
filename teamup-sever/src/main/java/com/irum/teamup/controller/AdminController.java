@@ -29,41 +29,7 @@ public class AdminController {
 
     private final AdminService adminService;
 
-    /**
-     * 根据用户名查询用户信息
-     */
-    @GetMapping("/api/team-up/v1/user/{username}")
-    @ApiOperation(value = "根据用户名查询用户信息", notes = "",httpMethod = "GET")
-    @ApiImplicitParam(name = "username", value = "用户名", required = true, dataType = "String", paramType = "path")
-    public Result<AdminVO> getUserByUsername(@PathVariable("username") String username, HttpMethod httpMethod){
-        AdminVO result = adminService.getUserByUsername(username);
-        if(result == null){
-            return new Result<AdminVO>().setCode(AdminErrorCodeEnum.USER_NULL.code()).setMessage(AdminErrorCodeEnum.USER_NULL.message());
-        }else {
-            return Results.success(result);
-        }
-    }
 
-
-    /**
-     * 根据用户名查询用户无脱敏信息
-     */
-    @ApiOperation(value = "根据用户名查询用户无脱敏信息", notes = "",httpMethod = "GET")
-    @ApiImplicitParam(name = "username", value = "用户名", required = true, dataType = "String", paramType = "path")
-    @GetMapping("/api/team-up/v1/actual/user/{username}")
-    public Result<AdminActualVO> getActualUserByUsername(@PathVariable("username") String username){
-        return Results.success(BeanUtil.toBean(adminService.getUserByUsername(username), AdminActualVO.class));
-    }
-
-    /**
-     * 判断用户名是否存在
-     */
-    @ApiOperation(value = "判断用户名是否存在", notes = "",httpMethod = "GET")
-    @ApiImplicitParam(name = "username", value = "用户名", required = true, dataType = "String", paramType = "query")
-    @GetMapping("/api/team-up/v1/user/has-username")
-    public Result<Boolean> hasUsername(@RequestParam("username") String username){
-        return Results.success(adminService.hasUsername(username));
-    }
 
     /**
      * 注册用户
@@ -82,8 +48,8 @@ public class AdminController {
     @PutMapping("/api/team-up/v1/user")
     @ApiOperation(value = "修改用户信息", notes = "",httpMethod = "PUT")
     @ApiImplicitParam(name = "requestParam", value = "用户修改参数", required = true, dataType = "UserUpdateDTO", paramType = "body")
-    public Result<Void> update(@RequestBody AdminUpdateDTO requestParam){
-        adminService.update(requestParam);
+    public Result<Void> update(@RequestBody AdminUpdateDTO adminUpdateDTO){
+        adminService.updateByUsername(adminUpdateDTO);
         return Results.success();
     }
 
@@ -97,13 +63,5 @@ public class AdminController {
         return Results.success(adminService.login(requestParam));
     }
 
-    /**
-     * 检测登录状态
-     */
-    @ApiOperation(value = "检测登录状态", notes = "",httpMethod = "GET")
-    @ApiImplicitParam(name = "username", value = "用户名", required = true, dataType = "String", paramType = "query")
-    @GetMapping("/api/team-up/v1/user/check-login")
-    public Result<Boolean> checklogin(@RequestParam("username") String username,@RequestParam("token") String token){
-        return Results.success(adminService.checklogin( username,token));
-    }
+
 }

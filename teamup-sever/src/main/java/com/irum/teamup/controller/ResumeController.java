@@ -43,13 +43,8 @@ public class ResumeController {
     @ApiOperation(value = "根据ID获取简历投递详情", notes = "")
     @ApiImplicitParam(name = "id", value = "简历ID", required = true, dataType = "Long", paramType = "path")
     public Result<ResumeVO> getResumeById(@PathVariable("id") Long id) {
-        ResumeVO result = resumeService.getResumeById(id);
-        if (result == null) {
-            return new Result<ResumeVO>()
-                    .setCode(ResumeErrorCodeEnum.RESUME_NOT_FOUND.code())
-                    .setMessage(ResumeErrorCodeEnum.RESUME_NOT_FOUND.message());
-        }
-        return Results.success(result);
+
+        return Results.success(resumeService.getResumeById(id));
     }
 
     /**
@@ -80,7 +75,7 @@ public class ResumeController {
      */
     @PutMapping("/{id}/status")
     @ApiOperation(value = "修改简历投递状态", notes = "")
-    public Result<Void> updateStatus(@PathVariable("id") Long id, @RequestParam("status") String status) {
+    public Result<Void> updateStatus(@PathVariable("id") Long id, @RequestParam("status") Integer status) {
         resumeService.updateStatus(id, status);
         return Results.success();
     }
@@ -91,8 +86,8 @@ public class ResumeController {
     @GetMapping("/statistics/project")
     @ApiOperation(value = "统计各项目的简历投递数量", notes = "")
     public Result<Object> getProjectResumeStatistics() {
-        Object result = resumeService.getProjectResumeStatistics();
-        return Results.success(result);
+
+        return Results.success(resumeService.getProjectResumeStatistics());
     }
 
     /**

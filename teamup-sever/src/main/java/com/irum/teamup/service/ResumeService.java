@@ -1,6 +1,7 @@
 package com.irum.teamup.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.irum.teamup.po.ResumeDO;
 import com.irum.teamup.query.ResumePageQuery;
 import com.irum.teamup.vo.ResumeVO;
@@ -8,7 +9,7 @@ import com.irum.teamup.vo.ResumeVO;
 /**
  * 简历服务接口
  */
-public interface ResumeService {
+public interface ResumeService extends IService<ResumeDO> {
     
     /**
      * 分页查询简历投递列表
@@ -44,7 +45,7 @@ public interface ResumeService {
      * @param id 简历ID
      * @param status 新状态
      */
-    void updateStatus(Long id, String status);
+    void updateStatus(Long id, Integer status);
     
     /**
      * 统计各项目的简历投递数量

@@ -1,16 +1,19 @@
 package com.irum.teamup.service.Impl;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.irum.teamup.mapper.ResumeMapper;
 import com.irum.teamup.po.ResumeDO;
 import com.irum.teamup.query.ResumePageQuery;
 import com.irum.teamup.service.ResumeService;
+import com.irum.teamup.utils.BeanUtil;
 import com.irum.teamup.vo.ResumeVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class ResumeServiceImpl implements ResumeService {
+public class ResumeServiceImpl extends ServiceImpl<ResumeMapper, ResumeDO> implements ResumeService {
     @Override
     public Page<ResumeVO> pageQuery(ResumePageQuery resumePageQuery) {
         return null;
@@ -18,22 +21,26 @@ public class ResumeServiceImpl implements ResumeService {
 
     @Override
     public ResumeVO getResumeById(Long id) {
-        return null;
+        ResumeDO resumeDO = getById(id);
+        return BeanUtil.convert(resumeDO, ResumeVO.class);
     }
 
     @Override
     public void updateResume(ResumeDO resumeDO) {
-
+        updateById(resumeDO);
     }
 
     @Override
     public void deleteResume(Long id) {
-
+        removeById(id);
     }
 
     @Override
-    public void updateStatus(Long id, String status) {
-
+    public void updateStatus(Long id, Integer status) {
+        lambdaUpdate()
+                .eq(ResumeDO::getId, id)
+                .set(ResumeDO::getStatus, status)
+                .update();
     }
 
     @Override
