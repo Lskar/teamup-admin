@@ -5,6 +5,7 @@ import com.irum.teamup.utils.BeanUtils;
 import com.irum.teamup.utils.CollUtils;
 import com.irum.teamup.utils.Convert;
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,12 +21,15 @@ import java.util.stream.Collectors;
 public class PageDTO<T> {
 
 
+    @ApiModelProperty("总记录数")
     protected Long total;
 
 
+    @ApiModelProperty("总页数")
     protected Long pages;
 
 
+    @ApiModelProperty("列表数据")
     protected List<T> list;
 
     public static <T> PageDTO<T> empty(Long total, Long pages) {

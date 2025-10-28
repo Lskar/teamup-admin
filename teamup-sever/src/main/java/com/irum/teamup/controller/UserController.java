@@ -47,7 +47,7 @@ public class UserController {
     @ApiImplicitParam(name = "id", value = "用户id", required = true, dataType = "Long", paramType = "path")
     @GetMapping("/{id}")
     public Result<UserDetailVO> getUserDetail(@PathVariable Long id){
-        return null;
+        return Results.success(userService.getUserDetail(id));
     }
 
     /**
@@ -62,7 +62,8 @@ public class UserController {
     })
     @PutMapping("/{id}/status")
     public Result<Void> updateUserStatus(@PathVariable Long id, @RequestParam Integer status){
-        return null;
+        userService.updateUserStatus(id, status);
+        return Results.success();
     }
 
     /**
@@ -73,7 +74,8 @@ public class UserController {
     @ApiImplicitParam(name = "id", value = "用户id", required = true, dataType = "Long", paramType = "path")
     @DeleteMapping("/{id}")
     public Result<Void> deleteUser(@PathVariable Long id){
-        return null;
+        userService.removeById(id);
+        return Results.success();
     }
 
     /**
@@ -84,7 +86,9 @@ public class UserController {
     @ApiImplicitParam(name = "userUpdateDTO", value = "用户信息", required = true, dataType = "UserUpdateDTO", paramType = "body")
     @PutMapping
     public Result<Void> updateUser(@RequestBody UserUpdateDTO userUpdateDTO){
-        return null;
+
+        userService.updateUser(userUpdateDTO);
+        return Results.success();
     }
 
 }

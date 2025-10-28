@@ -4,16 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad34b009-9586-4d62-98f5-bd1f151a38a9" name="更改" comment="jwt检验，非对称加密，登陆功能实现">
-      <change afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/config/MybatisPlusConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/mapper/UserMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/UserServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/UserService.java" afterDir="false" />
+    <list default="true" id="ad34b009-9586-4d62-98f5-bd1f151a38a9" name="更改" comment="用户分页查询实现">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/page/Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/page/PageDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/page/PageDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/page/PageDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/utils/BeanUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/utils/BeanUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/teamup-common/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/po/UserDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/po/UserDO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -277,7 +277,8 @@
       <workItem from="1760948144963" duration="602000" />
       <workItem from="1761367158224" duration="7000" />
       <workItem from="1761449436839" duration="15643000" />
-      <workItem from="1761632316429" duration="3493000" />
+      <workItem from="1761632316429" duration="3815000" />
+      <workItem from="1761647547615" duration="3249000" />
     </task>
     <task id="LOCAL-00001" summary="基础登录">
       <option name="closed" value="true" />
@@ -351,7 +352,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761464589417</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="用户分页查询实现">
+      <option name="closed" value="true" />
+      <created>1761636777195</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1761636777196</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -377,6 +386,7 @@
     <MESSAGE value="数据统计接口" />
     <MESSAGE value="分页接口设计，具体实现类，" />
     <MESSAGE value="jwt检验，非对称加密，登陆功能实现" />
-    <option name="LAST_COMMIT_MESSAGE" value="jwt检验，非对称加密，登陆功能实现" />
+    <MESSAGE value="用户分页查询实现" />
+    <option name="LAST_COMMIT_MESSAGE" value="用户分页查询实现" />
   </component>
 </project>
