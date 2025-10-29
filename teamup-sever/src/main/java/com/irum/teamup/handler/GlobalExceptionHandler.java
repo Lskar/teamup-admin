@@ -1,74 +1,64 @@
 package com.irum.teamup.handler;
 
-import cn.hutool.core.collection.CollectionUtil;
-import cn.hutool.core.util.StrUtil;
-import com.irum.teamup.convention.errorcode.BaseErrorCode;
-import com.irum.teamup.convention.exception.AbstractException;
-import com.irum.teamup.convention.result.Result;
-import com.irum.teamup.convention.result.Results;
-import jakarta.servlet.http.HttpServletRequest;
-import lombok.SneakyThrows;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.util.StringUtils;
-import org.springframework.validation.BindingResult;
+import com.irum.teamup.convention.errorcode.HttpStatusEnum;
+import com.irum.teamup.convention.exception.BaseException;
+import com.irum.teamup.convention.result.ResponseResult;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.ConstraintViolationException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.support.DefaultMessageSourceResolvable;
+import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
-/**
- * 全局异常处理器
- *
- * @author Lenovo
- */
-
-@Slf4j
+//@Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    /**
-     * 拦截参数验证异常
-     */
-    @SneakyThrows
-    @ExceptionHandler(value = MethodArgumentNotValidException.class)
-    public Result validExceptionHandler(HttpServletRequest request, MethodArgumentNotValidException ex) {
-        BindingResult bindingResult = ex.getBindingResult();
-        FieldError firstFieldError = CollectionUtil.getFirst(bindingResult.getFieldErrors());
-        String exceptionStr = Optional.ofNullable(firstFieldError)
-                .map(FieldError::getDefaultMessage)
-                .orElse(StrUtil.EMPTY);
-        log.error("[{}] {} [ex] {}", request.getMethod(), getUrl(request), exceptionStr);
-        return Results.failure(BaseErrorCode.CLIENT_ERROR.code(), exceptionStr);
+    private static final Logger log= LoggerFactory.getLogger(GlobalExceptionHandler.class);
+
+    //  处理单个参数校验失败抛出的异常
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseResult<List<String>> handleConstraintViolationException(ConstraintViolationException e) {
+        Set<ConstraintViolation<?>> constraintViolations = e.getConstraintViolations();
+        List<String> collect= constraintViolations.stream().map(ConstraintViolation::getMessage).toList();
+        return ResponseResult.fail(HttpStatusEnum.BAD_REQUEST.getCode(),HttpStatusEnum.BAD_REQUEST.getMessage(),collect);
     }
 
-    /**
-     * 拦截应用内抛出的异常
-     */
-    @ExceptionHandler(value = {AbstractException.class})
-    public Result abstractException(HttpServletRequest request, AbstractException ex) {
-        if (ex.getCause() != null) {
-            log.error("[{}] {} [ex] {}", request.getMethod(), request.getRequestURL().toString(), ex.toString(), ex.getCause());
-            return Results.failure(ex);
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseResult<List<String>> methodArgumentNotValidExceptionHandler(MethodArgumentNotValidException e) {
+        List<FieldError> fieldErrors = e.getBindingResult().getFieldErrors();
+        List<String> collect = new ArrayList<>();
+        for (FieldError fieldError : fieldErrors) {
+            log.error("参数 {} = {} 校验错误：{}", fieldError.getField(), fieldError.getRejectedValue(), fieldError.getDefaultMessage());
+            collect.add(fieldError.getDefaultMessage());
         }
-        log.error("[{}] {} [ex] {}", request.getMethod(), request.getRequestURL().toString(), ex.toString());
-        return Results.failure(ex);
+        return ResponseResult.fail(HttpStatusEnum.BAD_REQUEST.getCode(),HttpStatusEnum.BAD_REQUEST.getMessage(),collect);
+    }
+    //处理 form data方式调用接口校验失败抛出的异常
+    @ExceptionHandler(BindException.class)
+    public ResponseResult<List<String>> bindExceptionHandler(BindException e) {
+        List<FieldError> fieldErrors = e.getBindingResult().getFieldErrors();
+        List<String> collect = fieldErrors.stream().map(DefaultMessageSourceResolvable::getDefaultMessage).toList();
+        return ResponseResult.fail(HttpStatusEnum.BAD_REQUEST.getCode(),HttpStatusEnum.BAD_REQUEST.getMessage(),collect);
     }
 
-    /**
-     * 拦截未捕获异常
-     */
-    @ExceptionHandler(value = Throwable.class)
-    public Result defaultErrorHandler(HttpServletRequest request, Throwable throwable) {
-        log.error("[{}] {} ", request.getMethod(), getUrl(request), throwable);
-        return Results.failure();
+    @ExceptionHandler(BaseException.class)
+    public ResponseResult<String> handleBaseException(BaseException e) {
+        log.error("业务异常：{}",e.getMessage());
+        return ResponseResult.fail(e.getCode(),e.getMessage());
+    }
+    @ExceptionHandler(Exception.class)
+    public ResponseResult<String>  handleException(Exception e){
+        log.error("系统异常：{}",e.getMessage());
+        return ResponseResult.fail(HttpStatusEnum.ERROR.getCode(),"出现系统异常");
     }
 
-    private String getUrl(HttpServletRequest request) {
-        if (StringUtils.isEmpty(request.getQueryString())) {
-            return request.getRequestURL().toString();
-        }
-        return request.getRequestURL().toString() + "?" + request.getQueryString();
-    }
 }

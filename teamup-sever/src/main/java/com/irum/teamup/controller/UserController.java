@@ -1,5 +1,6 @@
 package com.irum.teamup.controller;
 
+import com.irum.teamup.convention.result.ResponseResult;
 import com.irum.teamup.convention.result.Result;
 import com.irum.teamup.convention.result.Results;
 import com.irum.teamup.dto.user.UserUpdateDTO;
@@ -33,9 +34,9 @@ public class UserController {
     @ApiOperation(value = "获取用户列表", notes = "")
     @ApiImplicitParam(name = "pageQueryDTO", value = "分页参数", required = true, dataType = "PageQueryDTO", paramType = "body")
     @GetMapping
-    public Result<PageDTO<UserVO>> getUserList(UserPageQuery userPageQuery){
+    public ResponseResult<PageDTO<UserVO>> getUserList(UserPageQuery userPageQuery){
 
-        return Results.success(userService.getUserList(userPageQuery));
+        return ResponseResult.success(userService.getUserList(userPageQuery));
     }
 
     /**
@@ -46,8 +47,8 @@ public class UserController {
     @ApiOperation(value = "获取用户详细信息", notes = "")
     @ApiImplicitParam(name = "id", value = "用户id", required = true, dataType = "Long", paramType = "path")
     @GetMapping("/{id}")
-    public Result<UserDetailVO> getUserDetail(@PathVariable Long id){
-        return Results.success(userService.getUserDetail(id));
+    public ResponseResult<UserDetailVO> getUserDetail(@PathVariable Long id){
+        return ResponseResult.success(userService.getUserDetail(id));
     }
 
     /**
@@ -61,9 +62,9 @@ public class UserController {
             @ApiImplicitParam(name = "status", value = "用户状态", required = true, dataType = "Integer", paramType = "query")
     })
     @PutMapping("/{id}/status")
-    public Result<Void> updateUserStatus(@PathVariable Long id, @RequestParam Integer status){
+    public ResponseResult<Void> updateUserStatus(@PathVariable Long id, @RequestParam Integer status){
         userService.updateUserStatus(id, status);
-        return Results.success();
+        return ResponseResult.success();
     }
 
     /**
@@ -73,9 +74,9 @@ public class UserController {
     @ApiOperation(value = "删除用户", notes = "")
     @ApiImplicitParam(name = "id", value = "用户id", required = true, dataType = "Long", paramType = "path")
     @DeleteMapping("/{id}")
-    public Result<Void> deleteUser(@PathVariable Long id){
+    public ResponseResult<Void> deleteUser(@PathVariable Long id){
         userService.removeById(id);
-        return Results.success();
+        return ResponseResult.success();
     }
 
     /**
@@ -85,10 +86,10 @@ public class UserController {
     @ApiOperation(value = "修改用户信息", notes = "")
     @ApiImplicitParam(name = "userUpdateDTO", value = "用户信息", required = true, dataType = "UserUpdateDTO", paramType = "body")
     @PutMapping
-    public Result<Void> updateUser(@RequestBody UserUpdateDTO userUpdateDTO){
+    public ResponseResult<Void> updateUser(@RequestBody UserUpdateDTO userUpdateDTO){
 
         userService.updateUser(userUpdateDTO);
-        return Results.success();
+        return ResponseResult.success();
     }
 
 }

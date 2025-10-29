@@ -1,6 +1,7 @@
 package com.irum.teamup.controller;
 
 
+import com.irum.teamup.convention.result.ResponseResult;
 import com.irum.teamup.convention.result.Result;
 import com.irum.teamup.convention.result.Results;
 import com.irum.teamup.dto.project.ProjectUpdateDTO;
@@ -38,8 +39,8 @@ public class ProjectController {
     @GetMapping("/page")
     @ApiOperation(value = "分页查询项目列表", notes = "")
     @ApiImplicitParam(name = "pageQueryDTO", value = "分页查询参数", required = true, dataType = "PageQueryDTO", paramType = "body")
-    public Result<PageDTO<ProjectVO>> pageQuery(ProjectPageQuery projectPageQuery) {
-        return Results.success(projectService.pageQuery(projectPageQuery));
+    public ResponseResult<PageDTO<ProjectVO>> pageQuery(ProjectPageQuery projectPageQuery) {
+        return ResponseResult.success(projectService.pageQuery(projectPageQuery));
     }
 
 

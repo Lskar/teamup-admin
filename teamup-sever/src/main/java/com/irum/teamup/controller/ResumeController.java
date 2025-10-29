@@ -1,9 +1,7 @@
 package com.irum.teamup.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.irum.teamup.convention.result.Result;
-import com.irum.teamup.convention.result.Results;
-import com.irum.teamup.enums.ResumeErrorCodeEnum;
+import com.irum.teamup.convention.result.ResponseResult;
 import com.irum.teamup.po.ResumeDO;
 import com.irum.teamup.query.ResumePageQuery;
 import com.irum.teamup.service.ResumeService;
@@ -29,8 +27,8 @@ public class ResumeController {
      * 分页查询简历投递列表
      */
     @GetMapping("/page")
-    @ApiOperation(value = "分页查询简历投递列表", notes = "")
-    public Result<Page<ResumeVO>> pageQuery(ResumePageQuery resumePageQuery) {
+    @ApiOperation(value = "分页查询简历投递列表")
+    public ResponseResult<Page<ResumeVO>> pageQuery(ResumePageQuery resumePageQuery) {
 
 
         return null;
@@ -40,65 +38,65 @@ public class ResumeController {
      * 根据ID获取简历投递详情
      */
     @GetMapping("/{id}")
-    @ApiOperation(value = "根据ID获取简历投递详情", notes = "")
+    @ApiOperation(value = "根据ID获取简历投递详情")
     @ApiImplicitParam(name = "id", value = "简历ID", required = true, dataType = "Long", paramType = "path")
-    public Result<ResumeVO> getResumeById(@PathVariable("id") Long id) {
+    public ResponseResult<ResumeVO> getResumeById(@PathVariable("id") Long id) {
 
-        return Results.success(resumeService.getResumeById(id));
+        return ResponseResult.success(resumeService.getResumeById(id));
     }
 
     /**
      * 更新简历投递信息
      */
     @PutMapping("/{id}")
-    @ApiOperation(value = "更新简历投递信息", notes = "")
+    @ApiOperation(value = "更新简历投递信息")
     @ApiImplicitParam(name = "id", value = "简历ID", required = true, dataType = "Long", paramType = "path")
-    public Result<Void> updateResume(@PathVariable("id") Long id, @RequestBody ResumeDO resumeDO) {
+    public ResponseResult<Void> updateResume(@PathVariable("id") Long id, @RequestBody ResumeDO resumeDO) {
         resumeDO.setId(id);
         resumeService.updateResume(resumeDO);
-        return Results.success();
+        return ResponseResult.success();
     }
 
     /**
      * 删除简历投递记录
      */
     @DeleteMapping("/{id}")
-    @ApiOperation(value = "删除简历投递记录", notes = "")
+    @ApiOperation(value = "删除简历投递记录")
     @ApiImplicitParam(name = "id", value = "简历ID", required = true, dataType = "Long", paramType = "path")
-    public Result<Void> deleteResume(@PathVariable("id") Long id) {
+    public ResponseResult<Void> deleteResume(@PathVariable("id") Long id) {
         resumeService.deleteResume(id);
-        return Results.success();
+        return ResponseResult.success();
     }
 
     /**
      * 修改简历投递状态
      */
     @PutMapping("/{id}/status")
-    @ApiOperation(value = "修改简历投递状态", notes = "")
-    public Result<Void> updateStatus(@PathVariable("id") Long id, @RequestParam("status") Integer status) {
+    @ApiOperation(value = "修改简历投递状态")
+    public ResponseResult<Void> updateStatus(@PathVariable("id") Long id, @RequestParam("status") Integer status) {
         resumeService.updateStatus(id, status);
-        return Results.success();
+        return ResponseResult.success();
     }
 
     /**
      * 统计各项目的简历投递数量
      */
     @GetMapping("/statistics/project")
-    @ApiOperation(value = "统计各项目的简历投递数量", notes = "")
-    public Result<Object> getProjectResumeStatistics() {
+    @ApiOperation(value = "统计各项目的简历投递数量")
+    public ResponseResult<Object> getProjectResumeStatistics() {
 
-        return Results.success(resumeService.getProjectResumeStatistics());
+        return ResponseResult.success(resumeService.getProjectResumeStatistics());
     }
 
     /**
      * 导出简历投递数据
      */
     @GetMapping("/export")
-    @ApiOperation(value = "导出简历投递数据", notes = "")
-    public Result<String> exportResumeData(
+    @ApiOperation(value = "导出简历投递数据")
+    public ResponseResult<String> exportResumeData(
             @RequestParam(required = false) String status,
             @RequestParam(required = false) Long projectId) {
         String exportPath = resumeService.exportResumeData(status, projectId);
-        return Results.success(exportPath);
+        return ResponseResult.success(exportPath);
     }
 }

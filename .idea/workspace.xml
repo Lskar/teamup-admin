@@ -4,56 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad34b009-9586-4d62-98f5-bd1f151a38a9" name="更改" comment="用户管理功能实现">
-    <list default="true" id="ad34b009-9586-4d62-98f5-bd1f151a38a9" name="更改" comment="jwt检验，非对称加密，登陆功能实现">
-      <change afterPath="$PROJECT_DIR$/teamup-common/src/main/resources/db/123.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/mapper/ProjectMapper.java" afterDir="false" />
-    <list default="true" id="ad34b009-9586-4d62-98f5-bd1f151a38a9" name="更改" comment="用户分页查询实现">
+    <list default="true" id="56a3ea6a-73c7-4b6b-90b2-ee6ec2f8db5f" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/convention/errorcode/HttpStatusEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/convention/result/ResponseResult.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/enums/ProjectErrorCodeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/enums/ProjectErrorCodeEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/page/PageDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/page/PageDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/utils/BeanUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/utils/BeanUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/po/ProjectDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/po/ProjectDO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ProjectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ProjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ProjectServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/ProjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/ProjectService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/po/UserDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/po/UserDO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-sever/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ResumeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ResumeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/StatisticsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/StatisticsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/handler/GlobalExceptionHandler.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="CodeInsightWorkspaceSettings">
-    <option name="optimizeImportsOnTheFly" value="true" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="package-info" />
-        <option value="Exception" />
-        <option value="Interface" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="85563c2efde1dd6faf9a2eb4257c629ad4331e52" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
     &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;Irum-gif&quot;
+    &quot;assignee&quot;: &quot;Lskar&quot;
   }
 }</component>
   <component name="GithubPullRequestsUISettings">{
@@ -62,190 +35,34 @@
     &quot;accountId&quot;: &quot;33cb82da-2cba-41e5-9eeb-8cbb9672aaec&quot;
   }
 }</component>
-  <component name="KubernetesApiPersistence">{}</component>
-  <component name="KubernetesApiProvider">{
-  &quot;isMigrated&quot;: true
-}</component>
   <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 2
 }</component>
-  <component name="ProjectId" id="33Bz61Yf7bpdpcHs7Oqp9nAZjaK" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="34jmnjq42UpdumLzNt6sZHq6Krk" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JUnit.JwtTest.createJwtTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.JwtTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.JwtTest.parseJwtTest.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.shortlink-all [package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.teamup-admin [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.teamup-admin [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.teamup-admin [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.teamup-all [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.teamup-all [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Notification.DisplayName-DoNotAsk-Database detector&quot;: &quot;数据库检测器&quot;,
-    &quot;Notification.DoNotAsk-Database detector&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Spring Boot.ShortLinkAdminApplication (1).executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.ShortLinkAdminApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Lenovo/Desktop/myJavaCollection/teamup&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.import&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
-    &quot;应用程序.UserTableShardingTest.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.com.irum.teamup.test.UserTableShardingTest.executor&quot;: &quot;Run&quot;
-  },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql_aurora&quot;,
-      &quot;mysql&quot;
-    ]
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="ReactorSettings">
-    <option name="notificationShown" value="true" />
-  </component>
+}]]></component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Java\shortlink\project\src\main\resources" />
-      <recent name="D:\Java\shortlink\gateway\src\main\resources" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Lenovo\Desktop\myJavaCollection\teamup\teamup-common\src\main\resources" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="com.irum.teamup" />
-    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.irum.teamup.utils" />
-      <recent name="com.irum.teamup.filter" />
-      <recent name="com.irum.shortlink.admin.dto.req" />
-      <recent name="com.irum.shortlink.admin.dto.resp" />
+      <recent name="com.irum.teamup.convention.errorcode" />
+      <recent name="com.irum.teamup.convention.result" />
     </key>
-  </component>
-  <component name="RunManager" selected="Spring Boot.ShortLinkAdminApplication">
-    <configuration name="UserTableShardingTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.irum.shortlink.admin.test.UserTableShardingTest" />
-      <module name="teamup-common" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.irum.shortlink.admin.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JwtTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="teamup-sever" />
-      <shortenClasspath name="ARGS_FILE" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.irum.teamup.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.irum.teamup" />
-      <option name="MAIN_CLASS_NAME" value="com.irum.teamup.JwtTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JwtTest.createJwtTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="teamup-sever" />
-      <shortenClasspath name="ARGS_FILE" />
-      <option name="PACKAGE_NAME" value="com.irum.teamup" />
-      <option name="MAIN_CLASS_NAME" value="com.irum.teamup.JwtTest" />
-      <option name="METHOD_NAME" value="createJwtTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JwtTest.parseJwtTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="teamup-sever" />
-      <shortenClasspath name="ARGS_FILE" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.irum.teamup.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.irum.teamup" />
-      <option name="MAIN_CLASS_NAME" value="com.irum.teamup.JwtTest" />
-      <option name="METHOD_NAME" value="parseJwtTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
-      <shortenClasspath name="ARGS_FILE" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="teamup-common" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="teamup-common" />
-      <option name="filePath" />
-      <method v="2" />
-    </configuration>
-    <configuration name="ShortLinkAdminApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="teamup-sever" />
-      <option name="SHORTEN_COMMAND_LINE" value="ARGS_FILE" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.irum.teamup.ShortLinkAdminApplication" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.irum.teamup.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <option name="SHORTEN_COMMAND_LINE" value="ARGS_FILE" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Spring Boot.ShortLinkAdminApplication" />
-        <item itemvalue="JUnit.JwtTest.parseJwtTest" />
-        <item itemvalue="JUnit.JwtTest.createJwtTest" />
-        <item itemvalue="JUnit.JwtTest" />
-        <item itemvalue="应用程序.UserTableShardingTest" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -258,118 +75,14 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
-      <changelist id="ad34b009-9586-4d62-98f5-bd1f151a38a9" name="更改" comment="" />
-      <created>1758805075928</created>
+      <changelist id="56a3ea6a-73c7-4b6b-90b2-ee6ec2f8db5f" name="更改" comment="" />
+      <created>1761735524453</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1758805075928</updated>
-      <workItem from="1758805076972" duration="7746000" />
-      <workItem from="1758851797906" duration="3015000" />
-      <workItem from="1758887968367" duration="2586000" />
-      <workItem from="1758952090525" duration="862000" />
-      <workItem from="1758961227026" duration="6880000" />
-      <workItem from="1758980317998" duration="600000" />
-      <workItem from="1759027093410" duration="3083000" />
-      <workItem from="1759131755947" duration="1333000" />
-      <workItem from="1760001778274" duration="21000" />
-      <workItem from="1760001806657" duration="338000" />
-      <workItem from="1760002352467" duration="1349000" />
-      <workItem from="1760003823337" duration="4996000" />
-      <workItem from="1760069898438" duration="1581000" />
-      <workItem from="1760084733470" duration="1411000" />
-      <workItem from="1760090464614" duration="3262000" />
-      <workItem from="1760097286042" duration="2091000" />
-      <workItem from="1760588258200" duration="343000" />
-      <workItem from="1760683313623" duration="9492000" />
-      <workItem from="1760945083785" duration="607000" />
-      <workItem from="1760947945040" duration="187000" />
-      <workItem from="1760948144963" duration="602000" />
-      <workItem from="1761367158224" duration="7000" />
-      <workItem from="1761449436839" duration="15643000" />
-      <workItem from="1761632316429" duration="3815000" />
-      <workItem from="1761647547615" duration="3249000" />
+      <updated>1761735524453</updated>
+      <workItem from="1761735526246" duration="51000" />
+      <workItem from="1761735582422" duration="1156000" />
     </task>
-    <task id="LOCAL-00001" summary="基础登录">
-      <option name="closed" value="true" />
-      <created>1760068914273</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1760068914273</updated>
-    </task>
-    <task id="LOCAL-00002" summary="基础登录">
-      <option name="closed" value="true" />
-      <created>1760070164152</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1760070164152</updated>
-    </task>
-    <task id="LOCAL-00003" summary="调整目录结构">
-      <option name="closed" value="true" />
-      <created>1760094323462</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1760094323462</updated>
-    </task>
-    <task id="LOCAL-00004" summary="添加注解，生成接口文档">
-      <option name="closed" value="true" />
-      <created>1760095986195</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1760095986195</updated>
-    </task>
-    <task id="LOCAL-00005" summary="添加注解，生成接口文档">
-      <option name="closed" value="true" />
-      <created>1760602519459</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1760602519459</updated>
-    </task>
-    <task id="LOCAL-00006" summary="添加注解，生成接口文档">
-      <option name="closed" value="true" />
-      <created>1760602875963</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1760602875963</updated>
-    </task>
-    <task id="LOCAL-00007" summary="数据统计接口">
-      <option name="closed" value="true" />
-      <created>1760603775461</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1760603775461</updated>
-    </task>
-    <task id="LOCAL-00008" summary="分页接口设计，具体实现类，">
-      <option name="closed" value="true" />
-      <created>1760691993805</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1760691993805</updated>
-    </task>
-    <task id="LOCAL-00009" summary="jwt检验，非对称加密，登陆功能实现">
-      <option name="closed" value="true" />
-      <created>1761464589417</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1761464589417</updated>
-    </task>
-    <task id="LOCAL-00010" summary="用户分页查询实现">
-      <option name="closed" value="true" />
-      <created>1761636777195</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1761636777196</updated>
-    </task>
-    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -385,17 +98,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="基础登录" />
-    <MESSAGE value="调整目录结构" />
-    <MESSAGE value="用户管理接口" />
-    <MESSAGE value="添加注解，生成接口文档" />
-    <MESSAGE value="合并" />
-    <MESSAGE value="数据统计接口" />
-    <MESSAGE value="分页接口设计，具体实现类，" />
-    <MESSAGE value="jwt检验，非对称加密，登陆功能实现" />
-    <MESSAGE value="用户分页查询实现" />
-    <option name="LAST_COMMIT_MESSAGE" value="用户分页查询实现" />
   </component>
 </project>
