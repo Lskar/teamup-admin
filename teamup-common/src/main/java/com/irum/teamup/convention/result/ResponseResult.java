@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class ResponseResult<T>{
 
     @ApiModelProperty(value = "状态码", required = true)
-    private Integer code;
+    private String code;
 
     @ApiModelProperty(value = "返回信息", required = true)
     private String message;
@@ -24,7 +24,7 @@ public class ResponseResult<T>{
     @ApiModelProperty(value = "返回数据")
     private T data;
 
-    public static <T> ResponseResult<T> response(Integer code, String message, T data) {
+    public static <T> ResponseResult<T> response(String code, String message, T data) {
 
 
         ResponseResult<T> responseResult = new ResponseResult<>();
@@ -34,7 +34,7 @@ public class ResponseResult<T>{
         responseResult.setData(data);
         return responseResult;
     }
-    public static <T> ResponseResult<T> response(Integer code,String message) {
+    public static <T> ResponseResult<T> response(String code,String message) {
 
 
         ResponseResult<T> responseResult = new ResponseResult<>();
@@ -76,7 +76,7 @@ public class ResponseResult<T>{
      * @param <T>     泛型
      * @return {@link ResponseResult<T>}
      */
-    public static <T> ResponseResult<T> success(Integer code, String message) {
+    public static <T> ResponseResult<T> success(String code, String message) {
 
         return response(code, message);
     }
@@ -153,7 +153,7 @@ public class ResponseResult<T>{
      * @param <T>     泛型
      * @return {@link ResponseResult<T>}
      */
-    public static <T> ResponseResult<T> fail(Integer code, String message) {
+    public static <T> ResponseResult<T> fail(String code, String message) {
 
 
         return response(code, message);
@@ -182,7 +182,7 @@ public class ResponseResult<T>{
      * @param <T>     泛型
      * @return {@link ResponseResult<T>}
      */
-    public static <T> ResponseResult<T> fail(Integer code, String message, T data) {
+    public static <T> ResponseResult<T> fail(String code, String message, T data) {
 
 
         return response(code, message, data);

@@ -4,6 +4,8 @@ package com.irum.teamup.service.Impl;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.irum.teamup.convention.exception.ProjectException;
+import com.irum.teamup.enums.ProjectErrorCodeEnum;
 import com.irum.teamup.mapper.ProjectMapper;
 import com.irum.teamup.page.PageDTO;
 import com.irum.teamup.po.ProjectDO;
@@ -104,10 +106,9 @@ public class ProjectServiceImpl implements ProjectService {
     public ProjectVO getProjectById(Long id) {
         // 查询项目信息
         ProjectDO projectDO = projectMapper.selectById(id);
-
         // 如果项目不存在，返回null（由控制器处理错误响应）
         if (projectDO == null) {
-            return null;
+            throw new ProjectException(ProjectErrorCodeEnum.PROJECT_NOT_FOUND.code(), "项目不存在");
         }
 
         // 检查项目是否已被删除

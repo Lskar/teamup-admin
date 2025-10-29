@@ -53,12 +53,6 @@ public class ProjectController {
     public Result<ProjectVO> getProjectById(@PathVariable("id") Long id) {
         log.info("根据ID获取项目详情开始, 项目ID: {}", id);
         ProjectVO result = projectService.getProjectById(id);
-        if (result == null) {
-            log.warn("根据ID获取项目详情失败, 项目不存在, 项目ID: {}", id);
-            return new Result<ProjectVO>()
-                    .setCode(ProjectErrorCodeEnum.PROJECT_NOT_FOUND.code())
-                    .setMessage(ProjectErrorCodeEnum.PROJECT_NOT_FOUND.message());
-        }
         log.info("根据ID获取项目详情成功, 项目ID: {}", id);
         return Results.success(result);
     }
@@ -75,7 +69,6 @@ public class ProjectController {
         log.info("更新项目信息开始, 项目ID: {}", projectUpdateDTO.getId());
         // 将 DTO 转换为 DO 对象
         ProjectDO projectDO = com.irum.teamup.utils.BeanUtils.copyBean(projectUpdateDTO, ProjectDO.class);
-
         // 调用服务层更新项目
         try {
             projectService.updateProject(projectDO);
