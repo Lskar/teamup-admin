@@ -4,7 +4,7 @@ import lombok.Getter;
 
 
 @Getter
-public enum HttpStatusEnum {
+public enum HttpStatusEnum implements IErrorCode{
     /**
      * 操作成功
      */
@@ -81,6 +81,17 @@ public enum HttpStatusEnum {
 
         this.code = code;
         this.message = message;
+    }
+
+    @Override
+    public String message() {
+        return message;
+    }
+
+
+    @Override
+    public String code() {
+        return code;
     }
 
 }
