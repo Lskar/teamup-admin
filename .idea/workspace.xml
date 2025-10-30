@@ -4,13 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56a3ea6a-73c7-4b6b-90b2-ee6ec2f8db5f" name="更改" comment="用户管理功能实现">
-      <change afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/convention/exception/ProjectException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/convention/errorcode/HttpStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/convention/errorcode/HttpStatusEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/convention/exception/BaseException.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/convention/exception/BaseException.java" afterDir="false" />
+    <list default="true" id="56a3ea6a-73c7-4b6b-90b2-ee6ec2f8db5f" name="更改" comment="异常处理器更改">
+      <change afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/enums/Project/ProjectStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/enums/ProjectErrorCodeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/enums/ProjectErrorCodeEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/resources/db/123.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/resources/db/admin.sql" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/resources/db/admin.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/po/ProjectDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/po/ProjectDO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/query/ProjectPageQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/query/ProjectPageQuery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/vo/project/ProjectVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/vo/project/ProjectVO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ProjectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/handler/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/handler/GlobalExceptionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ProjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ProjectServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/ProjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/ProjectService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +27,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Exception" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -36,7 +43,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Lskar/teamup-admin.git&quot;,
-    &quot;accountId&quot;: &quot;33cb82da-2cba-41e5-9eeb-8cbb9672aaec&quot;
+    &quot;accountId&quot;: &quot;fcb2f0f3-b88d-406a-b442-42b30afa5297&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -49,21 +56,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.ShortLinkAdminApplication.executor": "Run",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.ShortLinkAdminApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.irum.teamup.convention.errorcode" />
@@ -100,8 +111,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.21565.193" />
-        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-IU-243.21565.193" />
+        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.23654.117" />
+        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-IU-243.23654.117" />
       </set>
     </attachedChunks>
   </component>
@@ -115,7 +126,22 @@
       <updated>1761735524453</updated>
       <workItem from="1761735526246" duration="51000" />
       <workItem from="1761735582422" duration="1156000" />
+      <workItem from="1761746471651" duration="488000" />
+      <workItem from="1761806478995" duration="390000" />
+      <workItem from="1761810271737" duration="513000" />
+      <workItem from="1761822327727" duration="1972000" />
+      <workItem from="1761834897046" duration="159000" />
+      <workItem from="1761841131339" duration="460000" />
     </task>
+    <task id="LOCAL-00001" summary="异常处理器更改">
+      <option name="closed" value="true" />
+      <created>1761737703848</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1761737703848</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -134,6 +160,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="用户管理功能实现" />
-    <option name="LAST_COMMIT_MESSAGE" value="用户管理功能实现" />
+    <MESSAGE value="异常处理器更改" />
+    <option name="LAST_COMMIT_MESSAGE" value="异常处理器更改" />
   </component>
 </project>

@@ -71,7 +71,7 @@ public class ProjectDO {
      */
 
     @ApiModelProperty(value = "项目状态：PENDING-待审核, PUBLISHED-已发布, FULL-已满员, ENDED-已结束")
-    private String status;
+    private Integer status;
 
     /**
      * 创建者ID，不能为空

@@ -50,11 +50,11 @@ public class ProjectController {
     @GetMapping("/{id}")
     @ApiOperation(value = "根据ID获取项目详情", notes = "")
     @ApiImplicitParam(name = "id", value = "项目ID", required = true, dataType = "Long", paramType = "path")
-    public Result<ProjectVO> getProjectById(@PathVariable("id") Long id) {
+    public ResponseResult<ProjectVO> getProjectById(@PathVariable("id") Long id) {
         log.info("根据ID获取项目详情开始, 项目ID: {}", id);
         ProjectVO result = projectService.getProjectById(id);
         log.info("根据ID获取项目详情成功, 项目ID: {}", id);
-        return Results.success(result);
+        return ResponseResult.success(result);
     }
 
 
@@ -65,19 +65,13 @@ public class ProjectController {
     @PutMapping
     @ApiOperation(value = "更新项目信息", notes = "")
     @ApiImplicitParam(name = "projectUpdateDTO", value = "项目更新参数", required = true, dataType = "ProjectUpdateDTO", paramType = "body")
-    public Result<Void> updateProject(@RequestBody ProjectUpdateDTO projectUpdateDTO) {
+    public ResponseResult<Void> updateProject(@RequestBody ProjectUpdateDTO projectUpdateDTO) {
         log.info("更新项目信息开始, 项目ID: {}", projectUpdateDTO.getId());
         // 将 DTO 转换为 DO 对象
         ProjectDO projectDO = com.irum.teamup.utils.BeanUtils.copyBean(projectUpdateDTO, ProjectDO.class);
-        // 调用服务层更新项目
-        try {
-            projectService.updateProject(projectDO);
-            log.info("更新项目信息成功, 项目ID: {}", projectUpdateDTO.getId());
-            return Results.success();
-        } catch (RuntimeException e) {
-            log.error("更新项目信息失败, 项目ID: {}, 错误信息: {}", projectUpdateDTO.getId(), e.getMessage(), e);
-            return Results.failure(ProjectErrorCodeEnum.PROJECT_UPDATE_ERROR.code(), e.getMessage());
-        }
+        projectService.updateProject(projectDO);
+        return ResponseResult.success();
+
     }
 
 
@@ -87,11 +81,11 @@ public class ProjectController {
     @DeleteMapping("/{id}")
     @ApiOperation(value = "删除项目", notes = "")
     @ApiImplicitParam(name = "id", value = "项目ID", required = true, dataType = "Long", paramType = "path")
-    public Result<Void> deleteProject(@PathVariable("id") Long id) {
+    public ResponseResult<Void> deleteProject(@PathVariable("id") Long id) {
         log.info("删除项目开始, 项目ID: {}", id);
         projectService.deleteProject(id);
         log.info("删除项目成功, 项目ID: {}", id);
-        return Results.success();
+        return ResponseResult.success();
     }
 
 
@@ -104,11 +98,11 @@ public class ProjectController {
             @ApiImplicitParam(name = "id", value = "项目ID", required = true, dataType = "Long", paramType = "path"),
             @ApiImplicitParam(name = "status", value = "项目状态", required = true, dataType = "String", paramType = "query")
     })
-    public Result<Void> updateStatus(@PathVariable("id") Long id, @RequestParam("status") String status) {
+    public ResponseResult<Void> updateStatus(@PathVariable("id") Long id, @RequestParam("status") Integer status) {
         log.info("修改项目状态开始, 项目ID: {}, 新状态: {}", id, status);
         projectService.updateStatus(id, status);
         log.info("修改项目状态成功, 项目ID: {}, 新状态: {}", id, status);
-        return Results.success();
+        return ResponseResult.success();
     }
 
 

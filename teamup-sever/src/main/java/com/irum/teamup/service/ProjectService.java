@@ -15,5 +15,5 @@ public interface ProjectService {
 
     void deleteProject(Long id);
 
-    void updateStatus(Long id, String status);
+    void updateStatus(Long id, Integer status);
 }
