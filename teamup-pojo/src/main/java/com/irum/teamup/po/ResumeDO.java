@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 /**
@@ -62,7 +64,7 @@ public class ResumeDO {
      * 创建时间
      */
     @ApiModelProperty(value = "创建时间")
-    private Date createdTime;
+    private Data createdTime;
     
     /**
      * 更新时间
