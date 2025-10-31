@@ -1,4 +1,4 @@
-CREATE TABLE `t_user`
+CREATE TABLE admin
 (
     `id`            bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
     `username`      varchar(256) DEFAULT NULL COMMENT '用户名',

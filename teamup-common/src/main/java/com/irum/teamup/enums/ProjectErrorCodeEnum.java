@@ -36,7 +36,12 @@ public enum ProjectErrorCodeEnum {
     /**
      * 项目修改失败
      */
-    PROJECT_UPDATE_ERROR("PROJECT_006", "项目修改失败");
+    PROJECT_UPDATE_ERROR("PROJECT_006", "项目修改失败"),
+
+    /**
+     * 项目已被禁用
+     */
+    PROJECT_DISABLED("PROJECT_007", "项目已被禁用");
 
     private final String code;
     private final String message;

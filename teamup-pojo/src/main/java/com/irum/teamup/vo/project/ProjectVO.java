@@ -61,7 +61,7 @@ public class ProjectVO {
      * 状态：PENDING-待审核, PUBLISHED-已发布, FULL-已满员, ENDED-已结束
      */
     @ApiModelProperty(value = "项目状态")
-    private String status;
+    private Integer status;
     
     /**
      * 创建者ID
