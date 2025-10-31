@@ -5,21 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56a3ea6a-73c7-4b6b-90b2-ee6ec2f8db5f" name="更改" comment="返回格式修改">
-      <change afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/convention/exception/system/UnauthorizedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/convention/exception/user/UserNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/constant/RedisCacheConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/constant/RedisCacheConstant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/convention/exception/UnauthorizedException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/enums/UserErrorCodeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/enums/UserErrorCodeEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/utils/JwtTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/utils/JwtTool.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/teamup-common/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/resources/application.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/dto/user/UserUpdateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/dto/user/UserUpdateDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ProjectController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/query/ProjectPageQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/query/ProjectPageQuery.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/filter/TokenFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/filter/TokenFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/AdminServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/AdminServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,12 +35,12 @@
     &quot;assignee&quot;: &quot;Lskar&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Lskar/teamup-admin.git&quot;,
-    &quot;accountId&quot;: &quot;33cb82da-2cba-41e5-9eeb-8cbb9672aaec&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Lskar/teamup-admin.git",
+    "accountId": "6366012e-a9d9-4626-af43-2d3d70b7faad"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 2
@@ -114,8 +106,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.21565.193" />
-        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-IU-243.21565.193" />
+        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.24978.46" />
+        <option value="bundled-js-predefined-d6986cc7102b-76f8388c3a79-JavaScript-IU-243.24978.46" />
       </set>
     </attachedChunks>
   </component>
@@ -137,6 +129,8 @@
       <workItem from="1761834776655" duration="140000" />
       <workItem from="1761836002922" duration="713000" />
       <workItem from="1761880102283" duration="617000" />
+      <workItem from="1761890270908" duration="1148000" />
+      <workItem from="1761911972165" duration="3489000" />
     </task>
     <task id="LOCAL-00001" summary="返回格式修改">
       <option name="closed" value="true" />
