@@ -37,7 +37,7 @@ public class ProjectController {
      * 分页查询项目列表
      */
     @GetMapping("/page")
-    @ApiOperation(value = "分页查询项目列表", notes = "")
+    @ApiOperation(value = "分页查询项目列表")
     @ApiImplicitParam(name = "pageQueryDTO", value = "分页查询参数", required = true, dataType = "PageQueryDTO", paramType = "body")
     public ResponseResult<PageDTO<ProjectVO>> pageQuery(ProjectPageQuery projectPageQuery) {
         return ResponseResult.success(projectService.pageQuery(projectPageQuery));
@@ -48,7 +48,7 @@ public class ProjectController {
      * 根据ID获取项目详情
      */
     @GetMapping("/{id}")
-    @ApiOperation(value = "根据ID获取项目详情", notes = "")
+    @ApiOperation(value = "根据ID获取项目详情")
     @ApiImplicitParam(name = "id", value = "项目ID", required = true, dataType = "Long", paramType = "path")
     public Result<ProjectVO> getProjectById(@PathVariable("id") Long id) {
         log.info("根据ID获取项目详情开始, 项目ID: {}", id);
@@ -63,7 +63,7 @@ public class ProjectController {
      * 更新项目信息
      */
     @PutMapping
-    @ApiOperation(value = "更新项目信息", notes = "")
+    @ApiOperation(value = "更新项目信息")
     @ApiImplicitParam(name = "projectUpdateDTO", value = "项目更新参数", required = true, dataType = "ProjectUpdateDTO", paramType = "body")
     public Result<Void> updateProject(@RequestBody ProjectUpdateDTO projectUpdateDTO) {
         log.info("更新项目信息开始, 项目ID: {}", projectUpdateDTO.getId());
@@ -85,7 +85,7 @@ public class ProjectController {
      * 删除项目
      */
     @DeleteMapping("/{id}")
-    @ApiOperation(value = "删除项目", notes = "")
+    @ApiOperation(value = "删除项目")
     @ApiImplicitParam(name = "id", value = "项目ID", required = true, dataType = "Long", paramType = "path")
     public Result<Void> deleteProject(@PathVariable("id") Long id) {
         log.info("删除项目开始, 项目ID: {}", id);
@@ -99,7 +99,7 @@ public class ProjectController {
      * 修改项目状态
      */
     @PutMapping("/{id}/status")
-    @ApiOperation(value = "修改项目状态", notes = "")
+    @ApiOperation(value = "修改项目状态")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "项目ID", required = true, dataType = "Long", paramType = "path"),
             @ApiImplicitParam(name = "status", value = "项目状态", required = true, dataType = "String", paramType = "query")

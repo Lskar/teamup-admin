@@ -17,4 +17,6 @@ public interface UserService extends IService<UserDO> {
     void updateUserStatus(Long id, Integer status);
 
     void updateUser(UserUpdateDTO userUpdateDTO);
+
+    void deleteUserById(Long id);
 }
