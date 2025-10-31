@@ -13,6 +13,7 @@ import com.irum.teamup.po.ProjectDO;
 import com.irum.teamup.query.ProjectPageQuery;
 import com.irum.teamup.service.ProjectService;
 import com.irum.teamup.utils.BeanUtil;
+import com.irum.teamup.vo.ResumeVO;
 import com.irum.teamup.vo.project.ProjectVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +21,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -163,5 +165,16 @@ public class ProjectServiceImpl implements ProjectService {
 
         // 执行更新操作
         projectMapper.updateById(projectDO);
+    }
+
+    @Override
+    public List<ResumeVO> getResumeByProjectId(Long projectId) {
+
+
+
+
+
+
+        return List.of();
     }
 }

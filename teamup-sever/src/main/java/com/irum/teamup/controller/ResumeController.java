@@ -86,6 +86,7 @@ public class ResumeController {
     public ResponseResult<Object> getProjectResumeStatistics() {
 
         return ResponseResult.success(resumeService.getProjectResumeStatistics());
+
     }
 
     /**
