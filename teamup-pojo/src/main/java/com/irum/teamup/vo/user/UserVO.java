@@ -10,6 +10,12 @@ import lombok.Data;
 public class UserVO {
 
 
+
+
+    @ApiModelProperty(value = "用户id")
+    private Long id;
+
+
     /**
      * 用户名
      */

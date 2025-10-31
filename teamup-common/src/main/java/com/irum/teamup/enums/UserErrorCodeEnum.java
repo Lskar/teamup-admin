@@ -1,10 +1,11 @@
 package com.irum.teamup.enums;
 
 import com.irum.teamup.convention.errorcode.IErrorCode;
+import lombok.Getter;
 
+
+@Getter
 public enum UserErrorCodeEnum implements IErrorCode {
-
-
 
 
 

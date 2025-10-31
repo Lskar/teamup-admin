@@ -2,10 +2,12 @@ package com.irum.teamup.dto.user;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
 @ApiModel("用户更新DTO")
+@Builder
 public class UserUpdateDTO {
 
 
@@ -64,4 +66,9 @@ public class UserUpdateDTO {
     private String major; // 专业
 
 
+    /**
+     * 用户状态
+     */
+    @ApiModelProperty(value = "用户状态")
+    private Integer status;
 }

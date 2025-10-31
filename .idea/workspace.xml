@@ -4,9 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56a3ea6a-73c7-4b6b-90b2-ee6ec2f8db5f" name="更改" comment="修改ProjectStatus枚举">
+    <list default="true" id="56a3ea6a-73c7-4b6b-90b2-ee6ec2f8db5f" name="更改" comment="返回格式修改">
+      <change afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/convention/exception/system/UnauthorizedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/convention/exception/user/UserNotFoundException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/resources/db/project.sql" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/resources/db/project.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/constant/RedisCacheConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/constant/RedisCacheConstant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/convention/exception/UnauthorizedException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/enums/UserErrorCodeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/enums/UserErrorCodeEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/utils/JwtTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/utils/JwtTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/dto/user/UserUpdateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/dto/user/UserUpdateDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ProjectController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/filter/TokenFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/filter/TokenFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/AdminServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/AdminServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +29,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Exception" />
         <option value="Enum" />
+        <option value="Exception" />
       </list>
     </option>
   </component>
@@ -33,7 +46,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Lskar/teamup-admin.git&quot;,
-    &quot;accountId&quot;: &quot;fcb2f0f3-b88d-406a-b442-42b30afa5297&quot;
+    &quot;accountId&quot;: &quot;33cb82da-2cba-41e5-9eeb-8cbb9672aaec&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -101,8 +114,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.23654.117" />
-        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-IU-243.23654.117" />
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.21565.193" />
+        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-IU-243.21565.193" />
       </set>
     </attachedChunks>
   </component>
@@ -116,31 +129,24 @@
       <updated>1761735524453</updated>
       <workItem from="1761735526246" duration="51000" />
       <workItem from="1761735582422" duration="1156000" />
-      <workItem from="1761746471651" duration="488000" />
-      <workItem from="1761806478995" duration="390000" />
-      <workItem from="1761810271737" duration="513000" />
-      <workItem from="1761822327727" duration="1972000" />
-      <workItem from="1761834897046" duration="159000" />
-      <workItem from="1761841131339" duration="533000" />
-      <workItem from="1761880828545" duration="1624000" />
+      <workItem from="1761742990391" duration="17000" />
+      <workItem from="1761743012656" duration="492000" />
+      <workItem from="1761750130363" duration="220000" />
+      <workItem from="1761799252449" duration="366000" />
+      <workItem from="1761822676345" duration="1200000" />
+      <workItem from="1761834776655" duration="140000" />
+      <workItem from="1761836002922" duration="713000" />
+      <workItem from="1761880102283" duration="617000" />
     </task>
-    <task id="LOCAL-00001" summary="异常处理器更改">
+    <task id="LOCAL-00001" summary="返回格式修改">
       <option name="closed" value="true" />
-      <created>1761737703848</created>
+      <created>1761738060995</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1761737703848</updated>
+      <updated>1761738060995</updated>
     </task>
-    <task id="LOCAL-00002" summary="修改ProjectStatus枚举">
-      <option name="closed" value="true" />
-      <created>1761841627465</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1761841627465</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -159,8 +165,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="用户管理功能实现" />
-    <MESSAGE value="异常处理器更改" />
-    <MESSAGE value="修改ProjectStatus枚举" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改ProjectStatus枚举" />
+    <MESSAGE value="返回格式修改" />
+    <option name="LAST_COMMIT_MESSAGE" value="返回格式修改" />
   </component>
 </project>
