@@ -77,6 +77,7 @@ public class ResumeDO {
     /**
      * 简历状态0：未删除 1：已删除
      */
-    @ApiModelProperty(value = "简历状态0：未删除 1：已删除")
+    @ApiModelProperty(value = "简历状态0-待审核 1-已发布 2-已删除")
     private Integer status;
+
 }
