@@ -3,7 +3,9 @@ package com.irum.teamup.service.Impl;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.irum.teamup.convention.exception.user.UserNotFoundException;
 import com.irum.teamup.dto.user.UserUpdateDTO;
+import com.irum.teamup.enums.UserErrorCodeEnum;
 import com.irum.teamup.mapper.UserMapper;
 import com.irum.teamup.page.PageDTO;
 import com.irum.teamup.po.UserDO;
@@ -33,22 +35,39 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
     @Override
     public UserDetailVO getUserDetail(Long id) {
         UserDO userDO = getById(id);
+        if (userDO == null) {
+            throw new UserNotFoundException(UserErrorCodeEnum.USER_NOT_FOUND.getCode(), UserErrorCodeEnum.USER_NOT_FOUND.getMessage());
+        }
         return BeanUtil.convert(userDO, UserDetailVO.class);
     }
 
     @Override
     public void updateUserStatus(Long id, Integer status) {
-        lambdaUpdate()
+        boolean update =lambdaUpdate()
                 .eq(UserDO::getId, id)
                 .set(UserDO::getStatus, status)
                 .update();
+        if (!update) {
+            throw new UserNotFoundException(UserErrorCodeEnum.USER_NOT_FOUND.getCode(), UserErrorCodeEnum.USER_NOT_FOUND.getMessage());
+        }
     }
 
     @Override
     public void updateUser(UserUpdateDTO userUpdateDTO) {
 
-        updateById(BeanUtil.convert(userUpdateDTO, UserDO.class));
+        boolean update =updateById(BeanUtil.convert(userUpdateDTO, UserDO.class));
+        if (!update) {
+            throw new UserNotFoundException(UserErrorCodeEnum.USER_NOT_FOUND.getCode(), UserErrorCodeEnum.USER_NOT_FOUND.getMessage());
+        }
     }
 
+    @Override
+    public void deleteUserById(Long id) {
+
+        boolean delete =removeById(id);
+        if (!delete) {
+            throw new UserNotFoundException(UserErrorCodeEnum.USER_NOT_FOUND.getCode(), UserErrorCodeEnum.USER_NOT_FOUND.getMessage());
+        }
+    }
 
 }

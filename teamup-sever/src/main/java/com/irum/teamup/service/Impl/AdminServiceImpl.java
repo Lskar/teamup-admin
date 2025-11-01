@@ -16,12 +16,8 @@ import com.irum.teamup.po.AdminDO;
 import com.irum.teamup.service.AdminService;
 import com.irum.teamup.utils.JwtTool;
 import com.irum.teamup.vo.admin.AdminLoginVO;
-import com.irum.teamup.vo.admin.AdminVO;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.redisson.api.RedissonClient;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 /**
@@ -33,14 +29,6 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class AdminServiceImpl extends ServiceImpl<AdminMapper, AdminDO> implements AdminService {
 
-//    private final RBloomFilter<String> userRegisterCachePenetrationBloomFilter;
-
-//    @Autowired
-//    private RedissonClient redissonClient;
-//
-//    @Autowired
-//    private  StringRedisTemplate stringRedisTemplate;
-
 
     private final JwtTool jwtTool;
 
@@ -51,7 +39,9 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, AdminDO> implemen
     @Override
     public void Register(AdminRegisterDTO requestParam) {
 
+
         int insert = baseMapper.insert(BeanUtil.toBean(requestParam, AdminDO.class));
+
 
     }
 

@@ -1,7 +1,7 @@
 package com.irum.teamup.filter;
 
 import com.irum.teamup.config.AuthProperties;
-import com.irum.teamup.convention.exception.UnauthorizedException;
+import com.irum.teamup.convention.exception.system.UnauthorizedException;
 import com.irum.teamup.utils.JwtTool;
 import com.irum.teamup.utils.UserContext;
 import jakarta.servlet.Filter; // 添加此行导入

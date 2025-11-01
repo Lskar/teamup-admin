@@ -21,4 +21,5 @@ key:
   auth:
     excludePaths: # 无需登录校验的路径
       - /api/team-up/v1/user/login
+      - /api/team-up/v1/user
       - /api/admin/users/**

@@ -7,5 +7,5 @@ package com.irum.teamup.constant;
  * @date: 2021/8/27
  */
 public class RedisCacheConstant {
-    public static final String LOCK_USER_REGISTER_KEY = "short-link:lock_user-register:";
+    public static final String LOCK_USER_REGISTER_KEY = "team-up:lock_user-register:";
 }

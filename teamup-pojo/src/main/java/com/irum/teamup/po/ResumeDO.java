@@ -5,12 +5,16 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 /**
  * 简历信息DO
  */
 @Data
+@NoArgsConstructor
 @TableName("resume")
 public class ResumeDO {
     
@@ -62,7 +66,7 @@ public class ResumeDO {
      * 创建时间
      */
     @ApiModelProperty(value = "创建时间")
-    private Date createdTime;
+    private Data createdTime;
     
     /**
      * 更新时间
@@ -73,6 +77,7 @@ public class ResumeDO {
     /**
      * 简历状态0：未删除 1：已删除
      */
-    @ApiModelProperty(value = "简历状态0：未删除 1：已删除")
+    @ApiModelProperty(value = "简历状态0-待审核 1-已发布 2-已删除")
     private Integer status;
+
 }

@@ -7,7 +7,7 @@ CREATE TABLE project
     project_type    VARCHAR(50) COMMENT '项目类型',
     college         VARCHAR(100) COMMENT '所属学院',
     major           VARCHAR(100) COMMENT '相关专业',
-    status          VARCHAR(20) DEFAULT 'PENDING' COMMENT '状态：PENDING-待审核, PUBLISHED-已发布, FULL-已满员, ENDED-已结束',
+    status INT DEFAULT 0 COMMENT '状态：0-待审核, 1-已发布, 2-已满员, 3-已结束,4-已删除',
     creator_id      BIGINT       NOT NULL COMMENT '创建者ID',
     team_size       INT         DEFAULT 1 COMMENT '团队规模',
     current_members INT         DEFAULT 1 COMMENT '当前成员数',
