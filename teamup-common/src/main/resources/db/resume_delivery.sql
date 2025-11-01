@@ -5,7 +5,7 @@ CREATE TABLE resume_delivery
     project_id     BIGINT NOT NULL COMMENT '项目ID',
     applicant_id   BIGINT NOT NULL COMMENT '申请人ID',
     resume_content TEXT COMMENT '简历内容',
-    status         VARCHAR(20) DEFAULT 'APPLIED' COMMENT '状态：APPLIED-已投递, VIEWED-已查看, ACCEPTED-已录取, REJECTED-已拒绝',
+    status         INT DEFAULT 0 COMMENT '状态：0-已投递, 1-已查看, 2-已录取, 3-已拒绝',
     delivery_time  DATETIME    DEFAULT CURRENT_TIMESTAMP COMMENT '投递时间',
     viewed_time    DATETIME COMMENT '查看时间',
     processed_time DATETIME COMMENT '处理时间',
