@@ -28,8 +28,8 @@ public class PageQuery {
     private Integer pageSize = DEFAULT_PAGE_SIZE;
 
 
-    @ApiModelProperty("是否升序")
-    private Boolean isAsc = true;
+    @ApiModelProperty(name = "是否升序", required = true)
+    private Boolean isAsc;
 
 
     @ApiModelProperty("排序方式")

@@ -4,14 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56a3ea6a-73c7-4b6b-90b2-ee6ec2f8db5f" name="更改" comment="返回格式修改">
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+    <list default="true" id="56a3ea6a-73c7-4b6b-90b2-ee6ec2f8db5f" name="更改" comment="修复前端无法传Date格式的问题">
+      <change afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/po/ResumeDeliveryDO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/query/ResumeDeliveryPageQuery.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/mapper/ResumeDeliveryMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/dto/user/UserUpdateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/dto/user/UserUpdateDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/query/ProjectPageQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/query/ProjectPageQuery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/resources/db/resume_delivery.sql" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/resources/db/resume_delivery.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/po/ResumeDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/po/ResumeDO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ProjectController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ProjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ProjectServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/ProjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/ProjectService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +25,8 @@
       <list>
         <option value="Enum" />
         <option value="Exception" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -35,12 +39,12 @@
     &quot;assignee&quot;: &quot;Lskar&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Lskar/teamup-admin.git",
-    "accountId": "6366012e-a9d9-4626-af43-2d3d70b7faad"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Lskar/teamup-admin.git&quot;,
+    &quot;accountId&quot;: &quot;33cb82da-2cba-41e5-9eeb-8cbb9672aaec&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 2
@@ -62,6 +66,7 @@
     &quot;Spring Boot.ShortLinkAdminApplication.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Lenovo/Desktop/myJavaCollection/teamup/teamup-sever/src/main/resources&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -71,6 +76,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Lenovo\Desktop\myJavaCollection\teamup\teamup-sever\src\main\resources" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.irum.teamup.convention.errorcode" />
       <recent name="com.irum.teamup.convention.result" />
@@ -106,8 +114,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.24978.46" />
-        <option value="bundled-js-predefined-d6986cc7102b-76f8388c3a79-JavaScript-IU-243.24978.46" />
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.21565.193" />
+        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-IU-243.21565.193" />
       </set>
     </attachedChunks>
   </component>
@@ -128,9 +136,12 @@
       <workItem from="1761822676345" duration="1200000" />
       <workItem from="1761834776655" duration="140000" />
       <workItem from="1761836002922" duration="713000" />
-      <workItem from="1761880102283" duration="617000" />
-      <workItem from="1761890270908" duration="1148000" />
-      <workItem from="1761911972165" duration="3489000" />
+      <workItem from="1761880102283" duration="806000" />
+      <workItem from="1761883278143" duration="1805000" />
+      <workItem from="1761890719037" duration="421000" />
+      <workItem from="1761905390426" duration="519000" />
+      <workItem from="1761906359694" duration="5619000" />
+      <workItem from="1761968445951" duration="3148000" />
     </task>
     <task id="LOCAL-00001" summary="返回格式修改">
       <option name="closed" value="true" />
@@ -140,7 +151,31 @@
       <option name="project" value="LOCAL" />
       <updated>1761738060995</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="分页查询新增用户id属性">
+      <option name="closed" value="true" />
+      <created>1761882019643</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1761882019643</updated>
+    </task>
+    <task id="LOCAL-00003" summary="通过项目id查询简历">
+      <option name="closed" value="true" />
+      <created>1761884054828</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1761884054828</updated>
+    </task>
+    <task id="LOCAL-00004" summary="修复前端无法传Date格式的问题">
+      <option name="closed" value="true" />
+      <created>1761905789504</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1761905789504</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,6 +195,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="用户管理功能实现" />
     <MESSAGE value="返回格式修改" />
-    <option name="LAST_COMMIT_MESSAGE" value="返回格式修改" />
+    <MESSAGE value="分页查询新增用户id属性" />
+    <MESSAGE value="通过项目id查询简历" />
+    <MESSAGE value="修复前端无法传Date格式的问题" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复前端无法传Date格式的问题" />
   </component>
 </project>

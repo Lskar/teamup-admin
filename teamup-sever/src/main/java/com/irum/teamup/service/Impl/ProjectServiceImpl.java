@@ -3,16 +3,23 @@ package com.irum.teamup.service.Impl;
 
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.irum.teamup.convention.exception.ProjectException;
 import com.irum.teamup.enums.Project.ProjectStatus;
 import com.irum.teamup.enums.ProjectErrorCodeEnum;
 import com.irum.teamup.mapper.ProjectMapper;
+import com.irum.teamup.mapper.ResumeDeliveryMapper;
 import com.irum.teamup.page.PageDTO;
 import com.irum.teamup.po.ProjectDO;
+import com.irum.teamup.po.ResumeDO;
+import com.irum.teamup.po.ResumeDeliveryDO;
 import com.irum.teamup.query.ProjectPageQuery;
+import com.irum.teamup.query.ResumeDeliveryPageQuery;
 import com.irum.teamup.service.ProjectService;
 import com.irum.teamup.utils.BeanUtil;
+import com.irum.teamup.vo.ResumeVO;
 import com.irum.teamup.vo.project.ProjectVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +27,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -28,10 +36,11 @@ import java.util.Objects;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class ProjectServiceImpl implements ProjectService {
+public class ProjectServiceImpl extends ServiceImpl<ProjectMapper, ProjectDO> implements ProjectService {
 
     private final ProjectMapper projectMapper;
 
+    private final ResumeDeliveryMapper resumeDeliveryMapper;
     /**
      * 分页查询项目列表，支持多条件过滤和排序
      */
@@ -163,5 +172,19 @@ public class ProjectServiceImpl implements ProjectService {
 
         // 执行更新操作
         projectMapper.updateById(projectDO);
+    }
+
+    @Override
+    public PageDTO<ResumeDeliveryDO> getResumeByProjectIdPage(ResumeDeliveryPageQuery resumeDeliveryPageQuery) {
+
+
+        Page<ResumeDeliveryDO> mpPage = new Page<>(resumeDeliveryPageQuery.getPageNo(), resumeDeliveryPageQuery.getPageSize());
+        mpPage.addOrder(new OrderItem(resumeDeliveryPageQuery.getSortBy(), resumeDeliveryPageQuery.getIsAsc()));
+        QueryWrapper<ResumeDeliveryDO> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("project_id", resumeDeliveryPageQuery.getId());
+        queryWrapper.eq("status", resumeDeliveryPageQuery.getStatus());
+        Page<ResumeDeliveryDO> pageResult = resumeDeliveryMapper.selectPage(mpPage, queryWrapper);
+
+        return PageDTO.of(pageResult, ResumeDeliveryDO.class);
     }
 }

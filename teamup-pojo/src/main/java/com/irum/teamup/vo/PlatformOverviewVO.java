@@ -42,7 +42,8 @@ public class PlatformOverviewVO {
      * 总用户数增长率
      */
     @ApiModelProperty(value = "总用户数增长率")
-    private Double growthRate; // 增长率
+    // 增长率
+    private Double growthRate;
 
 
 }

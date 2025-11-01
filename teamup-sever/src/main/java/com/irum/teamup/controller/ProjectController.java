@@ -8,8 +8,11 @@ import com.irum.teamup.dto.project.ProjectUpdateDTO;
 import com.irum.teamup.enums.ProjectErrorCodeEnum;
 import com.irum.teamup.page.PageDTO;
 import com.irum.teamup.po.ProjectDO;
+import com.irum.teamup.po.ResumeDeliveryDO;
 import com.irum.teamup.query.ProjectPageQuery;
+import com.irum.teamup.query.ResumeDeliveryPageQuery;
 import com.irum.teamup.service.ProjectService;
+import com.irum.teamup.vo.ResumeVO;
 import com.irum.teamup.vo.project.ProjectVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -18,6 +21,8 @@ import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * 项目控制层
@@ -105,5 +110,12 @@ public class ProjectController {
         return ResponseResult.success();
     }
 
+
+    @GetMapping("/detailResume")
+    @ApiOperation(value = " 根据项目id查询项目下的简历数据")
+    public ResponseResult<PageDTO<ResumeDeliveryDO>> getResumeByProjectIdPage(ResumeDeliveryPageQuery resumeDeliveryPageQuery) {
+
+        return ResponseResult.success(projectService.getResumeByProjectIdPage(resumeDeliveryPageQuery));
+    }
 
 }
