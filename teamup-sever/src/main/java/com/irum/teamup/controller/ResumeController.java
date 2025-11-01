@@ -84,9 +84,7 @@ public class ResumeController {
     @GetMapping("/statistics/project")
     @ApiOperation(value = "统计各项目的简历投递数量")
     public ResponseResult<Object> getProjectResumeStatistics() {
-
         return ResponseResult.success(resumeService.getProjectResumeStatistics());
-
     }
 
     /**
