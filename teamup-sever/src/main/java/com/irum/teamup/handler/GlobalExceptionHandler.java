@@ -5,7 +5,6 @@ import com.irum.teamup.convention.exception.BaseException;
 import com.irum.teamup.convention.result.ResponseResult;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
-import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
