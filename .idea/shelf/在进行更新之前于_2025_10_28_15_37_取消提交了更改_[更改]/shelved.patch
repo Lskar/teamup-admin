@@ -1,0 +1,623 @@
+Index: teamup-sever/src/main/java/com/irum/teamup/service/Impl/ProjectServiceImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.irum.teamup.service.Impl;\r\n\r\nimport com.baomidou.mybatisplus.extension.plugins.pagination.Page;\r\nimport com.irum.teamup.po.ProjectDO;\r\nimport com.irum.teamup.query.ProjectPageQuery;\r\nimport com.irum.teamup.service.ProjectService;\r\nimport com.irum.teamup.vo.project.ProjectVO;\r\nimport lombok.RequiredArgsConstructor;\r\nimport org.springframework.stereotype.Service;\r\n\r\n@Service\r\n@RequiredArgsConstructor\r\npublic class ProjectServiceImpl implements ProjectService {\r\n\r\n    @Override\r\n    public Page<ProjectVO> pageQuery(ProjectPageQuery projectPageQuery) {\r\n        return null;\r\n    }\r\n\r\n    @Override\r\n    public ProjectVO getProjectById(Long id) {\r\n        return null;\r\n    }\r\n\r\n    @Override\r\n    public void updateProject(ProjectDO projectDO) {\r\n\r\n    }\r\n\r\n    @Override\r\n    public void deleteProject(Long id) {\r\n\r\n    }\r\n\r\n    @Override\r\n    public void updateStatus(Long id, String status) {\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ProjectServiceImpl.java b/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ProjectServiceImpl.java
+--- a/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ProjectServiceImpl.java	(revision b7e3adde538553c51d8b22f861d31c90b6d36912)
++++ b/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ProjectServiceImpl.java	(date 1761634257449)
+@@ -1,39 +1,191 @@
+ package com.irum.teamup.service.Impl;
+ 
++
++import cn.hutool.core.util.StrUtil;
++import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
++import com.irum.teamup.mapper.ProjectMapper;
+ import com.irum.teamup.po.ProjectDO;
+ import com.irum.teamup.query.ProjectPageQuery;
+ import com.irum.teamup.service.ProjectService;
+ import com.irum.teamup.vo.project.ProjectVO;
+ import lombok.RequiredArgsConstructor;
++import org.springframework.beans.BeanUtils;
+ import org.springframework.stereotype.Service;
+ 
++import java.util.Date;
++import java.util.List;
++import java.util.stream.Collectors;
++
+ @Service
+ @RequiredArgsConstructor
+ public class ProjectServiceImpl implements ProjectService {
+ 
+-    @Override
++    private final ProjectMapper projectMapper;
++
++    /**
++     * 分页查询项目列表，支持多条件过滤和排序
++     */
+     public Page<ProjectVO> pageQuery(ProjectPageQuery projectPageQuery) {
+-        return null;
+-    }
++        // 1. 使用父类 PageQuery 的 toMpPage 方法，设置默认排序为 created_time 降序
++        Page<ProjectDO> mpPage = projectPageQuery.toMpPageDefaultSortByCreateTimeDesc();
++
++        // 2. 构建查询条件
++        QueryWrapper<ProjectDO> queryWrapper = new QueryWrapper<>();
++
++        // 标题：模糊查询
++        if (StrUtil.isNotEmpty(projectPageQuery.getTitle())) {
++            queryWrapper.like("title", projectPageQuery.getTitle());
++        }
++
++        // 项目类型
++        if (StrUtil.isNotEmpty(projectPageQuery.getProjectType())) {
++            queryWrapper.eq("project_type", projectPageQuery.getProjectType());
++        }
++
++        // 所属学院
++        if (StrUtil.isNotEmpty(projectPageQuery.getCollege())) {
++            queryWrapper.eq("college", projectPageQuery.getCollege());
++        }
++
++        // 相关专业：模糊匹配
++        if (StrUtil.isNotEmpty(projectPageQuery.getMajor())) {
++            queryWrapper.like("major", projectPageQuery.getMajor());
++        }
++
++        // 状态
++        if (StrUtil.isNotEmpty(projectPageQuery.getStatus())) {
++            queryWrapper.eq("status", projectPageQuery.getStatus());
++        }
++
++        // 创建者ID
++        if (projectPageQuery.getCreatorId() != null) {
++            queryWrapper.eq("creator_id", projectPageQuery.getCreatorId());
++        }
++
++        // 团队规模
++        if (projectPageQuery.getTeamSize() != null) {
++            queryWrapper.eq("team_size", projectPageQuery.getTeamSize());
++        }
++
++        // 当前成员数
++        if (projectPageQuery.getCurrentMembers() != null) {
++            queryWrapper.eq("current_members", projectPageQuery.getCurrentMembers());
++        }
++
++        // 开始时间 >= startTime
++        if (projectPageQuery.getStartTime() != null) {
++            queryWrapper.ge("start_time", projectPageQuery.getStartTime());
++        }
++
++        // 结束时间 <= endTime
++        if (projectPageQuery.getEndTime() != null) {
++            queryWrapper.le("end_time", projectPageQuery.getEndTime());
++        }
++
++        // 3. 执行分页查询
++        Page<ProjectDO> resultPage = projectMapper.selectPage(mpPage, queryWrapper);
++
++        // 4. 转换为 VO 分页结果
++        Page<ProjectVO> voPage = new Page<>();
++        voPage.setCurrent(resultPage.getCurrent());
++        voPage.setSize(resultPage.getSize());
++        voPage.setTotal(resultPage.getTotal());
++        voPage.setPages(resultPage.getPages());
++
++        // 转换实体列表
++        List<ProjectVO> voList = resultPage.getRecords().stream().map(project -> {
++            ProjectVO vo = new ProjectVO();
++            BeanUtils.copyProperties(project, vo);
++            return vo;
++        }).collect(Collectors.toList());
++
++        voPage.setRecords(voList);
++
++        return voPage;
++    }
++
++    /**
++     * 将ProjectDO转换为ProjectVO
++     */
++    private ProjectVO convertToVO(ProjectDO projectDO) {
++        ProjectVO projectVO = new ProjectVO();
++        BeanUtils.copyProperties(projectDO, projectVO);
++        return projectVO;
++    }
++
+ 
+     @Override
+     public ProjectVO getProjectById(Long id) {
+-        return null;
+-    }
++        // 查询项目信息
++        ProjectDO projectDO = projectMapper.selectById(id);
++
++        // 如果项目不存在，返回null（由控制器处理错误响应）
++        if (projectDO == null) {
++            return null;
++        }
+ 
++        // 检查项目是否已被删除
++        if ("DELETED".equals(projectDO.getStatus())) {
++            return null;
++        }
++
++        // 转换为VO对象并返回
++        return convertToVO(projectDO);
++    }
++
++
+     @Override
+     public void updateProject(ProjectDO projectDO) {
++        // 检查项目是否存在
++        ProjectDO existingProject = projectMapper.selectById(projectDO.getId());
++        if (existingProject == null) {
++            throw new RuntimeException("项目不存在");
++        }
+ 
++        // 检查项目是否已被删除
++        if ("DELETED".equals(existingProject.getStatus())) {
++            throw new RuntimeException("项目已删除");
++        }
++
++        // 设置更新时间
++        projectDO.setUpdatedTime(new Date());
++
++        // 执行更新操作
++        projectMapper.updateById(projectDO);
+     }
++
+ 
+     @Override
+     public void deleteProject(Long id) {
++        // 检查项目是否存在
++        ProjectDO projectDO = projectMapper.selectById(id);
++        if (projectDO == null) {
++            throw new RuntimeException("项目不存在");
++        }
++        //实现逻辑删除
++        projectDO.setStatus("DELETED");
++        // 执行删除操作
++        projectMapper.updateById(projectDO);
++    }
+ 
+-    }
+ 
+     @Override
+     public void updateStatus(Long id, String status) {
++        // 检查项目是否存在
++        ProjectDO projectDO = projectMapper.selectById(id);
++        if (projectDO == null) {
++            throw new RuntimeException("项目不存在");
++        }
++        //检查项目状态是否为已删除
++        if ("DELETED".equals(projectDO.getStatus())) {
++            throw new RuntimeException("项目已删除");
++        }
++        // 更新项目状态
++        projectDO.setStatus(status);
++        projectDO.setUpdatedTime(new Date()); // 更新时间
+ 
++        // 执行更新操作
++        projectMapper.updateById(projectDO);
+     }
+ }
+Index: teamup-common/src/main/java/com/irum/teamup/enums/ProjectErrorCodeEnum.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.irum.teamup.enums;\r\n\r\nimport lombok.Getter;\r\n\r\n/**\r\n * 项目相关错误码枚举\r\n */\r\n@Getter\r\npublic enum ProjectErrorCodeEnum {\r\n    \r\n    /**\r\n     * 项目不存在\r\n     */\r\n    PROJECT_NOT_FOUND(\"PROJECT_001\", \"项目不存在\"),\r\n    \r\n    /**\r\n     * 项目状态无效\r\n     */\r\n    INVALID_PROJECT_STATUS(\"PROJECT_002\", \"项目状态无效\"),\r\n    \r\n    /**\r\n     * 项目创建失败\r\n     */\r\n    PROJECT_CREATE_FAILED(\"PROJECT_003\", \"项目创建失败\"),\r\n    \r\n    /**\r\n     * 项目更新失败\r\n     */\r\n    PROJECT_UPDATE_FAILED(\"PROJECT_004\", \"项目更新失败\"),\r\n    \r\n    /**\r\n     * 项目删除失败\r\n     */\r\n    PROJECT_DELETE_FAILED(\"PROJECT_005\", \"项目删除失败\");\r\n\r\n    private final String code;\r\n    private final String message;\r\n\r\n    ProjectErrorCodeEnum(String code, String message) {\r\n        this.code = code;\r\n        this.message = message;\r\n    }\r\n\r\n    public String message() {\r\n        return message;\r\n    }\r\n\r\n    public String code() {\r\n        return code;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/teamup-common/src/main/java/com/irum/teamup/enums/ProjectErrorCodeEnum.java b/teamup-common/src/main/java/com/irum/teamup/enums/ProjectErrorCodeEnum.java
+--- a/teamup-common/src/main/java/com/irum/teamup/enums/ProjectErrorCodeEnum.java	(revision b7e3adde538553c51d8b22f861d31c90b6d36912)
++++ b/teamup-common/src/main/java/com/irum/teamup/enums/ProjectErrorCodeEnum.java	(date 1761634576019)
+@@ -31,7 +31,12 @@
+     /**
+      * 项目删除失败
+      */
+-    PROJECT_DELETE_FAILED("PROJECT_005", "项目删除失败");
++    PROJECT_DELETE_FAILED("PROJECT_005", "项目删除失败"),
++
++    /**
++     * 项目修改失败
++     */
++    PROJECT_UPDATE_ERROR("PROJECT_006", "项目修改失败");
+ 
+     private final String code;
+     private final String message;
+Index: teamup-pojo/src/main/java/com/irum/teamup/po/ProjectDO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.irum.teamup.po;\r\n\r\nimport com.baomidou.mybatisplus.annotation.IdType;\r\nimport com.baomidou.mybatisplus.annotation.TableId;\r\nimport com.baomidou.mybatisplus.annotation.TableName;\r\nimport io.swagger.annotations.ApiModel;\r\nimport io.swagger.annotations.ApiModelProperty;\r\nimport lombok.Data;\r\n\r\nimport java.util.Date;\r\nimport java.util.List;\r\n\r\n/**\r\n * 项目信息DO\r\n */\r\n@Data\r\n@TableName(\"project\")\r\n@ApiModel(description = \"项目信息DO\")\r\npublic class ProjectDO {\r\n\r\n    /**\r\n     * 项目ID，主键自增\r\n     */\r\n    @TableId(type = IdType.AUTO)\r\n    @ApiModelProperty(value = \"项目ID，主键自增\")\r\n    private Long id;\r\n\r\n    /**\r\n     * 项目标题，不能为空\r\n     */\r\n\r\n    @ApiModelProperty(value = \"项目标题，不能为空\")\r\n    private String title;\r\n\r\n    /**\r\n     * 项目描述\r\n     */\r\n\r\n    @ApiModelProperty(value = \"项目描述\")\r\n    private String description;\r\n\r\n    /**\r\n     * 招募要求\r\n     */\r\n\r\n    @ApiModelProperty(value = \"招募要求\")\r\n    private String requirements;\r\n\r\n    /**\r\n     * 项目类型\r\n     */\r\n\r\n    @ApiModelProperty(value = \"项目类型\")\r\n    private String projectType;\r\n\r\n    /**\r\n     * 所属学院\r\n     */\r\n\r\n    @ApiModelProperty(value = \"所属学院\")\r\n    private String college;\r\n\r\n    /**\r\n     * 相关专业\r\n     */\r\n\r\n    @ApiModelProperty(value = \"相关专业\")\r\n    private String major;\r\n\r\n    /**\r\n     * 项目状态：PENDING-待审核, PUBLISHED-已发布, FULL-已满员, ENDED-已结束\r\n     */\r\n\r\n    @ApiModelProperty(value = \"项目状态：PENDING-待审核, PUBLISHED-已发布, FULL-已满员, ENDED-已结束\")\r\n    private String status;\r\n\r\n    /**\r\n     * 创建者ID，不能为空\r\n     */\r\n    @ApiModelProperty(value = \"创建者ID\")\r\n    private Long creatorId;\r\n\r\n    /**\r\n     * 团队规模，默认值为1\r\n     */\r\n\r\n    @ApiModelProperty(value = \"团队规模\")\r\n    private Integer teamSize;\r\n\r\n    /**\r\n     * 当前成员数，默认值为1\r\n     */\r\n\r\n    @ApiModelProperty(value = \"当前成员数\")\r\n    private Integer currentMembers;\r\n\r\n    /**\r\n     * 项目开始时间\r\n     */\r\n\r\n    @ApiModelProperty(value = \"项目开始时间\")\r\n    private Date startTime;\r\n\r\n    /**\r\n     * 项目结束时间\r\n     */\r\n\r\n    @ApiModelProperty(value = \"项目结束时间\")\r\n    private Date endTime;\r\n\r\n    /**\r\n     * 创建时间，默认当前时间\r\n     */\r\n\r\n    @ApiModelProperty(value = \"创建时间\")\r\n    private Date createdTime;\r\n\r\n    /**\r\n     * 更新时间，默认当前时间，更新时自动刷新\r\n     */\r\n\r\n    @ApiModelProperty(value = \"更新时间\")\r\n    private Date updatedTime;\r\n\r\n    /**\r\n     * 项目成员信息\r\n     */\r\n\r\n    @ApiModelProperty(value = \"项目成员信息\")\r\n    List<UserDO> userList;\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/teamup-pojo/src/main/java/com/irum/teamup/po/ProjectDO.java b/teamup-pojo/src/main/java/com/irum/teamup/po/ProjectDO.java
+--- a/teamup-pojo/src/main/java/com/irum/teamup/po/ProjectDO.java	(revision b7e3adde538553c51d8b22f861d31c90b6d36912)
++++ b/teamup-pojo/src/main/java/com/irum/teamup/po/ProjectDO.java	(date 1761473667596)
+@@ -8,7 +8,6 @@
+ import lombok.Data;
+ 
+ import java.util.Date;
+-import java.util.List;
+ 
+ /**
+  * 项目信息DO
+@@ -122,10 +121,4 @@
+     @ApiModelProperty(value = "更新时间")
+     private Date updatedTime;
+ 
+-    /**
+-     * 项目成员信息
+-     */
+-
+-    @ApiModelProperty(value = "项目成员信息")
+-    List<UserDO> userList;
+ }
+Index: teamup-sever/src/main/java/com/irum/teamup/controller/ProjectController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.irum.teamup.controller;\r\n\r\n\r\nimport com.baomidou.mybatisplus.extension.plugins.pagination.Page;\r\nimport com.irum.teamup.convention.result.Result;\r\nimport com.irum.teamup.convention.result.Results;\r\nimport com.irum.teamup.dto.project.ProjectUpdateDTO;\r\nimport com.irum.teamup.enums.ProjectErrorCodeEnum;\r\nimport com.irum.teamup.query.ProjectPageQuery;\r\nimport com.irum.teamup.service.ProjectService;\r\nimport com.irum.teamup.vo.project.ProjectVO;\r\nimport io.swagger.annotations.Api;\r\nimport io.swagger.annotations.ApiImplicitParam;\r\nimport io.swagger.annotations.ApiImplicitParams;\r\nimport io.swagger.annotations.ApiOperation;\r\nimport lombok.RequiredArgsConstructor;\r\nimport lombok.extern.slf4j.Slf4j;\r\nimport org.springframework.web.bind.annotation.*;\r\n\r\n/**\r\n * 项目控制层\r\n */\r\n@RestController\r\n@RequiredArgsConstructor\r\n@RequestMapping(\"/api/team-up/v1/project\")\r\n@Slf4j\r\n@Api(tags = \"项目管理接口\")\r\npublic class ProjectController {\r\n\r\n\r\n    private final ProjectService projectService;\r\n\r\n\r\n    /**\r\n     * 分页查询项目列表\r\n     */\r\n    @GetMapping(\"/page\")\r\n    @ApiOperation(value = \"分页查询项目列表\", notes = \"\")\r\n    @ApiImplicitParam(name = \"pageQueryDTO\", value = \"分页查询参数\", required = true, dataType = \"PageQueryDTO\", paramType = \"body\")\r\n    public Result<Page<ProjectVO>> pageQuery(@RequestParam ProjectPageQuery projectPageQuery) {\r\n        return null;\r\n    }\r\n\r\n\r\n    /**\r\n     * 根据ID获取项目详情\r\n     */\r\n    @GetMapping(\"/{id}\")\r\n    @ApiOperation(value = \"根据ID获取项目详情\", notes = \"\")\r\n    @ApiImplicitParam(name = \"id\", value = \"项目ID\", required = true, dataType = \"Long\", paramType = \"path\")\r\n    public Result<ProjectVO> getProjectById(@PathVariable(\"id\") Long id) {\r\n        ProjectVO result = projectService.getProjectById(id);\r\n        if (result == null) {\r\n            return new Result<ProjectVO>()\r\n                    .setCode(ProjectErrorCodeEnum.PROJECT_NOT_FOUND.code())\r\n                    .setMessage(ProjectErrorCodeEnum.PROJECT_NOT_FOUND.message());\r\n        }\r\n        return Results.success(result);\r\n    }\r\n\r\n\r\n    /**\r\n     * 更新项目信息\r\n     */\r\n    @PutMapping\r\n    @ApiOperation(value = \"更新项目信息\", notes = \"\")\r\n    @ApiImplicitParam(name = \"projectUpdateDTO\", value = \"项目更新参数\", required = true, dataType = \"ProjectUpdateDTO\", paramType = \"body\")\r\n    public Result<Void> updateProject(@RequestBody ProjectUpdateDTO projectUpdateDTO) {\r\n        return null;\r\n    }\r\n\r\n\r\n    /**\r\n     * 删除项目\r\n     */\r\n    @DeleteMapping(\"/{id}\")\r\n    @ApiOperation(value = \"删除项目\", notes = \"\")\r\n    @ApiImplicitParam(name = \"id\", value = \"项目ID\", required = true, dataType = \"Long\", paramType = \"path\")\r\n    public Result<Void> deleteProject(@PathVariable(\"id\") Long id) {\r\n//        projectService.deleteProject(id);\r\n\r\n        log.info(\"删除项目: {}\", id);\r\n        return Results.success();\r\n    }\r\n\r\n\r\n    /**\r\n     * 修改项目状态\r\n     */\r\n    @PutMapping(\"/{id}/status\")\r\n    @ApiOperation(value = \"修改项目状态\", notes = \"\")\r\n    @ApiImplicitParams({\r\n            @ApiImplicitParam(name = \"id\", value = \"项目ID\", required = true, dataType = \"Long\", paramType = \"path\"),\r\n            @ApiImplicitParam(name = \"status\", value = \"项目状态\", required = true, dataType = \"String\", paramType = \"query\")\r\n    })\r\n    public Result<Void> updateStatus(@PathVariable(\"id\") Long id, @RequestParam(\"status\") String status) {\r\n        projectService.updateStatus(id, status);\r\n        return Results.success();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/teamup-sever/src/main/java/com/irum/teamup/controller/ProjectController.java b/teamup-sever/src/main/java/com/irum/teamup/controller/ProjectController.java
+--- a/teamup-sever/src/main/java/com/irum/teamup/controller/ProjectController.java	(revision b7e3adde538553c51d8b22f861d31c90b6d36912)
++++ b/teamup-sever/src/main/java/com/irum/teamup/controller/ProjectController.java	(date 1761636535756)
+@@ -6,6 +6,7 @@
+ import com.irum.teamup.convention.result.Results;
+ import com.irum.teamup.dto.project.ProjectUpdateDTO;
+ import com.irum.teamup.enums.ProjectErrorCodeEnum;
++import com.irum.teamup.po.ProjectDO;
+ import com.irum.teamup.query.ProjectPageQuery;
+ import com.irum.teamup.service.ProjectService;
+ import com.irum.teamup.vo.project.ProjectVO;
+@@ -38,9 +39,11 @@
+     @ApiOperation(value = "分页查询项目列表", notes = "")
+     @ApiImplicitParam(name = "pageQueryDTO", value = "分页查询参数", required = true, dataType = "PageQueryDTO", paramType = "body")
+     public Result<Page<ProjectVO>> pageQuery(@RequestParam ProjectPageQuery projectPageQuery) {
+-        return null;
++        log.info("分页查询项目列表开始, 查询参数: {}", projectPageQuery);
++        Page<ProjectVO> pageResult = projectService.pageQuery(projectPageQuery);
++        log.info("分页查询项目列表成功, 返回记录数: {}", pageResult.getRecords().size());
++        return Results.success(pageResult);
+     }
+-
+ 
+     /**
+      * 根据ID获取项目详情
+@@ -49,16 +52,20 @@
+     @ApiOperation(value = "根据ID获取项目详情", notes = "")
+     @ApiImplicitParam(name = "id", value = "项目ID", required = true, dataType = "Long", paramType = "path")
+     public Result<ProjectVO> getProjectById(@PathVariable("id") Long id) {
++        log.info("根据ID获取项目详情开始, 项目ID: {}", id);
+         ProjectVO result = projectService.getProjectById(id);
+         if (result == null) {
++            log.warn("根据ID获取项目详情失败, 项目不存在, 项目ID: {}", id);
+             return new Result<ProjectVO>()
+                     .setCode(ProjectErrorCodeEnum.PROJECT_NOT_FOUND.code())
+                     .setMessage(ProjectErrorCodeEnum.PROJECT_NOT_FOUND.message());
+         }
++        log.info("根据ID获取项目详情成功, 项目ID: {}", id);
+         return Results.success(result);
+     }
+ 
+ 
++
+     /**
+      * 更新项目信息
+      */
+@@ -66,7 +73,19 @@
+     @ApiOperation(value = "更新项目信息", notes = "")
+     @ApiImplicitParam(name = "projectUpdateDTO", value = "项目更新参数", required = true, dataType = "ProjectUpdateDTO", paramType = "body")
+     public Result<Void> updateProject(@RequestBody ProjectUpdateDTO projectUpdateDTO) {
+-        return null;
++        log.info("更新项目信息开始, 项目ID: {}", projectUpdateDTO.getId());
++        // 将 DTO 转换为 DO 对象
++        ProjectDO projectDO = com.irum.teamup.utils.BeanUtils.copyBean(projectUpdateDTO, ProjectDO.class);
++
++        // 调用服务层更新项目
++        try {
++            projectService.updateProject(projectDO);
++            log.info("更新项目信息成功, 项目ID: {}", projectUpdateDTO.getId());
++            return Results.success();
++        } catch (RuntimeException e) {
++            log.error("更新项目信息失败, 项目ID: {}, 错误信息: {}", projectUpdateDTO.getId(), e.getMessage(), e);
++            return Results.failure(ProjectErrorCodeEnum.PROJECT_UPDATE_ERROR.code(), e.getMessage());
++        }
+     }
+ 
+ 
+@@ -77,9 +96,9 @@
+     @ApiOperation(value = "删除项目", notes = "")
+     @ApiImplicitParam(name = "id", value = "项目ID", required = true, dataType = "Long", paramType = "path")
+     public Result<Void> deleteProject(@PathVariable("id") Long id) {
+-//        projectService.deleteProject(id);
+-
+-        log.info("删除项目: {}", id);
++        log.info("删除项目开始, 项目ID: {}", id);
++        projectService.deleteProject(id);
++        log.info("删除项目成功, 项目ID: {}", id);
+         return Results.success();
+     }
+ 
+@@ -94,7 +113,11 @@
+             @ApiImplicitParam(name = "status", value = "项目状态", required = true, dataType = "String", paramType = "query")
+     })
+     public Result<Void> updateStatus(@PathVariable("id") Long id, @RequestParam("status") String status) {
++        log.info("修改项目状态开始, 项目ID: {}, 新状态: {}", id, status);
+         projectService.updateStatus(id, status);
++        log.info("修改项目状态成功, 项目ID: {}, 新状态: {}", id, status);
+         return Results.success();
+     }
++
++
+ }
+Index: teamup-common/src/main/resources/db/123.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/teamup-common/src/main/resources/db/123.md b/teamup-common/src/main/resources/db/123.md
+new file mode 100644
+--- /dev/null	(date 1761465463624)
++++ b/teamup-common/src/main/resources/db/123.md	(date 1761465463624)
+@@ -0,0 +1,21 @@
++
++## 安全管理
++### (1)JWT令牌登录验证
++- 身份认证的安全凭证
++
++JWT是一种无状态的数字令牌，用于安全地验证用户身份。用户登录后获得此令牌，后续请求只需携带该令牌即可自证身份，无需重复查询数据库。其安全性依赖于数字签名，确保令牌内容无法被篡改，是实现分布式系统登录和API访问控制的核心技术。
++
++### (2)数据加密与脱敏
++- 数据生命周期的双重保护
++
++这是保护数据的两种关键手段：**加密**确保数据在传输和存储时的机密性，即使被截获也无法读取（如使用HTTPS和数据库加密）；**脱敏**则在数据展示时隐藏敏感信息（如手机号显示为138****1234），在保证业务功能的同时最大限度地保护用户隐私。两者分别针对数据的“静态”和“使用中”状态提供安全防护。
++
++### (3)审计日志
++- 系统行为的黑匣子
++
++审计日志是系统的全程操作记录，用于回答“谁在什么时候做了什么，结果如何”。它详细记录所有关键操作（如登录、数据修改），为安全事件追溯、故障排查和责任界定提供不可篡改的证据链，是事后分析与安全合规的基石。
++
++### (4)非法字符检验
++- 应用安全的第一道防线
++
++其核心原则是“永不信任用户输入”。通过严格的输入验证（特别是白名单机制），过滤掉可能引发SQL注入、跨站脚本等攻击的恶意字符，从源头阻止攻击代码被提交和执行，是预防Web应用最常见漏洞的首要且必要的防护措施。
+\ No newline at end of file
+Index: teamup-sever/src/main/java/com/irum/teamup/mapper/ProjectMapper.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/teamup-sever/src/main/java/com/irum/teamup/mapper/ProjectMapper.java b/teamup-sever/src/main/java/com/irum/teamup/mapper/ProjectMapper.java
+new file mode 100644
+--- /dev/null	(date 1761465463619)
++++ b/teamup-sever/src/main/java/com/irum/teamup/mapper/ProjectMapper.java	(date 1761465463619)
+@@ -0,0 +1,10 @@
++// ProjectMapper.java
++package com.irum.teamup.mapper;
++
++import com.baomidou.mybatisplus.core.mapper.BaseMapper;
++import com.irum.teamup.po.ProjectDO;
++import org.apache.ibatis.annotations.Mapper;
++
++@Mapper
++public interface ProjectMapper extends BaseMapper<ProjectDO> {
++}
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"ad34b009-9586-4d62-98f5-bd1f151a38a9\" name=\"更改\" comment=\"分页接口设计，具体实现类，\">\r\n      <change afterPath=\"$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/config/AuthProperties.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/config/JwtProperties.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/config/SecurityConfig.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/convention/exception/UnauthorizedException.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/utils/JwtTool.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/utils/UserContext.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/teamup-common/src/main/resources/jwt.jks\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/filter/TokenFilter.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/teamup-sever/src/test/java/com/irum/teamup/JwtTest.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/pom.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/teamup-common/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/teamup-common/pom.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/convention/errorcode/BaseErrorCode.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/convention/errorcode/BaseErrorCode.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/handler/GlobalExceptionHandler.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/handler/GlobalExceptionHandler.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/teamup-common/src/main/resources/application.yaml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/teamup-common/src/main/resources/application.yaml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/po/AdminDO.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/po/AdminDO.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/vo/admin/AdminLoginVO.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/vo/admin/AdminLoginVO.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/teamup-sever/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/teamup-sever/pom.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/ShortLinkAdminApplication.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/ShortLinkAdminApplication.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/config/MyMetaObjectHandler.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/config/MyMetaObjectHandler.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/config/RBloomFilterConfiguration.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/config/RBloomFilterConfiguration.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/AdminController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/AdminController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ProjectController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ProjectController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ResumeController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ResumeController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/StatisticsController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/StatisticsController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/UserController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/UserController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/AdminServiceImpl.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/AdminServiceImpl.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"CodeInsightWorkspaceSettings\">\r\n    <option name=\"optimizeImportsOnTheFly\" value=\"true\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"package-info\" />\r\n        <option value=\"Interface\" />\r\n        <option value=\"Exception\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"85563c2efde1dd6faf9a2eb4257c629ad4331e52\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;Irum-gif&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/Lskar/teamup-admin.git&quot;,\r\n    &quot;accountId&quot;: &quot;33cb82da-2cba-41e5-9eeb-8cbb9672aaec&quot;\r\n  }\r\n}</component>\r\n  <component name=\"KubernetesApiPersistence\">{}</component>\r\n  <component name=\"KubernetesApiProvider\">{\r\n  &quot;isMigrated&quot;: true\r\n}</component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 2\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"33Bz61Yf7bpdpcHs7Oqp9nAZjaK\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"JUnit.JwtTest.createJwtTest.executor\": \"Run\",\r\n    \"JUnit.JwtTest.executor\": \"Run\",\r\n    \"JUnit.JwtTest.parseJwtTest.executor\": \"Run\",\r\n    \"Maven.shortlink-all [package].executor\": \"Run\",\r\n    \"Maven.teamup-admin [clean].executor\": \"Run\",\r\n    \"Maven.teamup-admin [compile].executor\": \"Run\",\r\n    \"Maven.teamup-admin [install].executor\": \"Run\",\r\n    \"Maven.teamup-all [clean].executor\": \"Run\",\r\n    \"Maven.teamup-all [compile].executor\": \"Run\",\r\n    \"Notification.DisplayName-DoNotAsk-Database detector\": \"数据库检测器\",\r\n    \"Notification.DoNotAsk-Database detector\": \"true\",\r\n    \"RequestMappingsPanelOrder0\": \"0\",\r\n    \"RequestMappingsPanelOrder1\": \"1\",\r\n    \"RequestMappingsPanelWidth0\": \"75\",\r\n    \"RequestMappingsPanelWidth1\": \"75\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"RunOnceActivity.git.unshallow\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"Spring Boot.ShortLinkAdminApplication (1).executor\": \"Run\",\r\n    \"Spring Boot.ShortLinkAdminApplication.executor\": \"Run\",\r\n    \"git-widget-placeholder\": \"master\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"last_opened_file_path\": \"C:/Users/Lenovo/Desktop/myJavaCollection/teamup\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"project.structure.last.edited\": \"项目\",\r\n    \"project.structure.proportion\": \"0.15\",\r\n    \"project.structure.side.proportion\": \"0.2\",\r\n    \"settings.editor.selected.configurable\": \"editor.preferences.import\",\r\n    \"vue.rearranger.settings.migration\": \"true\",\r\n    \"应用程序.UserTableShardingTest.executor\": \"Run\",\r\n    \"应用程序.com.irum.teamup.test.UserTableShardingTest.executor\": \"Run\"\r\n  },\r\n  \"keyToStringList\": {\r\n    \"DatabaseDriversLRU\": [\r\n      \"mysql_aurora\",\r\n      \"mysql\"\r\n    ]\r\n  }\r\n}]]></component>\r\n  <component name=\"ReactorSettings\">\r\n    <option name=\"notificationShown\" value=\"true\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\Java\\shortlink\\project\\src\\main\\resources\" />\r\n      <recent name=\"D:\\Java\\shortlink\\gateway\\src\\main\\resources\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\Lenovo\\Desktop\\myJavaCollection\\teamup\\teamup-common\\src\\main\\resources\" />\r\n    </key>\r\n    <key name=\"MoveClassesOrPackagesDialog.RECENTS_KEY\">\r\n      <recent name=\"com.irum.teamup\" />\r\n    </key>\r\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\r\n      <recent name=\"com.irum.teamup.utils\" />\r\n      <recent name=\"com.irum.teamup.filter\" />\r\n      <recent name=\"com.irum.shortlink.admin.dto.req\" />\r\n      <recent name=\"com.irum.shortlink.admin.dto.resp\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Spring Boot.ShortLinkAdminApplication\">\r\n    <configuration name=\"UserTableShardingTest\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.irum.shortlink.admin.test.UserTableShardingTest\" />\r\n      <module name=\"teamup-common\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.irum.shortlink.admin.test.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"JwtTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"teamup-sever\" />\r\n      <shortenClasspath name=\"ARGS_FILE\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.irum.teamup.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.irum.teamup\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.irum.teamup.JwtTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"JwtTest.createJwtTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"teamup-sever\" />\r\n      <shortenClasspath name=\"ARGS_FILE\" />\r\n      <option name=\"PACKAGE_NAME\" value=\"com.irum.teamup\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.irum.teamup.JwtTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"createJwtTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"JwtTest.parseJwtTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"teamup-sever\" />\r\n      <shortenClasspath name=\"ARGS_FILE\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.irum.teamup.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.irum.teamup\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.irum.teamup.JwtTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"parseJwtTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"JUnit\" factoryName=\"JUnit\">\r\n      <shortenClasspath name=\"ARGS_FILE\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"JetRunConfigurationType\">\r\n      <module name=\"teamup-common\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"KotlinStandaloneScriptRunConfigurationType\">\r\n      <module name=\"teamup-common\" />\r\n      <option name=\"filePath\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"ShortLinkAdminApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"teamup-sever\" />\r\n      <option name=\"SHORTEN_COMMAND_LINE\" value=\"ARGS_FILE\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.irum.teamup.ShortLinkAdminApplication\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.irum.teamup.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\">\r\n      <option name=\"SHORTEN_COMMAND_LINE\" value=\"ARGS_FILE\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Spring Boot.ShortLinkAdminApplication\" />\r\n        <item itemvalue=\"JUnit.JwtTest.parseJwtTest\" />\r\n        <item itemvalue=\"JUnit.JwtTest.createJwtTest\" />\r\n        <item itemvalue=\"JUnit.JwtTest\" />\r\n        <item itemvalue=\"应用程序.UserTableShardingTest\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.21565.193\" />\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-IU-243.21565.193\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"应用程序级\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"默认任务\">\r\n      <changelist id=\"ad34b009-9586-4d62-98f5-bd1f151a38a9\" name=\"更改\" comment=\"\" />\r\n      <created>1758805075928</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1758805075928</updated>\r\n      <workItem from=\"1758805076972\" duration=\"7746000\" />\r\n      <workItem from=\"1758851797906\" duration=\"3015000\" />\r\n      <workItem from=\"1758887968367\" duration=\"2586000\" />\r\n      <workItem from=\"1758952090525\" duration=\"862000\" />\r\n      <workItem from=\"1758961227026\" duration=\"6880000\" />\r\n      <workItem from=\"1758980317998\" duration=\"600000\" />\r\n      <workItem from=\"1759027093410\" duration=\"3083000\" />\r\n      <workItem from=\"1759131755947\" duration=\"1333000\" />\r\n      <workItem from=\"1760001778274\" duration=\"21000\" />\r\n      <workItem from=\"1760001806657\" duration=\"338000\" />\r\n      <workItem from=\"1760002352467\" duration=\"1349000\" />\r\n      <workItem from=\"1760003823337\" duration=\"4996000\" />\r\n      <workItem from=\"1760069898438\" duration=\"1581000\" />\r\n      <workItem from=\"1760084733470\" duration=\"1411000\" />\r\n      <workItem from=\"1760090464614\" duration=\"3262000\" />\r\n      <workItem from=\"1760097286042\" duration=\"2091000\" />\r\n      <workItem from=\"1760588258200\" duration=\"343000\" />\r\n      <workItem from=\"1760683313623\" duration=\"9492000\" />\r\n      <workItem from=\"1760945083785\" duration=\"607000\" />\r\n      <workItem from=\"1760947945040\" duration=\"187000\" />\r\n      <workItem from=\"1760948144963\" duration=\"602000\" />\r\n      <workItem from=\"1761367158224\" duration=\"7000\" />\r\n      <workItem from=\"1761449436839\" duration=\"14181000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"基础登录\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1760068914273</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1760068914273</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"基础登录\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1760070164152</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1760070164152</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"调整目录结构\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1760094323462</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1760094323462</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"添加注解，生成接口文档\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1760095986195</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1760095986195</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"添加注解，生成接口文档\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1760602519459</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1760602519459</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"添加注解，生成接口文档\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1760602875963</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1760602875963</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"数据统计接口\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1760603775461</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1760603775461</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"分页接口设计，具体实现类，\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1760691993805</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1760691993805</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"9\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"基础登录\" />\r\n    <MESSAGE value=\"调整目录结构\" />\r\n    <MESSAGE value=\"用户管理接口\" />\r\n    <MESSAGE value=\"添加注解，生成接口文档\" />\r\n    <MESSAGE value=\"合并\" />\r\n    <MESSAGE value=\"数据统计接口\" />\r\n    <MESSAGE value=\"分页接口设计，具体实现类，\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"分页接口设计，具体实现类，\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision b7e3adde538553c51d8b22f861d31c90b6d36912)
++++ b/.idea/workspace.xml	(date 1761636984899)
+@@ -5,33 +5,14 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="ad34b009-9586-4d62-98f5-bd1f151a38a9" name="更改" comment="分页接口设计，具体实现类，">
+-      <change afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/config/AuthProperties.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/config/JwtProperties.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/config/SecurityConfig.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/convention/exception/UnauthorizedException.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/utils/JwtTool.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/utils/UserContext.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/teamup-common/src/main/resources/jwt.jks" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/filter/TokenFilter.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/teamup-sever/src/test/java/com/irum/teamup/JwtTest.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/teamup-common/src/main/resources/db/123.md" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/mapper/ProjectMapper.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/teamup-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/pom.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/convention/errorcode/BaseErrorCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/convention/errorcode/BaseErrorCode.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/handler/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/handler/GlobalExceptionHandler.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/enums/ProjectErrorCodeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/enums/ProjectErrorCodeEnum.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/teamup-common/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/resources/application.yaml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/po/AdminDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/po/AdminDO.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/vo/admin/AdminLoginVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/vo/admin/AdminLoginVO.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/teamup-sever/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/pom.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/ShortLinkAdminApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/ShortLinkAdminApplication.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/config/MyMetaObjectHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/config/MyMetaObjectHandler.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/config/RBloomFilterConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/config/RBloomFilterConfiguration.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/AdminController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/po/ProjectDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/po/ProjectDO.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ProjectController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ResumeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ResumeController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/StatisticsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/StatisticsController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/UserController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/AdminServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/AdminServiceImpl.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ProjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ProjectServiceImpl.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -68,7 +49,7 @@
+   <component name="GithubPullRequestsUISettings">{
+   &quot;selectedUrlAndAccountId&quot;: {
+     &quot;url&quot;: &quot;https://github.com/Lskar/teamup-admin.git&quot;,
+-    &quot;accountId&quot;: &quot;33cb82da-2cba-41e5-9eeb-8cbb9672aaec&quot;
++    &quot;accountId&quot;: &quot;fcb2f0f3-b88d-406a-b442-42b30afa5297&quot;
+   }
+ }</component>
+   <component name="KubernetesApiPersistence">{}</component>
+@@ -84,51 +65,51 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "JUnit.JwtTest.createJwtTest.executor": "Run",
+-    "JUnit.JwtTest.executor": "Run",
+-    "JUnit.JwtTest.parseJwtTest.executor": "Run",
+-    "Maven.shortlink-all [package].executor": "Run",
+-    "Maven.teamup-admin [clean].executor": "Run",
+-    "Maven.teamup-admin [compile].executor": "Run",
+-    "Maven.teamup-admin [install].executor": "Run",
+-    "Maven.teamup-all [clean].executor": "Run",
+-    "Maven.teamup-all [compile].executor": "Run",
+-    "Notification.DisplayName-DoNotAsk-Database detector": "数据库检测器",
+-    "Notification.DoNotAsk-Database detector": "true",
+-    "RequestMappingsPanelOrder0": "0",
+-    "RequestMappingsPanelOrder1": "1",
+-    "RequestMappingsPanelWidth0": "75",
+-    "RequestMappingsPanelWidth1": "75",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "RunOnceActivity.git.unshallow": "true",
+-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+-    "Spring Boot.ShortLinkAdminApplication (1).executor": "Run",
+-    "Spring Boot.ShortLinkAdminApplication.executor": "Run",
+-    "git-widget-placeholder": "master",
+-    "kotlin-language-version-configured": "true",
+-    "last_opened_file_path": "C:/Users/Lenovo/Desktop/myJavaCollection/teamup",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
+-    "project.structure.last.edited": "项目",
+-    "project.structure.proportion": "0.15",
+-    "project.structure.side.proportion": "0.2",
+-    "settings.editor.selected.configurable": "editor.preferences.import",
+-    "vue.rearranger.settings.migration": "true",
+-    "应用程序.UserTableShardingTest.executor": "Run",
+-    "应用程序.com.irum.teamup.test.UserTableShardingTest.executor": "Run"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;JUnit.JwtTest.createJwtTest.executor&quot;: &quot;Run&quot;,
++    &quot;JUnit.JwtTest.executor&quot;: &quot;Run&quot;,
++    &quot;JUnit.JwtTest.parseJwtTest.executor&quot;: &quot;Run&quot;,
++    &quot;Maven.shortlink-all [package].executor&quot;: &quot;Run&quot;,
++    &quot;Maven.teamup-admin [clean].executor&quot;: &quot;Run&quot;,
++    &quot;Maven.teamup-admin [compile].executor&quot;: &quot;Run&quot;,
++    &quot;Maven.teamup-admin [install].executor&quot;: &quot;Run&quot;,
++    &quot;Maven.teamup-all [clean].executor&quot;: &quot;Run&quot;,
++    &quot;Maven.teamup-all [compile].executor&quot;: &quot;Run&quot;,
++    &quot;Notification.DisplayName-DoNotAsk-Database detector&quot;: &quot;数据库检测器&quot;,
++    &quot;Notification.DoNotAsk-Database detector&quot;: &quot;true&quot;,
++    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
++    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
++    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
++    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
++    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
++    &quot;Spring Boot.ShortLinkAdminApplication (1).executor&quot;: &quot;Run&quot;,
++    &quot;Spring Boot.ShortLinkAdminApplication.executor&quot;: &quot;Run&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
++    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/Lenovo/Desktop/myJavaCollection/teamup&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
++    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
++    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.import&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
++    &quot;应用程序.UserTableShardingTest.executor&quot;: &quot;Run&quot;,
++    &quot;应用程序.com.irum.teamup.test.UserTableShardingTest.executor&quot;: &quot;Run&quot;
+   },
+-  "keyToStringList": {
+-    "DatabaseDriversLRU": [
+-      "mysql_aurora",
+-      "mysql"
++  &quot;keyToStringList&quot;: {
++    &quot;DatabaseDriversLRU&quot;: [
++      &quot;mysql_aurora&quot;,
++      &quot;mysql&quot;
+     ]
+   }
+-}]]></component>
++}</component>
+   <component name="ReactorSettings">
+     <option name="notificationShown" value="true" />
+   </component>
+@@ -259,8 +240,8 @@
+   <component name="SharedIndexes">
+     <attachedChunks>
+       <set>
+-        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.21565.193" />
+-        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-IU-243.21565.193" />
++        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.23654.117" />
++        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-IU-243.23654.117" />
+       </set>
+     </attachedChunks>
+   </component>
+@@ -295,6 +276,8 @@
+       <workItem from="1760948144963" duration="602000" />
+       <workItem from="1761367158224" duration="7000" />
+       <workItem from="1761449436839" duration="14181000" />
++      <workItem from="1761472600988" duration="2204000" />
++      <workItem from="1761632340796" duration="2957000" />
+     </task>
+     <task id="LOCAL-00001" summary="基础登录">
+       <option name="closed" value="true" />
+Index: teamup-common/src/main/resources/application.yaml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>server:\r\n  port: 8002\r\nspring:\r\n  datasource:\r\n    url: jdbc:mysql://localhost:3306/teamup\r\n    driver-class-name: com.mysql.cj.jdbc.Driver\r\n    username: root\r\n    password: 7wtd5e7w\r\n  data:\r\n    redis:\r\n      host: 127.0.0.1\r\n      port: 6379\r\n\r\nkey:\r\n  jwt:\r\n    location: classpath:jwt.jks # 秘钥地址\r\n    alias: jwt # 秘钥别名\r\n    password: teamup # 秘钥文件密码\r\n    tokenTTL: 30m # 登录有效期\r\n  auth:\r\n    excludePaths: # 无需登录校验的路径\r\n      - /api/team-up/v1/user/login\r\n      - /api/team-up/v1/user
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/teamup-common/src/main/resources/application.yaml b/teamup-common/src/main/resources/application.yaml
+--- a/teamup-common/src/main/resources/application.yaml	(revision b7e3adde538553c51d8b22f861d31c90b6d36912)
++++ b/teamup-common/src/main/resources/application.yaml	(date 1761466288606)
+@@ -1,15 +1,16 @@
+ server:
+-  port: 8002
++  port: 8003
+ spring:
+   datasource:
+-    url: jdbc:mysql://localhost:3306/teamup
++    url: jdbc:mysql://localhost:3306/teamup_admin
+     driver-class-name: com.mysql.cj.jdbc.Driver
+     username: root
+-    password: 7wtd5e7w
++    password: lcf118855
+   data:
+     redis:
+       host: 127.0.0.1
+       port: 6379
++      password: 123456
+ 
+ key:
+   jwt:
+@@ -20,4 +21,5 @@
+   auth:
+     excludePaths: # 无需登录校验的路径
+       - /api/team-up/v1/user/login
+-      - /api/team-up/v1/user
+\ No newline at end of file
++      - /api/team-up/v1/user
++      - /api/team-up/v1/project
+\ No newline at end of file
