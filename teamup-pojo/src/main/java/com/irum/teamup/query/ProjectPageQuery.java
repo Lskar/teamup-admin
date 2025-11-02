@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -65,13 +66,16 @@ public class ProjectPageQuery extends PageQuery{
     /**
      * 项目开始时间
      */
+
     @ApiModelProperty("项目开始时间")
-    private Date startTime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private String startTime;
 
     /**
      * 项目结束时间
      */
     @ApiModelProperty("项目结束时间")
-    private Date endTime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private String endTime;
 
 }

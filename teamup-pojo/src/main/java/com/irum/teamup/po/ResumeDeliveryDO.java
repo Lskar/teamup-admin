@@ -1,36 +1,42 @@
 package com.irum.teamup.po;
 
-import com.baomidou.mybatisplus.annotation.*;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.w3c.dom.Text;
 
-import java.time.LocalDateTime;
+import java.sql.Date;
 
 @Data
+@EqualsAndHashCode(callSuper = false)
 @TableName("resume_delivery")
 public class ResumeDeliveryDO {
 
+    /**
+     * 主键ID
+     */
     @TableId(type = IdType.AUTO)
     private Long id;
 
-    @TableField("project_id")
     private Long projectId;
 
-    @TableField("applicant_id")
     private Long applicantId;
 
-    @TableField("resume_content")
     private String resumeContent;
 
     private Integer status;
 
-    @TableField("delivery_time")
-    private LocalDateTime deliveryTime;
 
-    @TableField("viewed_time")
-    private LocalDateTime viewedTime;
+    private Date deliveryTime;
 
-    @TableField("processed_time")
-    private LocalDateTime processedTime;
+
+    private Date viewedTime;
+
+
+    private Date processedTime;
+
 
     private String notes;
 

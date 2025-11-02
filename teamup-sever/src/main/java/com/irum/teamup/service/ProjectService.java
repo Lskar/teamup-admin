@@ -2,7 +2,9 @@ package com.irum.teamup.service;
 
 import com.irum.teamup.page.PageDTO;
 import com.irum.teamup.po.ProjectDO;
+import com.irum.teamup.po.ResumeDeliveryDO;
 import com.irum.teamup.query.ProjectPageQuery;
+import com.irum.teamup.query.ResumeDeliveryPageQuery;
 import com.irum.teamup.vo.ResumeVO;
 import com.irum.teamup.vo.project.ProjectVO;
 
@@ -20,5 +22,5 @@ public interface ProjectService {
 
     void updateStatus(Long id, Integer status);
 
-    List<ResumeVO> getResumeByProjectId(Long projectId);
+    PageDTO<ResumeDeliveryDO> getResumeByProjectIdPage(ResumeDeliveryPageQuery resumeDeliveryPageQuery);
 }

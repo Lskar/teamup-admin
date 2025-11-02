@@ -36,7 +36,7 @@ public class UserController {
     @ApiImplicitParam(name = "pageQueryDTO", value = "分页参数", required = true, dataType = "PageQueryDTO", paramType = "body")
     @GetMapping
     public ResponseResult<PageDTO<UserVO>> getUserList(UserPageQuery userPageQuery){
-
+        System.out.println("✅ 收到用户列表请求，参数：" );
         return ResponseResult.success(userService.getUserList(userPageQuery));
     }
 

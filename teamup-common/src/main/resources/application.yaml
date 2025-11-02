@@ -2,15 +2,15 @@ server:
   port: 8002
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/teamup_admin
+    url: jdbc:mysql://localhost:3306/teamup
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
-    password: lcf118855
+    password: 7wtd5e7w
   data:
     redis:
       host: 127.0.0.1
       port: 6379
-      password: 123456
+#      password: 123456
 
 key:
   jwt:
@@ -23,3 +23,4 @@ key:
       - /api/team-up/v1/user/login
       - /api/team-up/v1/user
       - /api/admin/users/**
+      - /api/team-up/v1/project/**

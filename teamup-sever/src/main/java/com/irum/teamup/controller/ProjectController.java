@@ -8,7 +8,9 @@ import com.irum.teamup.dto.project.ProjectUpdateDTO;
 import com.irum.teamup.enums.ProjectErrorCodeEnum;
 import com.irum.teamup.page.PageDTO;
 import com.irum.teamup.po.ProjectDO;
+import com.irum.teamup.po.ResumeDeliveryDO;
 import com.irum.teamup.query.ProjectPageQuery;
+import com.irum.teamup.query.ResumeDeliveryPageQuery;
 import com.irum.teamup.service.ProjectService;
 import com.irum.teamup.vo.ResumeVO;
 import com.irum.teamup.vo.project.ProjectVO;
@@ -109,11 +111,11 @@ public class ProjectController {
     }
 
 
-    @GetMapping
+    @GetMapping("/detailResume")
     @ApiOperation(value = " 根据项目id查询项目下的简历数据")
-    public ResponseResult<List<ResumeVO>> getResumeByProjectId(@RequestParam("projectId") Long projectId) {
+    public ResponseResult<PageDTO<ResumeDeliveryDO>> getResumeByProjectIdPage(ResumeDeliveryPageQuery resumeDeliveryPageQuery) {
 
-        return ResponseResult.success(projectService.getResumeByProjectId(projectId));
+        return ResponseResult.success(projectService.getResumeByProjectIdPage(resumeDeliveryPageQuery));
     }
 
 }
