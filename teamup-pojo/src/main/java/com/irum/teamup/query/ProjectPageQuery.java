@@ -69,13 +69,13 @@ public class ProjectPageQuery extends PageQuery{
 
     @ApiModelProperty("项目开始时间")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date startTime;
+    private String startTime;
 
     /**
      * 项目结束时间
      */
     @ApiModelProperty("项目结束时间")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date endTime;
+    private String endTime;
 
 }

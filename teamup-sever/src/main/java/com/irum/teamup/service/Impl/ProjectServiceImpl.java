@@ -15,6 +15,7 @@ import com.irum.teamup.page.PageDTO;
 import com.irum.teamup.po.ProjectDO;
 import com.irum.teamup.po.ResumeDO;
 import com.irum.teamup.po.ResumeDeliveryDO;
+import com.irum.teamup.query.PageQuery;
 import com.irum.teamup.query.ProjectPageQuery;
 import com.irum.teamup.query.ResumeDeliveryPageQuery;
 import com.irum.teamup.service.ProjectService;
@@ -105,7 +106,7 @@ public class ProjectServiceImpl extends ServiceImpl<ProjectMapper, ProjectDO> im
             throw new ProjectException(ProjectErrorCodeEnum.PROJECT_NOT_FOUND.code(), ProjectErrorCodeEnum.PROJECT_NOT_FOUND.message());
         }
         // 检查项目是否已被删除
-        if (!Objects.equals(projectDO.getStatus(), ProjectStatus.DELETED.getCode())) {
+        if (Objects.equals(projectDO.getStatus(), ProjectStatus.DELETED.getCode())) {
             log.info("项目已被删除，id: {}", id);
             throw new ProjectException(ProjectErrorCodeEnum.PROJECT_DISABLED.code(), ProjectErrorCodeEnum.PROJECT_DISABLED.message());
         }
@@ -124,7 +125,7 @@ public class ProjectServiceImpl extends ServiceImpl<ProjectMapper, ProjectDO> im
         }
 
         // 检查项目是否已被删除
-        if (!Objects.equals(projectDO.getStatus(), ProjectStatus.DELETED.getCode())) {
+        if (Objects.equals(projectDO.getStatus(), ProjectStatus.DELETED.getCode())) {
             log.info("项目已被删除，id: {}", projectDO.getId());
             throw new ProjectException(ProjectErrorCodeEnum.PROJECT_DISABLED.code(), ProjectErrorCodeEnum.PROJECT_DISABLED.message());
         }
@@ -161,7 +162,7 @@ public class ProjectServiceImpl extends ServiceImpl<ProjectMapper, ProjectDO> im
             throw new ProjectException(ProjectErrorCodeEnum.PROJECT_NOT_FOUND.code(), ProjectErrorCodeEnum.PROJECT_NOT_FOUND.message());
         }
         //检查项目状态是否为已删除
-        if (!Objects.equals(projectDO.getStatus(), ProjectStatus.DELETED.getCode())) {
+        if (Objects.equals(projectDO.getStatus(), ProjectStatus.DELETED.getCode())) {
             log.info("项目已被删除，id: {}", id);
             throw new ProjectException(ProjectErrorCodeEnum.PROJECT_DISABLED.code(), ProjectErrorCodeEnum.PROJECT_DISABLED.message());
         }
@@ -176,10 +177,16 @@ public class ProjectServiceImpl extends ServiceImpl<ProjectMapper, ProjectDO> im
 
     @Override
     public PageDTO<ResumeDeliveryDO> getResumeByProjectIdPage(ResumeDeliveryPageQuery resumeDeliveryPageQuery) {
+        // 设置默认值，避免null值
+        Integer pageNo = resumeDeliveryPageQuery.getPageNo() != null ? resumeDeliveryPageQuery.getPageNo() : PageQuery.DEFAULT_PAGE_NUM;
+        Integer pageSize = resumeDeliveryPageQuery.getPageSize() != null ? resumeDeliveryPageQuery.getPageSize() : PageQuery.DEFAULT_PAGE_SIZE;
 
+        Page<ResumeDeliveryDO> mpPage = new Page<>(pageNo, pageSize);
 
-        Page<ResumeDeliveryDO> mpPage = new Page<>(resumeDeliveryPageQuery.getPageNo(), resumeDeliveryPageQuery.getPageSize());
-        mpPage.addOrder(new OrderItem(resumeDeliveryPageQuery.getSortBy(), resumeDeliveryPageQuery.getIsAsc()));
+        // 为isAsc提供默认值，避免NullPointerException
+        Boolean isAsc = resumeDeliveryPageQuery.getIsAsc() != null ? resumeDeliveryPageQuery.getIsAsc() : Boolean.TRUE;
+        mpPage.addOrder(new OrderItem(resumeDeliveryPageQuery.getSortBy(), isAsc));
+
         QueryWrapper<ResumeDeliveryDO> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("project_id", resumeDeliveryPageQuery.getId());
         queryWrapper.eq("status", resumeDeliveryPageQuery.getStatus());
@@ -187,4 +194,5 @@ public class ProjectServiceImpl extends ServiceImpl<ProjectMapper, ProjectDO> im
 
         return PageDTO.of(pageResult, ResumeDeliveryDO.class);
     }
+
 }
