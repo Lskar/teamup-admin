@@ -1,5 +1,6 @@
 package com.irum.teamup.service.Impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.irum.teamup.mapper.ProjectMapper;
 import com.irum.teamup.mapper.ResumeDeliveryMapper;
@@ -46,14 +47,16 @@ public class StatisticsServiceImpl implements StatisticsService {
         //用户增长率
         //查询今日新增用户数量
         Long todayNewUsers = userMapper.selectCount(
-                new QueryWrapper<UserDO>()
-                        .ge("create_time", LocalDate.now()));
+                new LambdaQueryWrapper<UserDO>()
+                        .ge(UserDO::getCreateTime, LocalDate.now()));
         Double growthRate = (todayNewUsers * 1.0 / totalUsers) * 100;
         //今日新增项目数
-        Long NewProjects = projectMapper.selectCount(new QueryWrapper<ProjectDO>()
-                .ge("created_time", LocalDate.now()));
+        Long NewProjects = projectMapper.selectCount(
+                new LambdaQueryWrapper<ProjectDO>()
+                        .ge(ProjectDO::getCreateTime, LocalDate.now()));
         return new PlatformOverviewVO(totalUsers, totalProjects, totalResumeDeliveries, growthRate, NewProjects);
     }
+
 
     @Override
     public List<ProjectCategoryStatsVO> getProjectCategoryStats() {
