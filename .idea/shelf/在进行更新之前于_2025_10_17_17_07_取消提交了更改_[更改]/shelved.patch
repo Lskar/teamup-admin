@@ -1,0 +1,33 @@
+Index: teamup-pojo/src/main/java/com/irum/teamup/po/CollegeProjectStats.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.irum.teamup.po;\r\n\r\npublic class CollegeProjectStats {\r\n\r\n    private String college;\r\n    private Long projectCount;\r\n    private Long userCount;\r\n}\r\n
+===================================================================
+diff --git a/teamup-pojo/src/main/java/com/irum/teamup/po/CollegeProjectStats.java b/teamup-pojo/src/main/java/com/irum/teamup/po/CollegeProjectStats.java
+--- a/teamup-pojo/src/main/java/com/irum/teamup/po/CollegeProjectStats.java	(revision dab969efb491158f00536d067aac5fbca20ee362)
++++ b/teamup-pojo/src/main/java/com/irum/teamup/po/CollegeProjectStats.java	(date 1760685456844)
+@@ -1,8 +1,24 @@
+ package com.irum.teamup.po;
+ 
++/**
++ * 学院项目统计信息实体类
++ *
++ * 用于存储和传输学院维度的项目统计数据，包含学院基本信息及其关联的项目和用户数量
++ */
+ public class CollegeProjectStats {
+ 
++    /**
++     * 学院名称
++     */
+     private String college;
++
++    /**
++     * 项目数量统计
++     */
+     private Long projectCount;
++
++    /**
++     * 用户数量统计
++     */
+     private Long userCount;
+ }
