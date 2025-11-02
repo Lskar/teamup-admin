@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56a3ea6a-73c7-4b6b-90b2-ee6ec2f8db5f" name="更改" comment="更改项目DTO项目状态字段类型，将String更改为Integer" />
+    <list default="true" id="56a3ea6a-73c7-4b6b-90b2-ee6ec2f8db5f" name="更改" comment="更新项目删除状态">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/po/ResumeDeliveryDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/po/ResumeDeliveryDO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/query/PageQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/query/PageQuery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ProjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ProjectServiceImpl.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,8 +69,13 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -135,6 +147,11 @@
       <workItem from="1761968445951" duration="3439000" />
       <workItem from="1762004688619" duration="413000" />
       <workItem from="1762007488269" duration="476000" />
+      <workItem from="1762008059017" duration="412000" />
+      <workItem from="1762012659159" duration="378000" />
+      <workItem from="1762053859305" duration="69000" />
+      <workItem from="1762067091685" duration="226000" />
+      <workItem from="1762068090311" duration="2025000" />
     </task>
     <task id="LOCAL-00001" summary="返回格式修改">
       <option name="closed" value="true" />
@@ -184,7 +201,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762007846056</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="更新项目删除状态">
+      <option name="closed" value="true" />
+      <created>1762008243662</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1762008243662</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,21 +234,7 @@
     <MESSAGE value="修复前端无法传Date格式的问题" />
     <MESSAGE value="实现了分页查询对应项目下详细的简历信息，申请人信息，简历状态" />
     <MESSAGE value="更改项目DTO项目状态字段类型，将String更改为Integer" />
-    <option name="LAST_COMMIT_MESSAGE" value="更改项目DTO项目状态字段类型，将String更改为Integer" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/ProjectService.java</url>
-          <line>24</line>
-          <properties class="com.irum.teamup.service.ProjectService" method="getResumeByProjectIdPage">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="更新项目删除状态" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新项目删除状态" />
   </component>
 </project>

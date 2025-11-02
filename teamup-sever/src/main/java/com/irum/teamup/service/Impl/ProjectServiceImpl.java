@@ -13,25 +13,21 @@ import com.irum.teamup.mapper.ProjectMapper;
 import com.irum.teamup.mapper.ResumeDeliveryMapper;
 import com.irum.teamup.page.PageDTO;
 import com.irum.teamup.po.ProjectDO;
-import com.irum.teamup.po.ResumeDO;
 import com.irum.teamup.po.ResumeDeliveryDO;
 import com.irum.teamup.query.ProjectPageQuery;
 import com.irum.teamup.query.ResumeDeliveryPageQuery;
 import com.irum.teamup.service.ProjectService;
 import com.irum.teamup.utils.BeanUtil;
-import com.irum.teamup.vo.ResumeVO;
 import com.irum.teamup.vo.project.ProjectVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Objects;
 
 /**
- * @author Lenovo
+ * @author Lskar
  */
 @Slf4j
 @Service
@@ -182,9 +178,13 @@ public class ProjectServiceImpl extends ServiceImpl<ProjectMapper, ProjectDO> im
         mpPage.addOrder(new OrderItem(resumeDeliveryPageQuery.getSortBy(), resumeDeliveryPageQuery.getIsAsc()));
         QueryWrapper<ResumeDeliveryDO> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("project_id", resumeDeliveryPageQuery.getId());
-        queryWrapper.eq("status", resumeDeliveryPageQuery.getStatus());
+        // 修复状态查询条件
+        if (resumeDeliveryPageQuery.getStatus() != null) {
+            queryWrapper.eq("status", resumeDeliveryPageQuery.getStatus());
+        }
         Page<ResumeDeliveryDO> pageResult = resumeDeliveryMapper.selectPage(mpPage, queryWrapper);
 
-        return PageDTO.of(pageResult, ResumeDeliveryDO.class);
+        log.info("查询结果：{}", PageDTO.of(pageResult, ResumeDeliveryDO.class));
+        return PageDTO.of(pageResult);
     }
 }

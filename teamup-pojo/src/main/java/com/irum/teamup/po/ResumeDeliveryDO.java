@@ -1,5 +1,6 @@
 package com.irum.teamup.po;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -16,7 +17,7 @@ public class ResumeDeliveryDO {
     /**
      * 主键ID
      */
-    @TableId
+    @TableId(type = IdType.AUTO)
     private Long id;
 
     private Long projectId;
@@ -27,11 +28,15 @@ public class ResumeDeliveryDO {
 
     private Integer status;
 
+
     private Date deliveryTime;
+
 
     private Date viewedTime;
 
+
     private Date processedTime;
+
 
     private Text notes;
 
