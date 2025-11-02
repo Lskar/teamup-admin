@@ -1,0 +1,56 @@
+Index: teamup-pojo/src/main/java/com/irum/teamup/query/ProjectPageQuery.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.irum.teamup.query;\r\n\r\nimport io.swagger.annotations.ApiModel;\r\nimport io.swagger.annotations.ApiModelProperty;\r\nimport lombok.Data;\r\nimport lombok.EqualsAndHashCode;\r\nimport org.springframework.format.annotation.DateTimeFormat;\r\n\r\nimport java.util.Date;\r\n\r\n\r\n@Data\r\n@EqualsAndHashCode(callSuper = true)\r\n@ApiModel(description = \"项目分页查询条件\")\r\npublic class ProjectPageQuery extends PageQuery{\r\n\r\n\r\n    /**\r\n     * 项目标题，不能为空\r\n     */\r\n    @ApiModelProperty(\"项目标题\")\r\n    private String title;\r\n\r\n    /**\r\n     * 项目类型\r\n     */\r\n    @ApiModelProperty(\"项目类型\")\r\n    private String projectType;\r\n\r\n    /**\r\n     * 所属学院\r\n     */\r\n    @ApiModelProperty(\"所属学院\")\r\n    private String college;\r\n\r\n    /**\r\n     * 相关专业\r\n     */\r\n    @ApiModelProperty(\"相关专业\")\r\n    private String major;\r\n\r\n    /**\r\n     * 项目状态：PENDING-待审核, PUBLISHED-已发布, FULL-已满员, ENDED-已结束\r\n     */\r\n    @ApiModelProperty(\"项目状态\")\r\n    private Integer status;\r\n\r\n    /**\r\n     * 创建者ID，不能为空\r\n     */\r\n    @ApiModelProperty(\"创建者ID\")\r\n    private Long creatorId;\r\n\r\n    /**\r\n     * 团队规模，默认值为1\r\n     */\r\n    @ApiModelProperty(\"团队规模\")\r\n    private Integer teamSize;\r\n\r\n    /**\r\n     * 当前成员数，默认值为1\r\n     */\r\n    @ApiModelProperty(\"当前成员数\")\r\n    private Integer currentMembers;\r\n\r\n    /**\r\n     * 项目开始时间\r\n     */\r\n\r\n    @ApiModelProperty(\"项目开始时间\")\r\n    @DateTimeFormat(pattern = \"yyyy-MM-dd\")\r\n    private Date startTime;\r\n\r\n    /**\r\n     * 项目结束时间\r\n     */\r\n    @ApiModelProperty(\"项目结束时间\")\r\n    @DateTimeFormat(pattern = \"yyyy-MM-dd\")\r\n    private Date endTime;\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/teamup-pojo/src/main/java/com/irum/teamup/query/ProjectPageQuery.java b/teamup-pojo/src/main/java/com/irum/teamup/query/ProjectPageQuery.java
+--- a/teamup-pojo/src/main/java/com/irum/teamup/query/ProjectPageQuery.java	(revision 64f86507eda7de061ca3973319629c56527423cc)
++++ b/teamup-pojo/src/main/java/com/irum/teamup/query/ProjectPageQuery.java	(date 1762006624670)
+@@ -69,13 +69,13 @@
+ 
+     @ApiModelProperty("项目开始时间")
+     @DateTimeFormat(pattern = "yyyy-MM-dd")
+-    private Date startTime;
++    private String startTime;
+ 
+     /**
+      * 项目结束时间
+      */
+     @ApiModelProperty("项目结束时间")
+     @DateTimeFormat(pattern = "yyyy-MM-dd")
+-    private Date endTime;
++    private String endTime;
+ 
+ }
+Index: teamup-common/src/main/resources/application.yaml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>server:\r\n  port: 8002\r\nspring:\r\n  datasource:\r\n    url: jdbc:mysql://localhost:3306/teamup_admin\r\n    driver-class-name: com.mysql.cj.jdbc.Driver\r\n    username: root\r\n    password: lcf118855\r\n  data:\r\n    redis:\r\n      host: 127.0.0.1\r\n      port: 6379\r\n      password: 123456\r\n\r\nkey:\r\n  jwt:\r\n    location: classpath:jwt.jks # 秘钥地址\r\n    alias: jwt # 秘钥别名\r\n    password: teamup # 秘钥文件密码\r\n    tokenTTL: 60m # 登录有效期\r\n  auth:\r\n    excludePaths: # 无需登录校验的路径\r\n      - /api/team-up/v1/user/login\r\n      - /api/team-up/v1/user\r\n      - /api/admin/users/**
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/teamup-common/src/main/resources/application.yaml b/teamup-common/src/main/resources/application.yaml
+--- a/teamup-common/src/main/resources/application.yaml	(revision 64f86507eda7de061ca3973319629c56527423cc)
++++ b/teamup-common/src/main/resources/application.yaml	(date 1761986925082)
+@@ -1,16 +1,16 @@
+ server:
+-  port: 8002
++  port: 8003
+ spring:
+   datasource:
+     url: jdbc:mysql://localhost:3306/teamup_admin
+     driver-class-name: com.mysql.cj.jdbc.Driver
+     username: root
+-    password: lcf118855
++    password: 123456
+   data:
+     redis:
+       host: 127.0.0.1
+       port: 6379
+-      password: 123456
++      #password: 123456
+ 
+ key:
+   jwt:
