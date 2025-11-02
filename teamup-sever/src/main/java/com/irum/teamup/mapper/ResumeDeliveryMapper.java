@@ -9,5 +9,4 @@ public interface ResumeDeliveryMapper extends BaseMapper<ResumeDeliveryDO> {
 
 
 
-
 }

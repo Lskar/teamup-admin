@@ -1,0 +1,342 @@
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\"\r\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">\r\n    <modelVersion>4.0.0</modelVersion>\r\n\r\n    <groupId>com.irum.teamup</groupId>\r\n    <artifactId>teamup-all</artifactId>\r\n    <version>1.0-SNAPSHOT</version>\r\n    <packaging>pom</packaging>\r\n\r\n    <modules>\r\n        <module>teamup-common</module>\r\n        <module>teamup-pojo</module>\r\n        <module>teamup-sever</module>\r\n    </modules>\r\n\r\n    <properties>\r\n        <java.version>17</java.version>\r\n        <spring-boot.version>3.0.7</spring-boot.version>\r\n        <spring-cloud.version>2022.0.3</spring-cloud.version>\r\n        <spring-cloud-alibaba.version>2022.0.0.0-RC2</spring-cloud-alibaba.version>\r\n        <mybatis-spring-boot-starter.version>3.0.2</mybatis-spring-boot-starter.version>\r\n        <shardingsphere.version>5.3.2</shardingsphere.version>\r\n        <jjwt.version>0.9.1</jjwt.version>\r\n        <fastjson2.version>2.0.36</fastjson2.version>\r\n        <mybatis-plus.version>3.5.3.1</mybatis-plus.version>\r\n        <dozer-core.version>6.5.2</dozer-core.version>\r\n        <hutool-all.version>5.8.27</hutool-all.version>\r\n        <redisson.version>3.27.2</redisson.version>\r\n        <guava.version>30.0-jre</guava.version>\r\n        <jsoup.version>1.15.3</jsoup.version>\r\n        <easyexcel.version>3.1.3</easyexcel.version>\r\n        <spotless-maven-plugin.version>2.22.1</spotless-maven-plugin.version>\r\n        <swagger.version>2.9.2</swagger.version>\r\n        <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>\r\n        <spring-security-oauth2.version>2.5.2.RELEASE</spring-security-oauth2.version>\r\n    </properties>\r\n\r\n    <dependencies>\r\n        <dependency>\r\n            <groupId>org.projectlombok</groupId>\r\n            <artifactId>lombok</artifactId>\r\n        </dependency>\r\n    </dependencies>\r\n\r\n    <dependencyManagement>\r\n        <dependencies>\r\n            <dependency>\r\n                <groupId>org.springframework.boot</groupId>\r\n                <artifactId>spring-boot-dependencies</artifactId>\r\n                <version>${spring-boot.version}</version>\r\n                <type>pom</type>\r\n                <scope>import</scope>\r\n            </dependency>\r\n\r\n            <dependency>\r\n                <groupId>org.springframework.cloud</groupId>\r\n                <artifactId>spring-cloud-dependencies</artifactId>\r\n                <version>${spring-cloud.version}</version>\r\n                <type>pom</type>\r\n                <scope>import</scope>\r\n            </dependency>\r\n\r\n            <dependency>\r\n                <groupId>com.alibaba.cloud</groupId>\r\n                <artifactId>spring-cloud-alibaba-dependencies</artifactId>\r\n                <version>${spring-cloud-alibaba.version}</version>\r\n                <type>pom</type>\r\n                <scope>import</scope>\r\n            </dependency>\r\n\r\n            <dependency>\r\n                <groupId>com.baomidou</groupId>\r\n                <artifactId>mybatis-plus-boot-starter</artifactId>\r\n                <version>${mybatis-plus.version}</version>\r\n            </dependency>\r\n\r\n            <dependency>\r\n                <groupId>org.apache.shardingsphere</groupId>\r\n                <artifactId>shardingsphere-jdbc-core</artifactId>\r\n                <version>${shardingsphere.version}</version>\r\n            </dependency>\r\n\r\n            <dependency>\r\n                <groupId>io.jsonwebtoken</groupId>\r\n                <artifactId>jjwt</artifactId>\r\n                <version>${jjwt.version}</version>\r\n            </dependency>\r\n\r\n            <dependency>\r\n                <groupId>com.alibaba.fastjson2</groupId>\r\n                <artifactId>fastjson2</artifactId>\r\n                <version>${fastjson2.version}</version>\r\n            </dependency>\r\n\r\n            <dependency>\r\n                <groupId>com.github.dozermapper</groupId>\r\n                <artifactId>dozer-core</artifactId>\r\n                <version>${dozer-core.version}</version>\r\n            </dependency>\r\n\r\n            <dependency>\r\n                <groupId>cn.hutool</groupId>\r\n                <artifactId>hutool-all</artifactId>\r\n                <version>${hutool-all.version}</version>\r\n            </dependency>\r\n\r\n            <dependency>\r\n                <groupId>org.redisson</groupId>\r\n                <artifactId>redisson-spring-boot-starter</artifactId>\r\n                <version>${redisson.version}</version>\r\n            </dependency>\r\n\r\n            <dependency>\r\n                <groupId>com.google.guava</groupId>\r\n                <artifactId>guava</artifactId>\r\n                <version>${guava.version}</version>\r\n            </dependency>\r\n\r\n            <dependency>\r\n                <groupId>io.springfox</groupId>\r\n                <artifactId>springfox-swagger2</artifactId>\r\n                <version>${swagger.version}</version>\r\n            </dependency>\r\n            <dependency>\r\n                <groupId>jakarta.validation</groupId>\r\n                <artifactId>jakarta.validation-api</artifactId>\r\n                <version>${jakarta.validation-api.version}</version>\r\n            </dependency>\r\n            <dependency>\r\n                <groupId>org.springframework.security.oauth</groupId>\r\n                <artifactId>spring-security-oauth2</artifactId>\r\n                <version>${spring-security-oauth2.version}</version>\r\n            </dependency>\r\n\r\n            <dependency>\r\n                <groupId>org.springframework.boot</groupId>\r\n                <artifactId>spring-boot-starter-test</artifactId>\r\n                <version>${spring-boot.version}</version>\r\n            </dependency>\r\n\r\n        </dependencies>\r\n    </dependencyManagement>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pom.xml b/pom.xml
+--- a/pom.xml	(revision 7660880dce817092651c4527cc0b7a1c9015e01c)
++++ b/pom.xml	(date 1761971886083)
+@@ -140,6 +140,7 @@
+                 <version>${spring-boot.version}</version>
+             </dependency>
+ 
++
+         </dependencies>
+     </dependencyManagement>
+ </project>
+\ No newline at end of file
+Index: teamup-sever/src/main/java/com/irum/teamup/service/Impl/ResumeServiceImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.irum.teamup.service.Impl;\r\n\r\nimport com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;\r\nimport com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;\r\nimport com.baomidou.mybatisplus.extension.plugins.pagination.Page;\r\nimport com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;\r\nimport com.irum.teamup.mapper.ResumeMapper;\r\nimport com.irum.teamup.po.ResumeDO;\r\nimport com.irum.teamup.po.ResumeDeliveryDO;\r\nimport com.irum.teamup.query.ResumePageQuery;\r\nimport com.irum.teamup.service.ResumeService;\r\nimport com.irum.teamup.utils.BeanUtil;\r\nimport com.irum.teamup.vo.ResumeVO;\r\nimport lombok.RequiredArgsConstructor;\r\nimport org.springframework.stereotype.Service;\r\n\r\nimport java.util.List;\r\nimport java.util.Map;\r\n\r\n@Service\r\n@RequiredArgsConstructor\r\npublic class ResumeServiceImpl extends ServiceImpl<ResumeMapper, ResumeDO> implements ResumeService {\r\n    @Override\r\n    public Page<ResumeVO> pageQuery(ResumePageQuery resumePageQuery) {\r\n        return null;\r\n    }\r\n\r\n    @Override\r\n    public ResumeVO getResumeById(Long id) {\r\n        ResumeDO resumeDO = getById(id);\r\n        return BeanUtil.convert(resumeDO, ResumeVO.class);\r\n    }\r\n\r\n    @Override\r\n    public void updateResume(ResumeDO resumeDO) {\r\n        updateById(resumeDO);\r\n    }\r\n\r\n    @Override\r\n    public void deleteResume(Long id) {\r\n        removeById(id);\r\n    }\r\n\r\n    @Override\r\n    public void updateStatus(Long id, Integer status) {\r\n        lambdaUpdate()\r\n                .eq(ResumeDO::getId, id)\r\n                .set(ResumeDO::getStatus, status)\r\n                .update();\r\n    }\r\n\r\n    @Override\r\n    public Object getProjectResumeStatistics() {\r\n        return baseMapper.selectProjectResumeStatistics();\r\n    }\r\n\r\n    @Override\r\n    public String exportResumeData(String status, Long projectId) {\r\n        return \"\";\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ResumeServiceImpl.java b/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ResumeServiceImpl.java
+--- a/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ResumeServiceImpl.java	(revision 7660880dce817092651c4527cc0b7a1c9015e01c)
++++ b/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ResumeServiceImpl.java	(date 1761987081079)
+@@ -14,6 +14,7 @@
+ import lombok.RequiredArgsConstructor;
+ import org.springframework.stereotype.Service;
+ 
++import java.util.Date;
+ import java.util.List;
+ import java.util.Map;
+ 
+@@ -56,6 +57,125 @@
+ 
+     @Override
+     public String exportResumeData(String status, Long projectId) {
+-        return "";
++        try {
++            // 构建查询条件
++            LambdaQueryWrapper<ResumeDO> queryWrapper = new LambdaQueryWrapper<>();
++
++            // 根据状态筛选简历
++            if (status != null && !status.isEmpty()) {
++                // 根据 resume 表的 status 字段定义（0-待审核 1-已发布 2-已删除）
++                switch (status) {
++                    case "pending":
++                        queryWrapper.eq(ResumeDO::getStatus, 0);
++                        break;
++                    case "published":
++                        queryWrapper.eq(ResumeDO::getStatus, 1);
++                        break;
++                    case "deleted":
++                        queryWrapper.eq(ResumeDO::getStatus, 2);
++                        break;
++                    default:
++                        // 如果传入其他状态值，尝试解析为数字
++                        try {
++                            Integer statusValue = Integer.parseInt(status);
++                            queryWrapper.eq(ResumeDO::getStatus, statusValue);
++                        } catch (NumberFormatException e) {
++                            // 忽略无效的状态值
++                        }
++                        break;
++                }
++            }
++
++            // 如果提供了项目ID，需要关联查询 resume_delivery 表
++            if (projectId != null) {
++                // 使用自定义SQL查询关联数据
++                QueryWrapper<ResumeDO> customQuery = new QueryWrapper<>();
++                customQuery.inSql("id", "SELECT id FROM resume_delivery WHERE project_id = " + projectId);
++
++                if (projectId != null) {
++                    // 使用 LambdaQueryWrapper 并添加子查询条件
++                    queryWrapper.apply("EXISTS (SELECT 1 FROM resume_delivery rd WHERE rd.resume_id = resume.id AND rd.project_id = {0})", projectId);
++                }
++
++
++                queryWrapper = customQuery.lambda();
++            }
++
++            // 查询简历数据
++            List<ResumeDO> resumeList = list(queryWrapper);
++
++            // 如果没有数据，返回空字符串
++            if (resumeList.isEmpty()) {
++                return "";
++            }
++
++            // 生成导出文件名
++            String fileName = "resumes_export_" + System.currentTimeMillis() + ".xlsx";
++            // 使用系统临时目录
++            String tempDir = System.getProperty("java.io.tmpdir");
++            String exportPath = tempDir + java.io.File.separator + fileName;
++
++            // 创建工作簿
++            org.apache.poi.xssf.usermodel.XSSFWorkbook workbook = new org.apache.poi.xssf.usermodel.XSSFWorkbook();
++            org.apache.poi.ss.usermodel.Sheet sheet = workbook.createSheet("简历数据");
++
++            // 创建表头
++            org.apache.poi.ss.usermodel.Row headerRow = sheet.createRow(0);
++            String[] headers = {"ID", "申请人ID", "简历标题", "文件格式", "文件大小(字节)", "创建时间", "状态"};
++            for (int i = 0; i < headers.length; i++) {
++                org.apache.poi.ss.usermodel.Cell cell = headerRow.createCell(i);
++                cell.setCellValue(headers[i]);
++            }
++
++            // 填充数据
++            for (int i = 0; i < resumeList.size(); i++) {
++                ResumeDO resume = resumeList.get(i);
++                org.apache.poi.ss.usermodel.Row row = sheet.createRow(i + 1);
++
++                row.createCell(0).setCellValue(resume.getId() != null ? resume.getId() : 0L);
++                row.createCell(1).setCellValue(resume.getApplicantId() != null ? resume.getApplicantId() : 0L);
++                row.createCell(2).setCellValue(resume.getResumeTitle() != null ? resume.getResumeTitle() : "");
++                row.createCell(3).setCellValue(resume.getFileFormat() != null ? resume.getFileFormat() : "");
++                row.createCell(4).setCellValue(resume.getFileSize() != null ? resume.getFileSize() : 0L);
++
++                // 处理日期字段
++                if (resume.getCreatedTime() != null) {
++                    org.apache.poi.ss.usermodel.Cell dateCell = row.createCell(5);
++                    dateCell.setCellValue((Date) resume.getCreatedTime());
++                }
++
++                // 处理状态字段
++                String statusText = "未知";
++                if (resume.getStatus() != null) {
++                    switch (resume.getStatus()) {
++                        case 0: statusText = "待审核"; break;
++                        case 1: statusText = "已发布"; break;
++                        case 2: statusText = "已删除"; break;
++                        default: statusText = "未知(" + resume.getStatus() + ")";
++                    }
++                }
++                row.createCell(6).setCellValue(statusText);
++            }
++
++            // 自动调整列宽
++            for (int i = 0; i < headers.length; i++) {
++                sheet.autoSizeColumn(i);
++            }
++
++            // 写入文件
++            java.io.FileOutputStream fileOut = new java.io.FileOutputStream(exportPath);
++            workbook.write(fileOut);
++            fileOut.close();
++            workbook.close();
++
++            return exportPath;
++
++        } catch (Exception e) {
++            // 记录错误日志
++            e.printStackTrace();
++            // 发生异常时返回空字符串
++            return "";
++        }
+     }
++
+ }
+Index: teamup-sever/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\"\r\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">\r\n    <modelVersion>4.0.0</modelVersion>\r\n    <parent>\r\n        <groupId>com.irum.teamup</groupId>\r\n        <artifactId>teamup-all</artifactId>\r\n        <version>1.0-SNAPSHOT</version>\r\n    </parent>\r\n\r\n    <artifactId>teamup-sever</artifactId>\r\n\r\n    <properties>\r\n        <maven.compiler.source>17</maven.compiler.source>\r\n        <maven.compiler.target>17</maven.compiler.target>\r\n        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\r\n    </properties>\r\n    <dependencies>\r\n        <dependency>\r\n            <groupId>org.springframework.boot</groupId>\r\n            <artifactId>spring-boot-starter-web</artifactId>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>com.baomidou</groupId>\r\n            <artifactId>mybatis-plus-boot-starter</artifactId>\r\n        </dependency>\r\n\r\n        <dependency>\r\n            <groupId>com.mysql</groupId>\r\n            <artifactId>mysql-connector-j</artifactId>\r\n            <scope>runtime</scope>\r\n        </dependency>\r\n\r\n        <dependency>\r\n            <groupId>org.springframework.boot</groupId>\r\n            <artifactId>spring-boot-starter-jdbc</artifactId>\r\n        </dependency>\r\n\r\n        <dependency>\r\n            <groupId>cn.hutool</groupId>\r\n            <artifactId>hutool-all</artifactId>\r\n        </dependency>\r\n\r\n        <dependency>\r\n            <groupId>com.github.dozermapper</groupId>\r\n            <artifactId>dozer-core</artifactId>\r\n        </dependency>\r\n\r\n        <dependency>\r\n            <groupId>org.springframework.boot</groupId>\r\n            <artifactId>spring-boot-starter-data-redis</artifactId>\r\n        </dependency>\r\n\r\n        <dependency>\r\n            <groupId>org.redisson</groupId>\r\n            <artifactId>redisson-spring-boot-starter</artifactId>\r\n        </dependency>\r\n\r\n        <dependency>\r\n            <groupId>org.apache.shardingsphere</groupId>\r\n            <artifactId>shardingsphere-jdbc-core</artifactId>\r\n        </dependency>\r\n\r\n        <dependency>\r\n            <groupId>com.alibaba.fastjson2</groupId>\r\n            <artifactId>fastjson2</artifactId>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>com.irum.teamup</groupId>\r\n            <artifactId>teamup-pojo</artifactId>\r\n            <version>1.0-SNAPSHOT</version>\r\n        </dependency>\r\n\r\n        <dependency>\r\n            <groupId>com.irum.teamup</groupId>\r\n            <artifactId>teamup-common</artifactId>\r\n            <version>1.0-SNAPSHOT</version>\r\n        </dependency>\r\n\r\n        <dependency>\r\n            <groupId>org.springframework.boot</groupId>\r\n            <artifactId>spring-boot-starter-test</artifactId>\r\n        </dependency>\r\n\r\n        <dependency>\r\n            <groupId>javax.xml.bind</groupId>\r\n            <artifactId>jaxb-api</artifactId>\r\n            <version>2.3.1</version>\r\n        </dependency>\r\n    </dependencies>\r\n\r\n\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/teamup-sever/pom.xml b/teamup-sever/pom.xml
+--- a/teamup-sever/pom.xml	(revision 7660880dce817092651c4527cc0b7a1c9015e01c)
++++ b/teamup-sever/pom.xml	(date 1761971927583)
+@@ -88,6 +88,13 @@
+             <artifactId>jaxb-api</artifactId>
+             <version>2.3.1</version>
+         </dependency>
++
++        <dependency>
++            <groupId>org.apache.poi</groupId>
++            <artifactId>poi-ooxml</artifactId>
++            <version>4.1.1</version>
++        </dependency>
++
+     </dependencies>
+ 
+ 
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"56a3ea6a-73c7-4b6b-90b2-ee6ec2f8db5f\" name=\"更改\" comment=\"通过项目id查询简历\">\r\n      <change afterPath=\"$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/po/ResumeDeliveryDO.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/vo/project/ProjectResumeStatisticsVO.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/teamup-common/src/main/resources/application.yaml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/teamup-common/src/main/resources/application.yaml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/teamup-common/src/main/resources/db/resume.sql\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/teamup-common/src/main/resources/db/resume.sql\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/teamup-common/src/main/resources/db/resume_delivery.sql\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/teamup-common/src/main/resources/db/resume_delivery.sql\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/po/ResumeDO.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/po/ResumeDO.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/vo/PlatformOverviewVO.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/vo/PlatformOverviewVO.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ResumeController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ResumeController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/mapper/ResumeMapper.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/mapper/ResumeMapper.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ResumeServiceImpl.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ResumeServiceImpl.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Enum\" />\r\n        <option value=\"Exception\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;Lskar&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\"><![CDATA[{\r\n  \"selectedUrlAndAccountId\": {\r\n    \"url\": \"https://github.com/Lskar/teamup-admin.git\",\r\n    \"accountId\": \"fcb2f0f3-b88d-406a-b442-42b30afa5297\"\r\n  }\r\n}]]></component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;customColor&quot;: &quot;&quot;,\r\n  &quot;associatedIndex&quot;: 2\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"34jmnjq42UpdumLzNt6sZHq6Krk\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,\r\n    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,\r\n    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,\r\n    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,\r\n    &quot;Spring Boot.ShortLinkAdminApplication.executor&quot;: &quot;Run&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;master&quot;,\r\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\r\n      <recent name=\"com.irum.teamup.convention.errorcode\" />\r\n      <recent name=\"com.irum.teamup.convention.result\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"ShortLinkAdminApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"teamup-sever\" />\r\n      <option name=\"SHORTEN_COMMAND_LINE\" value=\"ARGS_FILE\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.irum.teamup.ShortLinkAdminApplication\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.irum.teamup.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\">\r\n      <option name=\"SHORTEN_COMMAND_LINE\" value=\"ARGS_FILE\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Spring Boot.ShortLinkAdminApplication\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.23654.117\" />\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-IU-243.23654.117\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"应用程序级\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"默认任务\">\r\n      <changelist id=\"56a3ea6a-73c7-4b6b-90b2-ee6ec2f8db5f\" name=\"更改\" comment=\"\" />\r\n      <created>1761735524453</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1761735524453</updated>\r\n      <workItem from=\"1761735526246\" duration=\"51000\" />\r\n      <workItem from=\"1761735582422\" duration=\"1156000\" />\r\n      <workItem from=\"1761742990391\" duration=\"17000\" />\r\n      <workItem from=\"1761743012656\" duration=\"492000\" />\r\n      <workItem from=\"1761750130363\" duration=\"220000\" />\r\n      <workItem from=\"1761799252449\" duration=\"366000\" />\r\n      <workItem from=\"1761822676345\" duration=\"1200000\" />\r\n      <workItem from=\"1761834776655\" duration=\"140000\" />\r\n      <workItem from=\"1761836002922\" duration=\"713000\" />\r\n      <workItem from=\"1761880102283\" duration=\"806000\" />\r\n      <workItem from=\"1761883278143\" duration=\"1805000\" />\r\n      <workItem from=\"1761890719037\" duration=\"421000\" />\r\n      <workItem from=\"1761905390426\" duration=\"315000\" />\r\n      <workItem from=\"1761968723726\" duration=\"339000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"返回格式修改\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1761738060995</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1761738060995</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"分页查询新增用户id属性\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1761882019643</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1761882019643</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"通过项目id查询简历\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1761884054828</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1761884054828</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"4\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"用户管理功能实现\" />\r\n    <MESSAGE value=\"返回格式修改\" />\r\n    <MESSAGE value=\"分页查询新增用户id属性\" />\r\n    <MESSAGE value=\"通过项目id查询简历\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"通过项目id查询简历\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 7660880dce817092651c4527cc0b7a1c9015e01c)
++++ b/.idea/workspace.xml	(date 1761987251764)
+@@ -4,17 +4,10 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="56a3ea6a-73c7-4b6b-90b2-ee6ec2f8db5f" name="更改" comment="通过项目id查询简历">
+-      <change afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/po/ResumeDeliveryDO.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/vo/project/ProjectResumeStatisticsVO.java" afterDir="false" />
++    <list default="true" id="56a3ea6a-73c7-4b6b-90b2-ee6ec2f8db5f" name="更改" comment="查询各个项目下的简历数量">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/resources/application.yaml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/resources/db/resume.sql" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/resources/db/resume.sql" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/resources/db/resume_delivery.sql" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/resources/db/resume_delivery.sql" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/po/ResumeDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/po/ResumeDO.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/vo/PlatformOverviewVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/vo/PlatformOverviewVO.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ResumeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ResumeController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/mapper/ResumeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/mapper/ResumeMapper.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/teamup-sever/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/pom.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ResumeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ResumeServiceImpl.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -39,12 +32,12 @@
+     &quot;assignee&quot;: &quot;Lskar&quot;
+   }
+ }</component>
+-  <component name="GithubPullRequestsUISettings"><![CDATA[{
+-  "selectedUrlAndAccountId": {
+-    "url": "https://github.com/Lskar/teamup-admin.git",
+-    "accountId": "fcb2f0f3-b88d-406a-b442-42b30afa5297"
++  <component name="GithubPullRequestsUISettings">{
++  &quot;selectedUrlAndAccountId&quot;: {
++    &quot;url&quot;: &quot;https://github.com/Lskar/teamup-admin.git&quot;,
++    &quot;accountId&quot;: &quot;fcb2f0f3-b88d-406a-b442-42b30afa5297&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="ProjectColorInfo">{
+   &quot;customColor&quot;: &quot;&quot;,
+   &quot;associatedIndex&quot;: 2
+@@ -55,25 +48,28 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+-    &quot;Spring Boot.ShortLinkAdminApplication.executor&quot;: &quot;Run&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "RequestMappingsPanelOrder0": "0",
++    "RequestMappingsPanelOrder1": "1",
++    "RequestMappingsPanelWidth0": "75",
++    "RequestMappingsPanelWidth1": "75",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "RunOnceActivity.git.unshallow": "true",
++    "Spring Boot.ShortLinkAdminApplication.executor": "Debug",
++    "git-widget-placeholder": "master",
++    "kotlin-language-version-configured": "true",
++    "node.js.detected.package.eslint": "true",
++    "node.js.detected.package.tslint": "true",
++    "node.js.selected.package.eslint": "(autodetect)",
++    "node.js.selected.package.tslint": "(autodetect)",
++    "nodejs_package_manager_path": "npm",
++    "vue.rearranger.settings.migration": "true"
+   }
+-}</component>
++}]]></component>
++  <component name="ReactorSettings">
++    <option name="notificationShown" value="true" />
++  </component>
+   <component name="RecentsManager">
+     <key name="CopyClassDialog.RECENTS_KEY">
+       <recent name="com.irum.teamup.convention.errorcode" />
+@@ -136,7 +132,8 @@
+       <workItem from="1761883278143" duration="1805000" />
+       <workItem from="1761890719037" duration="421000" />
+       <workItem from="1761905390426" duration="315000" />
+-      <workItem from="1761968723726" duration="339000" />
++      <workItem from="1761968723726" duration="2836000" />
++      <workItem from="1761986055338" duration="1192000" />
+     </task>
+     <task id="LOCAL-00001" summary="返回格式修改">
+       <option name="closed" value="true" />
+@@ -162,7 +159,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1761884054828</updated>
+     </task>
+-    <option name="localTasksCounter" value="4" />
++    <task id="LOCAL-00004" summary="查询各个项目下的简历数量">
++      <option name="closed" value="true" />
++      <created>1761969097471</created>
++      <option name="number" value="00004" />
++      <option name="presentableId" value="LOCAL-00004" />
++      <option name="project" value="LOCAL" />
++      <updated>1761969097471</updated>
++    </task>
++    <option name="localTasksCounter" value="5" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -184,6 +189,28 @@
+     <MESSAGE value="返回格式修改" />
+     <MESSAGE value="分页查询新增用户id属性" />
+     <MESSAGE value="通过项目id查询简历" />
+-    <option name="LAST_COMMIT_MESSAGE" value="通过项目id查询简历" />
++    <MESSAGE value="查询各个项目下的简历数量" />
++    <option name="LAST_COMMIT_MESSAGE" value="查询各个项目下的简历数量" />
++  </component>
++  <component name="XDebuggerManager">
++    <breakpoint-manager>
++      <breakpoints>
++        <line-breakpoint enabled="true" type="java-line">
++          <url>file://$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ResumeServiceImpl.java</url>
++          <line>170</line>
++          <option name="timeStamp" value="1" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" type="java-line">
++          <url>file://$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ResumeServiceImpl.java</url>
++          <line>165</line>
++          <option name="timeStamp" value="2" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" type="java-line">
++          <url>file://$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ResumeServiceImpl.java</url>
++          <line>104</line>
++          <option name="timeStamp" value="3" />
++        </line-breakpoint>
++      </breakpoints>
++    </breakpoint-manager>
+   </component>
+ </project>
+\ No newline at end of file
