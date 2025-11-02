@@ -2,6 +2,7 @@ package com.irum.teamup.query;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Date;
 
@@ -15,10 +16,12 @@ public class ResumeDeliveryPageQuery extends PageQuery{
 
     private Integer status;
 
-    private Date deliveryTime;
 
-    private Date viewedTime;
-
-    private Date processedTime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private String deliveryTime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private String viewedTime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private String processedTime;
 
 }

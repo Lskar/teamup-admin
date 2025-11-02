@@ -3,10 +3,12 @@ package com.irum.teamup.vo;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @ApiModel(description = "平台运营数据概览VO")
+@AllArgsConstructor
 public class PlatformOverviewVO {
 
 
@@ -32,18 +34,16 @@ public class PlatformOverviewVO {
 
 
     /**
-     * 今日活跃用户数量
-     */
-    @ApiModelProperty(value = "今日活跃用户数量")
-    private Long activeUsersToday;
-
-
-    /**
      * 总用户数增长率
      */
     @ApiModelProperty(value = "总用户数增长率")
     // 增长率
     private Double growthRate;
 
+    /**
+     * 今日新增项目数
+     */
+    @ApiModelProperty(value = "今日新增项目数")
+    private Long newProjects;
 
 }
