@@ -8,8 +8,8 @@ public enum ProjectStatus {
     PENDING(0),
     APPROVED(1),
     REJECTED(2),
-    COMPLETED(4),
-    DELETED(5);
+    COMPLETED(3),
+    DELETED(4);
 
     ProjectStatus(Integer code) {
         this.code = code;

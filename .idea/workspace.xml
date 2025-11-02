@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56a3ea6a-73c7-4b6b-90b2-ee6ec2f8db5f" name="更改" comment="实现了分页查询对应项目下详细的简历信息，申请人信息，简历状态">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/dto/project/ProjectUpdateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/dto/project/ProjectUpdateDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/handler/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/handler/GlobalExceptionHandler.java" afterDir="false" />
-    </list>
+    <list default="true" id="56a3ea6a-73c7-4b6b-90b2-ee6ec2f8db5f" name="更改" comment="更改项目DTO项目状态字段类型，将String更改为Integer" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -138,7 +134,7 @@
       <workItem from="1761906359694" duration="5619000" />
       <workItem from="1761968445951" duration="3439000" />
       <workItem from="1762004688619" duration="413000" />
-      <workItem from="1762007488269" duration="300000" />
+      <workItem from="1762007488269" duration="476000" />
     </task>
     <task id="LOCAL-00001" summary="返回格式修改">
       <option name="closed" value="true" />
@@ -180,7 +176,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761971686032</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="更改项目DTO项目状态字段类型，将String更改为Integer">
+      <option name="closed" value="true" />
+      <created>1762007846056</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1762007846056</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -204,7 +208,8 @@
     <MESSAGE value="通过项目id查询简历" />
     <MESSAGE value="修复前端无法传Date格式的问题" />
     <MESSAGE value="实现了分页查询对应项目下详细的简历信息，申请人信息，简历状态" />
-    <option name="LAST_COMMIT_MESSAGE" value="实现了分页查询对应项目下详细的简历信息，申请人信息，简历状态" />
+    <MESSAGE value="更改项目DTO项目状态字段类型，将String更改为Integer" />
+    <option name="LAST_COMMIT_MESSAGE" value="更改项目DTO项目状态字段类型，将String更改为Integer" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
