@@ -24,7 +24,7 @@ public class ResumeDeliveryDO {
 
     private Long applicantId;
 
-    private Text resumeContent;
+    private String resumeContent;
 
     private Integer status;
 
@@ -38,6 +38,6 @@ public class ResumeDeliveryDO {
     private Date processedTime;
 
 
-    private Text notes;
+    private String notes;
 
 }

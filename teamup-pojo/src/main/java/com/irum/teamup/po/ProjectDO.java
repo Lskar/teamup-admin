@@ -99,7 +99,7 @@ public class ProjectDO {
      */
 
     @ApiModelProperty(value = "项目开始时间")
-    private String startTime;
+    private Date startTime;
 
     /**
      * 项目结束时间
