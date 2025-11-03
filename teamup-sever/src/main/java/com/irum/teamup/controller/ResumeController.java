@@ -30,7 +30,7 @@ public class ResumeController {
     @ApiOperation(value = "分页查询简历投递列表")
     public ResponseResult<Page<ResumeVO>> pageQuery(ResumePageQuery resumePageQuery) {
 
-
+        //TODO 功能待实现，目前未使用该接口
         return null;
     }
 

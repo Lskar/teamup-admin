@@ -10,13 +10,21 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ApiModel("用户登录返回参数")
+@ApiModel("管理员登录返回参数")
 public class AdminLoginVO {
 
 
+    /**
+     * 管理员ID
+     */
+    @ApiModelProperty(value = "管理员ID")
     private Long userId;
 
 
+    /**
+     * 用户名
+     */
+    @ApiModelProperty(value = "管理员名称")
     private String username;
 
 

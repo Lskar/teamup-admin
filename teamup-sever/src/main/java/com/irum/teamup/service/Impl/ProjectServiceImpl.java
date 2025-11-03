@@ -191,7 +191,7 @@ public class ProjectServiceImpl extends ServiceImpl<ProjectMapper, ProjectDO> im
         }
         Page<ResumeDeliveryDO> pageResult = resumeDeliveryMapper.selectPage(mpPage, queryWrapper);
 
-        log.info("查询结果：{}", PageDTO.of(pageResult, ResumeDeliveryDO.class));
+        log.info("查询结果：{}", PageDTO.of(pageResult));
         return PageDTO.of(pageResult);
     }
 
