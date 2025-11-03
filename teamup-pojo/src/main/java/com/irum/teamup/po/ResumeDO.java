@@ -66,7 +66,7 @@ public class ResumeDO {
      * 创建时间
      */
     @ApiModelProperty(value = "创建时间")
-    private Data createdTime;
+    private Date createdTime;
     
     /**
      * 更新时间

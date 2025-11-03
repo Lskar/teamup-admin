@@ -2,12 +2,16 @@ package com.irum.teamup.dto.user;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @ApiModel("用户更新DTO")
 @Builder
+@NoArgsConstructor  // 添加无参构造函数
+@AllArgsConstructor // 添加全参构造函数
 public class UserUpdateDTO {
 
 

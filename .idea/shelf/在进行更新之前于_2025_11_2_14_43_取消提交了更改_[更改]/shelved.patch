@@ -1,0 +1,208 @@
+Index: teamup-pojo/src/main/java/com/irum/teamup/query/ProjectPageQuery.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.irum.teamup.query;\r\n\r\nimport io.swagger.annotations.ApiModel;\r\nimport io.swagger.annotations.ApiModelProperty;\r\nimport lombok.Data;\r\nimport lombok.EqualsAndHashCode;\r\nimport org.springframework.format.annotation.DateTimeFormat;\r\n\r\nimport java.util.Date;\r\n\r\n\r\n@Data\r\n@EqualsAndHashCode(callSuper = true)\r\n@ApiModel(description = \"项目分页查询条件\")\r\npublic class ProjectPageQuery extends PageQuery{\r\n\r\n\r\n    /**\r\n     * 项目标题，不能为空\r\n     */\r\n    @ApiModelProperty(\"项目标题\")\r\n    private String title;\r\n\r\n    /**\r\n     * 项目类型\r\n     */\r\n    @ApiModelProperty(\"项目类型\")\r\n    private String projectType;\r\n\r\n    /**\r\n     * 所属学院\r\n     */\r\n    @ApiModelProperty(\"所属学院\")\r\n    private String college;\r\n\r\n    /**\r\n     * 相关专业\r\n     */\r\n    @ApiModelProperty(\"相关专业\")\r\n    private String major;\r\n\r\n    /**\r\n     * 项目状态：PENDING-待审核, PUBLISHED-已发布, FULL-已满员, ENDED-已结束\r\n     */\r\n    @ApiModelProperty(\"项目状态\")\r\n    private Integer status;\r\n\r\n    /**\r\n     * 创建者ID，不能为空\r\n     */\r\n    @ApiModelProperty(\"创建者ID\")\r\n    private Long creatorId;\r\n\r\n    /**\r\n     * 团队规模，默认值为1\r\n     */\r\n    @ApiModelProperty(\"团队规模\")\r\n    private Integer teamSize;\r\n\r\n    /**\r\n     * 当前成员数，默认值为1\r\n     */\r\n    @ApiModelProperty(\"当前成员数\")\r\n    private Integer currentMembers;\r\n\r\n    /**\r\n     * 项目开始时间\r\n     */\r\n\r\n    @ApiModelProperty(\"项目开始时间\")\r\n    @DateTimeFormat(pattern = \"yyyy-MM-dd\")\r\n    private Date startTime;\r\n\r\n    /**\r\n     * 项目结束时间\r\n     */\r\n    @ApiModelProperty(\"项目结束时间\")\r\n    @DateTimeFormat(pattern = \"yyyy-MM-dd\")\r\n    private Date endTime;\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/teamup-pojo/src/main/java/com/irum/teamup/query/ProjectPageQuery.java b/teamup-pojo/src/main/java/com/irum/teamup/query/ProjectPageQuery.java
+--- a/teamup-pojo/src/main/java/com/irum/teamup/query/ProjectPageQuery.java	(revision 7a313c4d74ba34729cd5980b8b955dc7ef3f1b94)
++++ b/teamup-pojo/src/main/java/com/irum/teamup/query/ProjectPageQuery.java	(date 1762008569860)
+@@ -69,13 +69,13 @@
+ 
+     @ApiModelProperty("项目开始时间")
+     @DateTimeFormat(pattern = "yyyy-MM-dd")
+-    private Date startTime;
++    private String startTime;
+ 
+     /**
+      * 项目结束时间
+      */
+     @ApiModelProperty("项目结束时间")
+     @DateTimeFormat(pattern = "yyyy-MM-dd")
+-    private Date endTime;
++    private String endTime;
+ 
+ }
+Index: teamup-common/src/main/resources/application.yaml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>server:\r\n  port: 8002\r\nspring:\r\n  datasource:\r\n    url: jdbc:mysql://localhost:3306/teamup_admin\r\n    driver-class-name: com.mysql.cj.jdbc.Driver\r\n    username: root\r\n    password: lcf118855\r\n  data:\r\n    redis:\r\n      host: 127.0.0.1\r\n      port: 6379\r\n      password: 123456\r\n\r\nkey:\r\n  jwt:\r\n    location: classpath:jwt.jks # 秘钥地址\r\n    alias: jwt # 秘钥别名\r\n    password: teamup # 秘钥文件密码\r\n    tokenTTL: 60m # 登录有效期\r\n  auth:\r\n    excludePaths: # 无需登录校验的路径\r\n      - /api/team-up/v1/user/login\r\n      - /api/team-up/v1/user\r\n      - /api/admin/users/**
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/teamup-common/src/main/resources/application.yaml b/teamup-common/src/main/resources/application.yaml
+--- a/teamup-common/src/main/resources/application.yaml	(revision 7a313c4d74ba34729cd5980b8b955dc7ef3f1b94)
++++ b/teamup-common/src/main/resources/application.yaml	(date 1762008569871)
+@@ -1,16 +1,16 @@
+ server:
+-  port: 8002
++  port: 8003
+ spring:
+   datasource:
+     url: jdbc:mysql://localhost:3306/teamup_admin
+     driver-class-name: com.mysql.cj.jdbc.Driver
+     username: root
+-    password: lcf118855
++    password: 123456
+   data:
+     redis:
+       host: 127.0.0.1
+       port: 6379
+-      password: 123456
++      #password: 123456
+ 
+ key:
+   jwt:
+Index: teamup-common/src/main/java/com/irum/teamup/enums/Project/ProjectStatus.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.irum.teamup.enums.Project;\r\n\r\nimport lombok.Getter;\r\n\r\n@Getter\r\npublic enum ProjectStatus {\r\n\r\n    PENDING(0),\r\n    APPROVED(1),\r\n    REJECTED(2),\r\n    COMPLETED(4),\r\n    DELETED(5);\r\n\r\n    ProjectStatus(Integer code) {\r\n        this.code = code;\r\n    }\r\n\r\n    private final Integer code;\r\n\r\n    public Integer getCode() {\r\n        return code;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/teamup-common/src/main/java/com/irum/teamup/enums/Project/ProjectStatus.java b/teamup-common/src/main/java/com/irum/teamup/enums/Project/ProjectStatus.java
+--- a/teamup-common/src/main/java/com/irum/teamup/enums/Project/ProjectStatus.java	(revision 7a313c4d74ba34729cd5980b8b955dc7ef3f1b94)
++++ b/teamup-common/src/main/java/com/irum/teamup/enums/Project/ProjectStatus.java	(date 1762008661046)
+@@ -8,8 +8,8 @@
+     PENDING(0),
+     APPROVED(1),
+     REJECTED(2),
+-    COMPLETED(4),
+-    DELETED(5);
++    COMPLETED(3),
++    DELETED(4);
+ 
+     ProjectStatus(Integer code) {
+         this.code = code;
+Index: teamup-pojo/src/main/java/com/irum/teamup/vo/project/ProjectVO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.irum.teamup.vo.project;\r\n\r\nimport com.irum.teamup.vo.user.UserVO;\r\nimport io.swagger.annotations.ApiModel;\r\nimport io.swagger.annotations.ApiModelProperty;\r\nimport lombok.Data;\r\n\r\nimport java.util.Date;\r\nimport java.util.List;\r\n\r\n/**\r\n * 项目信息VO\r\n */\r\n@Data\r\n@ApiModel(value = \"项目信息VO\")\r\npublic class ProjectVO {\r\n    \r\n    /**\r\n     * 项目ID\r\n     */\r\n    @ApiModelProperty(value = \"项目ID\", required = true)\r\n    private Long id;\r\n    \r\n    /**\r\n     * 项目标题\r\n     */\r\n    @ApiModelProperty(value = \"项目标题\", required = true)\r\n    private String title;\r\n    \r\n    /**\r\n     * 项目描述\r\n     */\r\n    @ApiModelProperty(value = \"项目描述\")\r\n    private String description;\r\n    \r\n    /**\r\n     * 招募要求\r\n     */\r\n    @ApiModelProperty(value = \"招募要求\")\r\n    private String requirements;\r\n    \r\n    /**\r\n     * 项目类型\r\n     */\r\n    @ApiModelProperty(value = \"项目类型\")\r\n    private String projectType;\r\n    \r\n    /**\r\n     * 所属学院\r\n     */\r\n    @ApiModelProperty(value = \"所属学院\")\r\n    private String college;\r\n    \r\n    /**\r\n     * 相关专业\r\n     */\r\n    @ApiModelProperty(value = \"相关专业\")\r\n    private String major;\r\n    \r\n    /**\r\n     * 状态：PENDING-待审核, PUBLISHED-已发布, FULL-已满员, ENDED-已结束\r\n     */\r\n    @ApiModelProperty(value = \"项目状态\")\r\n    private Integer status;\r\n    \r\n    /**\r\n     * 创建者ID\r\n     */\r\n    @ApiModelProperty(value = \"创建者ID\", required = true)\r\n    private Long creatorId;\r\n    \r\n    /**\r\n     * 团队规模\r\n     */\r\n    @ApiModelProperty(value = \"团队规模\")\r\n    private Integer teamSize;\r\n    \r\n    /**\r\n     * 当前成员数\r\n     */\r\n    @ApiModelProperty(value = \"当前成员数\")\r\n    private Integer currentMembers;\r\n    \r\n    /**\r\n     * 开始时间\r\n     */\r\n    @ApiModelProperty(value = \"开始时间\")\r\n    private Date startTime;\r\n    \r\n    /**\r\n     * 结束时间\r\n     */\r\n    @ApiModelProperty(value = \"结束时间\")\r\n    private Date endTime;\r\n    \r\n    /**\r\n     * 创建时间\r\n     */\r\n    @ApiModelProperty(value = \"创建时间\")\r\n    private Date createdTime;\r\n    \r\n    /**\r\n     * 更新时间\r\n     */\r\n    @ApiModelProperty(value = \"更新时间\")\r\n    private Date updatedTime;\r\n\r\n\r\n    /**\r\n     * 项目成员信息\r\n     */\r\n    @ApiModelProperty(value = \"项目成员信息\")\r\n    private List<UserVO> userVOList;\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/teamup-pojo/src/main/java/com/irum/teamup/vo/project/ProjectVO.java b/teamup-pojo/src/main/java/com/irum/teamup/vo/project/ProjectVO.java
+--- a/teamup-pojo/src/main/java/com/irum/teamup/vo/project/ProjectVO.java	(revision 7a313c4d74ba34729cd5980b8b955dc7ef3f1b94)
++++ b/teamup-pojo/src/main/java/com/irum/teamup/vo/project/ProjectVO.java	(date 1762015411819)
+@@ -97,7 +97,7 @@
+      * 创建时间
+      */
+     @ApiModelProperty(value = "创建时间")
+-    private Date createdTime;
++    private Date createTime;
+     
+     /**
+      * 更新时间
+Index: teamup-sever/src/main/java/com/irum/teamup/service/Impl/ProjectServiceImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.irum.teamup.service.Impl;\r\n\r\n\r\nimport cn.hutool.core.util.StrUtil;\r\nimport com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;\r\nimport com.baomidou.mybatisplus.core.metadata.OrderItem;\r\nimport com.baomidou.mybatisplus.extension.plugins.pagination.Page;\r\nimport com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;\r\nimport com.irum.teamup.convention.exception.ProjectException;\r\nimport com.irum.teamup.enums.Project.ProjectStatus;\r\nimport com.irum.teamup.enums.ProjectErrorCodeEnum;\r\nimport com.irum.teamup.mapper.ProjectMapper;\r\nimport com.irum.teamup.mapper.ResumeDeliveryMapper;\r\nimport com.irum.teamup.page.PageDTO;\r\nimport com.irum.teamup.po.ProjectDO;\r\nimport com.irum.teamup.po.ResumeDO;\r\nimport com.irum.teamup.po.ResumeDeliveryDO;\r\nimport com.irum.teamup.query.ProjectPageQuery;\r\nimport com.irum.teamup.query.ResumeDeliveryPageQuery;\r\nimport com.irum.teamup.service.ProjectService;\r\nimport com.irum.teamup.utils.BeanUtil;\r\nimport com.irum.teamup.vo.ResumeVO;\r\nimport com.irum.teamup.vo.project.ProjectVO;\r\nimport lombok.RequiredArgsConstructor;\r\nimport lombok.extern.slf4j.Slf4j;\r\nimport org.springframework.beans.BeanUtils;\r\nimport org.springframework.stereotype.Service;\r\n\r\nimport java.util.Date;\r\nimport java.util.List;\r\nimport java.util.Objects;\r\n\r\n/**\r\n * @author Lenovo\r\n */\r\n@Slf4j\r\n@Service\r\n@RequiredArgsConstructor\r\npublic class ProjectServiceImpl extends ServiceImpl<ProjectMapper, ProjectDO> implements ProjectService {\r\n\r\n    private final ProjectMapper projectMapper;\r\n\r\n    private final ResumeDeliveryMapper resumeDeliveryMapper;\r\n    /**\r\n     * 分页查询项目列表，支持多条件过滤和排序\r\n     */\r\n    @Override\r\n    public PageDTO<ProjectVO> pageQuery(ProjectPageQuery projectPageQuery) {\r\n        // 1. 使用父类 PageQuery 的 toMpPage 方法，设置默认排序为 created_time 降序\r\n        Page<ProjectDO> mpPage = projectPageQuery.toMpPageDefaultSortByCreateTimeDesc();\r\n        // 2. 构建查询条件\r\n        QueryWrapper<ProjectDO> queryWrapper = new QueryWrapper<>();\r\n        // 标题：模糊查询\r\n        if (StrUtil.isNotEmpty(projectPageQuery.getTitle())) {\r\n            queryWrapper.like(\"title\", projectPageQuery.getTitle());\r\n        }\r\n        // 项目类型\r\n        if (StrUtil.isNotEmpty(projectPageQuery.getProjectType())) {\r\n            queryWrapper.eq(\"project_type\", projectPageQuery.getProjectType());\r\n        }\r\n        // 所属学院\r\n        if (StrUtil.isNotEmpty(projectPageQuery.getCollege())) {\r\n            queryWrapper.eq(\"college\", projectPageQuery.getCollege());\r\n        }\r\n        // 相关专业：模糊匹配\r\n        if (StrUtil.isNotEmpty(projectPageQuery.getMajor())) {\r\n            queryWrapper.like(\"major\", projectPageQuery.getMajor());\r\n        }\r\n        // 状态\r\n        if (projectPageQuery.getStatus()!= null) {\r\n            queryWrapper.eq(\"status\", projectPageQuery.getStatus());\r\n        }\r\n        // 创建者ID\r\n        if (projectPageQuery.getCreatorId() != null) {\r\n            queryWrapper.eq(\"creator_id\", projectPageQuery.getCreatorId());\r\n        }\r\n        // 团队规模\r\n        if (projectPageQuery.getTeamSize() != null) {\r\n            queryWrapper.eq(\"team_size\", projectPageQuery.getTeamSize());\r\n        }\r\n        // 当前成员数\r\n        if (projectPageQuery.getCurrentMembers() != null) {\r\n            queryWrapper.eq(\"current_members\", projectPageQuery.getCurrentMembers());\r\n        }\r\n        // 开始时间 >= startTime\r\n        if (projectPageQuery.getStartTime() != null) {\r\n            queryWrapper.ge(\"start_time\", projectPageQuery.getStartTime());\r\n        }\r\n        // 结束时间 <= endTime\r\n        if (projectPageQuery.getEndTime() != null) {\r\n            queryWrapper.le(\"end_time\", projectPageQuery.getEndTime());\r\n        }\r\n        // 3. 执行分页查询\r\n        Page<ProjectDO> resultPage = projectMapper.selectPage(mpPage, queryWrapper);\r\n        // 4. 转换为 PageDTO 结果\r\n        return PageDTO.of(resultPage, ProjectVO.class);\r\n    }\r\n    @Override\r\n    public ProjectVO getProjectById(Long id) {\r\n        // 查询项目信息\r\n        ProjectDO projectDO = projectMapper.selectById(id);\r\n        // 如果项目不存在，返回null（由控制器处理错误响应）\r\n        if (projectDO == null) {\r\n            log.info(\"项目不存在，id: {}\", id);\r\n            throw new ProjectException(ProjectErrorCodeEnum.PROJECT_NOT_FOUND.code(), ProjectErrorCodeEnum.PROJECT_NOT_FOUND.message());\r\n        }\r\n        // 检查项目是否已被删除\r\n        if (!Objects.equals(projectDO.getStatus(), ProjectStatus.DELETED.getCode())) {\r\n            log.info(\"项目已被删除，id: {}\", id);\r\n            throw new ProjectException(ProjectErrorCodeEnum.PROJECT_DISABLED.code(), ProjectErrorCodeEnum.PROJECT_DISABLED.message());\r\n        }\r\n        // 转换为VO对象并返回\r\n        return BeanUtil.convert(projectDO, ProjectVO.class);\r\n    }\r\n\r\n\r\n    @Override\r\n    public void updateProject(ProjectDO projectDO) {\r\n        // 检查项目是否存在\r\n        ProjectDO existingProject = projectMapper.selectById(projectDO.getId());\r\n        if (existingProject == null) {\r\n            log.info(\"项目不存在，id: {}\", projectDO.getId());\r\n            throw new ProjectException(ProjectErrorCodeEnum.PROJECT_NOT_FOUND.code(), ProjectErrorCodeEnum.PROJECT_NOT_FOUND.message());\r\n        }\r\n\r\n        // 检查项目是否已被删除\r\n        if (!Objects.equals(projectDO.getStatus(), ProjectStatus.DELETED.getCode())) {\r\n            log.info(\"项目已被删除，id: {}\", projectDO.getId());\r\n            throw new ProjectException(ProjectErrorCodeEnum.PROJECT_DISABLED.code(), ProjectErrorCodeEnum.PROJECT_DISABLED.message());\r\n        }\r\n\r\n        // 设置更新时间\r\n        projectDO.setUpdatedTime(new Date());\r\n\r\n        // 执行更新操作\r\n        projectMapper.updateById(projectDO);\r\n    }\r\n\r\n\r\n    @Override\r\n    public void deleteProject(Long id) {\r\n        // 检查项目是否存在\r\n        ProjectDO projectDO = projectMapper.selectById(id);\r\n        if (projectDO == null) {\r\n            log.info(\"项目不存在，id: {}\", id);\r\n            throw new ProjectException(ProjectErrorCodeEnum.PROJECT_NOT_FOUND.code(), ProjectErrorCodeEnum.PROJECT_NOT_FOUND.message());\r\n        }\r\n        //实现逻辑删除\r\n        projectDO.setStatus(ProjectStatus.DELETED.getCode());\r\n        // 执行删除操作\r\n        projectMapper.updateById(projectDO);\r\n    }\r\n\r\n\r\n    @Override\r\n    public void updateStatus(Long id, Integer status) {\r\n        // 检查项目是否存在\r\n        ProjectDO projectDO = projectMapper.selectById(id);\r\n        if (projectDO == null) {\r\n            log.info(\"项目不存在，id: {}\", id);\r\n            throw new ProjectException(ProjectErrorCodeEnum.PROJECT_NOT_FOUND.code(), ProjectErrorCodeEnum.PROJECT_NOT_FOUND.message());\r\n        }\r\n        //检查项目状态是否为已删除\r\n        if (!Objects.equals(projectDO.getStatus(), ProjectStatus.DELETED.getCode())) {\r\n            log.info(\"项目已被删除，id: {}\", id);\r\n            throw new ProjectException(ProjectErrorCodeEnum.PROJECT_DISABLED.code(), ProjectErrorCodeEnum.PROJECT_DISABLED.message());\r\n        }\r\n        // 更新项目状态\r\n        projectDO.setStatus(status);\r\n        // 更新时间\r\n        projectDO.setUpdatedTime(new Date());\r\n\r\n        // 执行更新操作\r\n        projectMapper.updateById(projectDO);\r\n    }\r\n\r\n    @Override\r\n    public PageDTO<ResumeDeliveryDO> getResumeByProjectIdPage(ResumeDeliveryPageQuery resumeDeliveryPageQuery) {\r\n\r\n\r\n        Page<ResumeDeliveryDO> mpPage = new Page<>(resumeDeliveryPageQuery.getPageNo(), resumeDeliveryPageQuery.getPageSize());\r\n        mpPage.addOrder(new OrderItem(resumeDeliveryPageQuery.getSortBy(), resumeDeliveryPageQuery.getIsAsc()));\r\n        QueryWrapper<ResumeDeliveryDO> queryWrapper = new QueryWrapper<>();\r\n        queryWrapper.eq(\"project_id\", resumeDeliveryPageQuery.getId());\r\n        queryWrapper.eq(\"status\", resumeDeliveryPageQuery.getStatus());\r\n        Page<ResumeDeliveryDO> pageResult = resumeDeliveryMapper.selectPage(mpPage, queryWrapper);\r\n\r\n        return PageDTO.of(pageResult, ResumeDeliveryDO.class);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ProjectServiceImpl.java b/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ProjectServiceImpl.java
+--- a/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ProjectServiceImpl.java	(revision 7a313c4d74ba34729cd5980b8b955dc7ef3f1b94)
++++ b/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ProjectServiceImpl.java	(date 1762008789684)
+@@ -105,7 +105,7 @@
+             throw new ProjectException(ProjectErrorCodeEnum.PROJECT_NOT_FOUND.code(), ProjectErrorCodeEnum.PROJECT_NOT_FOUND.message());
+         }
+         // 检查项目是否已被删除
+-        if (!Objects.equals(projectDO.getStatus(), ProjectStatus.DELETED.getCode())) {
++        if (Objects.equals(projectDO.getStatus(), ProjectStatus.DELETED.getCode())) {
+             log.info("项目已被删除，id: {}", id);
+             throw new ProjectException(ProjectErrorCodeEnum.PROJECT_DISABLED.code(), ProjectErrorCodeEnum.PROJECT_DISABLED.message());
+         }
+@@ -124,7 +124,7 @@
+         }
+ 
+         // 检查项目是否已被删除
+-        if (!Objects.equals(projectDO.getStatus(), ProjectStatus.DELETED.getCode())) {
++        if (Objects.equals(projectDO.getStatus(), ProjectStatus.DELETED.getCode())) {
+             log.info("项目已被删除，id: {}", projectDO.getId());
+             throw new ProjectException(ProjectErrorCodeEnum.PROJECT_DISABLED.code(), ProjectErrorCodeEnum.PROJECT_DISABLED.message());
+         }
+@@ -161,7 +161,7 @@
+             throw new ProjectException(ProjectErrorCodeEnum.PROJECT_NOT_FOUND.code(), ProjectErrorCodeEnum.PROJECT_NOT_FOUND.message());
+         }
+         //检查项目状态是否为已删除
+-        if (!Objects.equals(projectDO.getStatus(), ProjectStatus.DELETED.getCode())) {
++        if (Objects.equals(projectDO.getStatus(), ProjectStatus.DELETED.getCode())) {
+             log.info("项目已被删除，id: {}", id);
+             throw new ProjectException(ProjectErrorCodeEnum.PROJECT_DISABLED.code(), ProjectErrorCodeEnum.PROJECT_DISABLED.message());
+         }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"56a3ea6a-73c7-4b6b-90b2-ee6ec2f8db5f\" name=\"更改\" comment=\"实现了分页查询对应项目下详细的简历信息，申请人信息，简历状态\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/dto/project/ProjectUpdateDTO.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/dto/project/ProjectUpdateDTO.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/handler/GlobalExceptionHandler.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/handler/GlobalExceptionHandler.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Enum\" />\r\n        <option value=\"Exception\" />\r\n        <option value=\"Interface\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;Lskar&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/Lskar/teamup-admin.git&quot;,\r\n    &quot;accountId&quot;: &quot;33cb82da-2cba-41e5-9eeb-8cbb9672aaec&quot;\r\n  }\r\n}</component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;customColor&quot;: &quot;&quot;,\r\n  &quot;associatedIndex&quot;: 2\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"34jmnjq42UpdumLzNt6sZHq6Krk\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RequestMappingsPanelOrder0\": \"0\",\r\n    \"RequestMappingsPanelOrder1\": \"1\",\r\n    \"RequestMappingsPanelWidth0\": \"75\",\r\n    \"RequestMappingsPanelWidth1\": \"75\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"RunOnceActivity.git.unshallow\": \"true\",\r\n    \"Spring Boot.ShortLinkAdminApplication.executor\": \"Run\",\r\n    \"git-widget-placeholder\": \"master\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"last_opened_file_path\": \"C:/Users/Lenovo/Desktop/myJavaCollection/teamup/teamup-sever/src/main/resources\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"settings.editor.selected.configurable\": \"org.jetbrains.plugins.github.ui.GithubSettingsConfigurable\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\Lenovo\\Desktop\\myJavaCollection\\teamup\\teamup-sever\\src\\main\\resources\" />\r\n    </key>\r\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\r\n      <recent name=\"com.irum.teamup.convention.errorcode\" />\r\n      <recent name=\"com.irum.teamup.convention.result\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"ShortLinkAdminApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"teamup-sever\" />\r\n      <option name=\"SHORTEN_COMMAND_LINE\" value=\"ARGS_FILE\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.irum.teamup.ShortLinkAdminApplication\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.irum.teamup.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\">\r\n      <option name=\"SHORTEN_COMMAND_LINE\" value=\"ARGS_FILE\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Spring Boot.ShortLinkAdminApplication\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.21565.193\" />\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-IU-243.21565.193\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"应用程序级\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"默认任务\">\r\n      <changelist id=\"56a3ea6a-73c7-4b6b-90b2-ee6ec2f8db5f\" name=\"更改\" comment=\"\" />\r\n      <created>1761735524453</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1761735524453</updated>\r\n      <workItem from=\"1761735526246\" duration=\"51000\" />\r\n      <workItem from=\"1761735582422\" duration=\"1156000\" />\r\n      <workItem from=\"1761742990391\" duration=\"17000\" />\r\n      <workItem from=\"1761743012656\" duration=\"492000\" />\r\n      <workItem from=\"1761750130363\" duration=\"220000\" />\r\n      <workItem from=\"1761799252449\" duration=\"366000\" />\r\n      <workItem from=\"1761822676345\" duration=\"1200000\" />\r\n      <workItem from=\"1761834776655\" duration=\"140000\" />\r\n      <workItem from=\"1761836002922\" duration=\"713000\" />\r\n      <workItem from=\"1761880102283\" duration=\"806000\" />\r\n      <workItem from=\"1761883278143\" duration=\"1805000\" />\r\n      <workItem from=\"1761890719037\" duration=\"421000\" />\r\n      <workItem from=\"1761905390426\" duration=\"519000\" />\r\n      <workItem from=\"1761906359694\" duration=\"5619000\" />\r\n      <workItem from=\"1761968445951\" duration=\"3439000\" />\r\n      <workItem from=\"1762004688619\" duration=\"413000\" />\r\n      <workItem from=\"1762007488269\" duration=\"300000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"返回格式修改\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1761738060995</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1761738060995</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"分页查询新增用户id属性\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1761882019643</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1761882019643</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"通过项目id查询简历\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1761884054828</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1761884054828</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"修复前端无法传Date格式的问题\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1761905789504</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1761905789504</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"实现了分页查询对应项目下详细的简历信息，申请人信息，简历状态\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1761971686032</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1761971686032</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"6\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"用户管理功能实现\" />\r\n    <MESSAGE value=\"返回格式修改\" />\r\n    <MESSAGE value=\"分页查询新增用户id属性\" />\r\n    <MESSAGE value=\"通过项目id查询简历\" />\r\n    <MESSAGE value=\"修复前端无法传Date格式的问题\" />\r\n    <MESSAGE value=\"实现了分页查询对应项目下详细的简历信息，申请人信息，简历状态\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"实现了分页查询对应项目下详细的简历信息，申请人信息，简历状态\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/ProjectService.java</url>\r\n          <line>24</line>\r\n          <properties class=\"com.irum.teamup.service.ProjectService\" method=\"getResumeByProjectIdPage\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n            <option name=\"WATCH_EXIT\" value=\"false\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 7a313c4d74ba34729cd5980b8b955dc7ef3f1b94)
++++ b/.idea/workspace.xml	(date 1762016405991)
+@@ -4,10 +4,13 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="56a3ea6a-73c7-4b6b-90b2-ee6ec2f8db5f" name="更改" comment="实现了分页查询对应项目下详细的简历信息，申请人信息，简历状态">
++    <list default="true" id="56a3ea6a-73c7-4b6b-90b2-ee6ec2f8db5f" name="更改" comment="返回格式修改">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/dto/project/ProjectUpdateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/dto/project/ProjectUpdateDTO.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/handler/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/handler/GlobalExceptionHandler.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/enums/Project/ProjectStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/enums/Project/ProjectStatus.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-common/src/main/resources/application.yaml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/query/ProjectPageQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/query/ProjectPageQuery.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/vo/project/ProjectVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/vo/project/ProjectVO.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ProjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ProjectServiceImpl.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -49,27 +52,27 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "RequestMappingsPanelOrder0": "0",
+-    "RequestMappingsPanelOrder1": "1",
+-    "RequestMappingsPanelWidth0": "75",
+-    "RequestMappingsPanelWidth1": "75",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "RunOnceActivity.git.unshallow": "true",
+-    "Spring Boot.ShortLinkAdminApplication.executor": "Run",
+-    "git-widget-placeholder": "master",
+-    "kotlin-language-version-configured": "true",
+-    "last_opened_file_path": "C:/Users/Lenovo/Desktop/myJavaCollection/teamup/teamup-sever/src/main/resources",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
+-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
++    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
++    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
++    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
++    &quot;Spring Boot.ShortLinkAdminApplication.executor&quot;: &quot;Run&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
++    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/Lenovo/Desktop/myJavaCollection/teamup/teamup-sever/src/main/resources&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
+       <recent name="C:\Users\Lenovo\Desktop\myJavaCollection\teamup\teamup-sever\src\main\resources" />

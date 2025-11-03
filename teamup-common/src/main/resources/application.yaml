@@ -23,3 +23,4 @@ key:
       - /api/team-up/v1/user/login
       - /api/team-up/v1/user
       - /api/admin/users/**
+      - /api/team-up/v1/project/**
