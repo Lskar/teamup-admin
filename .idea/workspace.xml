@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56a3ea6a-73c7-4b6b-90b2-ee6ec2f8db5f" name="更改" comment="完成导出简历投递数据">
+    <list default="true" id="56a3ea6a-73c7-4b6b-90b2-ee6ec2f8db5f" name="更改" comment="完善自动化测试">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exports/resume_export_1762080686863.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/query/ResumePageQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/query/ResumePageQuery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ResumeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ResumeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/ResumeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/ResumeService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +54,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;JUnit.AdminControllerTest.register_Success.executor&quot;: &quot;Run&quot;,
     &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
     &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
     &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
@@ -82,7 +88,7 @@
       <recent name="com.irum.teamup.convention.result" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AdminControllerTest.register_Success">
+  <component name="RunManager" selected="Spring Boot.ShortLinkAdminApplication">
     <configuration name="AdminControllerTest.register_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="teamup-sever" />
       <shortenClasspath name="ARGS_FILE" />
@@ -129,8 +135,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AdminControllerTest.register_Success" />
         <item itemvalue="Spring Boot.ShortLinkAdminApplication" />
+        <item itemvalue="JUnit.AdminControllerTest.register_Success" />
       </list>
     </recent_temporary>
   </component>
@@ -173,6 +179,8 @@
       <workItem from="1762067091685" duration="226000" />
       <workItem from="1762068090311" duration="2025000" />
       <workItem from="1762099767555" duration="16000" />
+      <workItem from="1762160356942" duration="3389000" />
+      <workItem from="1762175127758" duration="141000" />
     </task>
     <task id="LOCAL-00001" summary="返回格式修改">
       <option name="closed" value="true" />
@@ -238,7 +246,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762080837393</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="完善自动化测试">
+      <option name="closed" value="true" />
+      <created>1762160665818</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1762160665818</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,6 +281,7 @@
     <MESSAGE value="更改项目DTO项目状态字段类型，将String更改为Integer" />
     <MESSAGE value="更新项目删除状态" />
     <MESSAGE value="完成导出简历投递数据" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成导出简历投递数据" />
+    <MESSAGE value="完善自动化测试" />
+    <option name="LAST_COMMIT_MESSAGE" value="完善自动化测试" />
   </component>
 </project>
