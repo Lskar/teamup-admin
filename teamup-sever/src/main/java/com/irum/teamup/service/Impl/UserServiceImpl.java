@@ -28,7 +28,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
                 .like(StrUtil.isNotBlank(userPageQuery.getMajor()), UserDO::getMajor, userPageQuery.getMajor())
                 .eq(userPageQuery.getStatus() != null, UserDO::getStatus, userPageQuery.getStatus())
                 .page(userPageQuery.toMpPage(userPageQuery.getSortBy(), userPageQuery.getIsAsc()));
-        System.out.println("执行");
         return PageDTO.of(pageResult, UserVO.class);
     }
 
