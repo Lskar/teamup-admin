@@ -1,10 +1,11 @@
 package com.irum.teamup.service.Impl;
+import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.irum.teamup.mapper.ResumeDeliveryMapper;
 import com.irum.teamup.mapper.ResumeMapper;
+import com.irum.teamup.page.PageDTO;
 import com.irum.teamup.po.ResumeDO;
 import com.irum.teamup.po.ResumeDeliveryDO;
 import com.irum.teamup.query.ResumePageQuery;
@@ -20,7 +21,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -29,8 +30,15 @@ public class ResumeServiceImpl extends ServiceImpl<ResumeMapper, ResumeDO> imple
     private final ResumeDeliveryMapper resumeDeliveryMapper;
 
     @Override
-    public Page<ResumeVO> pageQuery(ResumePageQuery resumePageQuery) {
-        return null;
+    public PageDTO<ResumeVO> pageQuery(ResumePageQuery resumePageQuery) {
+
+        Page<ResumeDO> pageResult = lambdaQuery()
+                .like(StrUtil.isNotBlank(resumePageQuery.getResumeTitle()), ResumeDO::getResumeTitle, resumePageQuery.getResumeTitle())
+                .eq(resumePageQuery.getStatus() != null, ResumeDO::getStatus, resumePageQuery.getStatus())
+                .eq(resumePageQuery.getApplicantId() != null, ResumeDO::getApplicantId, resumePageQuery.getApplicantId())
+                .page(resumePageQuery.toMpPage(resumePageQuery.getSortBy(), resumePageQuery.getIsAsc()));
+
+        return PageDTO.of(pageResult,ResumeVO.class);
     }
 
 

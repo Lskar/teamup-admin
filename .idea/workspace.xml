@@ -4,18 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56a3ea6a-73c7-4b6b-90b2-ee6ec2f8db5f" name="更改" comment="解决通过项目id查询简历详细信息时出现的状态Bug，修复时间类型不匹配导致的问题">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+    <list default="true" id="56a3ea6a-73c7-4b6b-90b2-ee6ec2f8db5f" name="更改" comment="修改实体类，接口的注解，便于接口文档的生成">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2025_10_28_15_37____.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2025_10_29_16_04____.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2025_10_29_18_56____.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2025_10_29_19_21____.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2025_10_29_22_06____.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2025_10_31_11_43____.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2025_10_31_11_50____.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_10_28_15_37_取消提交了更改_[更改]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_10_29_16_04_取消提交了更改_[更改]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_10_29_18_56_取消提交了更改_[更改]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_10_29_19_21_取消提交了更改_[更改]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_10_29_22_06_取消提交了更改_[更改]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_10_31_11_43_取消提交了更改_[更改]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_10_31_11_50_取消提交了更改_[更改]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/convention/result/Result.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-common/src/main/java/com/irum/teamup/convention/result/Results.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/query/ResumeDeliveryPageQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/query/ResumeDeliveryPageQuery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/vo/admin/AdminLoginVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/vo/admin/AdminLoginVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/vo/project/ProjectResumeStatisticsVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-pojo/src/main/java/com/irum/teamup/vo/project/ProjectResumeStatisticsVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ProjectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ResumeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/controller/ResumeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ProjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/teamup-sever/src/main/java/com/irum/teamup/service/Impl/ProjectServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,32 +61,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;Spring Boot.ShortLinkAdminApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Lenovo/Desktop/myJavaCollection/teamup/teamup-sever/src/main/resources&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.ShortLinkAdminApplication.executor": "Run",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Lenovo/Desktop/myJavaCollection/teamup/teamup-sever/src/main/resources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Lenovo\Desktop\myJavaCollection\teamup\teamup-sever\src\main\resources" />
@@ -162,7 +166,10 @@
       <workItem from="1762072104736" duration="107000" />
       <workItem from="1762086026788" duration="682000" />
       <workItem from="1762099217090" duration="205000" />
-      <workItem from="1762160065170" duration="396000" />
+      <workItem from="1762160065170" duration="1642000" />
+      <workItem from="1762161887170" duration="1553000" />
+      <workItem from="1762163459761" duration="596000" />
+      <workItem from="1762487727367" duration="282000" />
     </task>
     <task id="LOCAL-00001" summary="返回格式修改">
       <option name="closed" value="true" />
@@ -220,7 +227,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762008243662</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="修改实体类，接口的注解，便于接口文档的生成">
+      <option name="closed" value="true" />
+      <created>1762160605687</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1762160605687</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -246,7 +261,8 @@
     <MESSAGE value="实现了分页查询对应项目下详细的简历信息，申请人信息，简历状态" />
     <MESSAGE value="更改项目DTO项目状态字段类型，将String更改为Integer" />
     <MESSAGE value="更新项目删除状态" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新项目删除状态" />
+    <MESSAGE value="修改实体类，接口的注解，便于接口文档的生成" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改实体类，接口的注解，便于接口文档的生成" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

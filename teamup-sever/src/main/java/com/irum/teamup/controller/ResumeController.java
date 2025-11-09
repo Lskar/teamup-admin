@@ -2,6 +2,7 @@ package com.irum.teamup.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.irum.teamup.convention.result.ResponseResult;
+import com.irum.teamup.page.PageDTO;
 import com.irum.teamup.po.ResumeDO;
 import com.irum.teamup.query.ResumePageQuery;
 import com.irum.teamup.service.ResumeService;
@@ -28,10 +29,9 @@ public class ResumeController {
      */
     @GetMapping("/page")
     @ApiOperation(value = "分页查询简历投递列表")
-    public ResponseResult<Page<ResumeVO>> pageQuery(ResumePageQuery resumePageQuery) {
+    public ResponseResult<PageDTO<ResumeVO>> pageQuery(ResumePageQuery resumePageQuery) {
 
-        //TODO 功能待实现，目前未使用该接口
-        return null;
+        return ResponseResult.success(resumeService.pageQuery(resumePageQuery));
     }
 
     /**
