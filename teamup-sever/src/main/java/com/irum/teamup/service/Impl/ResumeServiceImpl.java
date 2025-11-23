@@ -75,6 +75,7 @@ public class ResumeServiceImpl extends ServiceImpl<ResumeMapper, ResumeDO> imple
     @Override
     public String exportResumeData(String status, Long projectId) {
         // 构建查询条件
+
         LambdaQueryWrapper<ResumeDeliveryDO> queryWrapper = new LambdaQueryWrapper<>();
 
         // 根据状态筛选
